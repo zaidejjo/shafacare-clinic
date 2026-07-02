@@ -1,5 +1,5 @@
 /* ========================================================
-   Shafa Care Clinic – Global Stylesheet
+   Shafa Care Clinic – Global Stylesheet (Luxury Redesign)
    ========================================================
    This file serves as the single source of truth for the
    design system using Tailwind CSS v4 CSS-first configuration.
@@ -23,46 +23,55 @@
 
 @theme {
   /* ── Font Families ────────────────────────────────── */
-  --font-family-arabic: 'Tajawal', 'Cairo', sans-serif;
-  --font-family-english: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  --font-arabic: 'Tajawal', 'Cairo', sans-serif;
+  --font-english: 'Inter', 'Plus Jakarta Sans', sans-serif;
 
   /* ── Primary Color: Deep Burgundy / Crimson Red ──────
      Represents premium care, authority, and medical
      expertise. Extracted from the clinic's logo.       */
-  --color-primary-50: #FFF5F5;
-  --color-primary-100: #FFE8E8;
-  --color-primary-200: #FFCACA;
-  --color-primary-300: #FF9E9E;
-  --color-primary-400: #FF6B6B;
-  --color-primary-500: #C41E3A;
-  --color-primary-600: #A01830;
-  --color-primary-700: #801226;
-  --color-primary-800: #6B0F1F;
-  --color-primary-900: #580A1A;
+  --color-primary-50: #FFF1F3;
+  --color-primary-100: #FFE1E5;
+  --color-primary-200: #FFC7CE;
+  --color-primary-300: #FFA3B0;
+  --color-primary-400: #FF6B82;
+  --color-primary-500: #800020; /* Signature Deep Burgundy */
+  --color-primary-600: #6B001A;
+  --color-primary-700: #570014;
+  --color-primary-800: #42000E;
+  --color-primary-900: #2E0008;
+  --color-primary-950: #1F0004;
 
   /* ── Surface / Background Colors ──────────────────── */
   --color-surface-primary: #FFFFFF;
-  --color-surface-secondary: #F8F9FA;
-  --color-surface-tertiary: #E9ECEF;
+  --color-surface-secondary: #FDFBFB; /* Soft warm white */
+  --color-surface-tertiary: #F5F2F2;  /* Soft warm grey */
 
   /* ── Dark Mode Surfaces (applied via .dark class) ─── */
-  --color-dark-surface: #1A1A1A;
-  --color-dark-surface-secondary: #242424;
-  --color-dark-surface-tertiary: #2D2D2D;
+  --color-dark-surface: #121212;
+  --color-dark-surface-secondary: #1A1A1A;
+  --color-dark-surface-tertiary: #242424;
 
   /* ── Text Colors (Light Mode) ─────────────────────── */
-  --color-text-primary: #212529;
-  --color-text-secondary: #495057;
-  --color-text-muted: #6C757D;
+  --color-text-primary: #1C1919;    /* Soft black */
+  --color-text-secondary: #4E4646;  /* Soft dark grey */
+  --color-text-muted: #8C8080;      /* Soft muted grey */
 
   /* ── Border Colors ────────────────────────────────── */
-  --color-border-default: #DEE2E6;
-  --color-border-focus: #C41E3A;
+  --color-border-default: #EAE5E5;
+  --color-border-focus: #800020;
 
   /* ── Border Radius ────────────────────────────────── */
   --radius-xl: 1rem;       /* 16px – cards, images */
   --radius-2xl: 1.5rem;    /* 24px – modals, dialogs */
+  --radius-3xl: 2rem;      /* 32px – premium sections */
   --radius-pill: 9999px;   /* Fully rounded – badges, pills */
+
+  /* ── Custom Shadows & Glows ───────────────────────── */
+  --shadow-glass-light: 0 8px 32px 0 rgba(128, 0, 32, 0.04);
+  --shadow-glass-dark: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-premium: 0 20px 40px -15px rgba(128, 0, 32, 0.08);
+  --shadow-premium-hover: 0 30px 60px -15px rgba(128, 0, 32, 0.15);
+  --shadow-burgundy-glow: 0 0 25px 0 rgba(128, 0, 32, 0.25);
 }
 
 /* ========================================================
@@ -74,22 +83,22 @@
 
 .dark {
   /* ── Primary becomes slightly brighter for contrast ─ */
-  --color-primary-400: #FF8A8A;
-  --color-primary-500: #E02844;
-  --color-primary-600: #C41E3A;
+  --color-primary-400: #FF8A9B;
+  --color-primary-500: #A31534;
+  --color-primary-600: #800020;
 
   /* ── Surface colors invert ───────────────────────── */
-  --color-surface-primary: #1A1A1A;
-  --color-surface-secondary: #242424;
-  --color-surface-tertiary: #2D2D2D;
+  --color-surface-primary: #121212;
+  --color-surface-secondary: #1A1A1A;
+  --color-surface-tertiary: #242424;
 
   /* ── Text colors invert (high contrast) ──────────── */
-  --color-text-primary: #F8F9FA;
+  --color-text-primary: #FDFBFB;
   --color-text-secondary: #CED4DA;
   --color-text-muted: #ADB5BD;
 
   /* ── Borders in dark mode ────────────────────────── */
-  --color-border-default: #495057;
+  --color-border-default: #2D2D2D;
 }
 
 /* ========================================================
@@ -117,6 +126,7 @@
     @apply bg-surface-primary text-text-primary antialiased;
     font-family: var(--font-family-english);
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   /**
@@ -152,10 +162,16 @@
   a {
     @apply min-w-[48px];
   }
+
+  /* Editorial Typography Defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold text-balance;
+    color: var(--color-text-primary);
+  }
 }
 
 /* ========================================================
-   5. UTILITY LAYER – Custom RTL/LTR utility classes
+   5. UTILITY LAYER – Custom Glassmorphism & Layout Utilities
    ======================================================== */
 
 @layer utilities {
@@ -189,28 +205,68 @@
   .text-end {
     text-align: end;
   }
-}
 
-/* ========================================================
-   6. FONT-FACE DECLARATIONS (Fallback / Self-hosted)
-   ========================================================
-   Uncomment and update the `src` paths if you choose to
-   self-host fonts instead of using Google Fonts CDN.    */
+  /* Premium Glassmorphic Utilities */
+  .glass-header-light {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(128, 0, 32, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  }
 
-/*
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter/Inter-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+  .glass-header-dark {
+    background: rgba(18, 18, 18, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
 
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/tajawal/Tajawal-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(128, 0, 32, 0.05);
+    box-shadow: var(--shadow-glass-light);
+  }
+
+  .glass-card-dark {
+    background: rgba(26, 26, 26, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: var(--shadow-glass-dark);
+  }
+
+  .glass-burgundy {
+    background: rgba(128, 0, 32, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(128, 0, 32, 0.2);
+  }
+
+  /* Micro-interactions */
+  .hover-lift {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-premium-hover);
+  }
+
+  /* Text Gradient */
+  .text-gradient-burgundy {
+    background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-700) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
-*/

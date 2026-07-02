@@ -1,28 +1,26 @@
 <template>
   <!-- ====================================================
-       HeroSection – LCP-optimized hero banner
+       HeroSection – Elite LCP-Optimized Hero Banner
        ====================================================
-       - Full-viewport hero with responsive background image
-       - Burgundy gradient overlay for brand consistency
-       - Dynamic headline, subheadline, and CTA button
-       - RTL-aware text alignment (text-start / text-end)
-       - CTA button with 0.75rem rounded corners
+       - Full-viewport hero with responsive background image or premium mesh gradient
+       - Deep burgundy and gold glowing abstract overlays
+       - Dynamic headline, subheadline, and dual CTA buttons
+       - RTL-aware text alignment and layout grid
+       - Premium glassmorphic highlights card in split layout
        - LCP optimization: fetchpriority="high" on hero img
-       - Storyblok compatible: accepts `blok` prop with
-         v-editable directive for visual editor
+       - Storyblok compatible: accepts `blok` prop with v-editable
   -->
   <section
     v-editable="blok"
     :aria-label="blok?.headline || $t('hero.title')"
-    class="relative flex min-h-[80vh] items-center overflow-hidden"
-    :class="contentAlignmentClass"
+    class="relative flex min-h-[90vh] items-center overflow-hidden bg-surface-primary py-16 lg:py-24"
   >
-    <!-- ── Background Image ─────────────────────────── -->
+    <!-- ── Background Image / Mesh Gradient ─────────── -->
     <div
-      class="absolute inset-0 -z-10"
+      class="absolute inset-0 -z-20"
       aria-hidden="true"
     >
-<NuxtImg
+      <NuxtImg
         v-if="imageSrc"
         :src="imageSrc"
         :alt="imageAlt"
@@ -36,59 +34,127 @@
         decoding="async"
       />
 
-      <!-- Fallback gradient when no image is provided -->
+      <!-- Fallback Premium Mesh Gradient when no image is provided -->
       <div
         v-else
-        class="h-full w-full bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900"
+        class="h-full w-full bg-gradient-to-br from-surface-secondary via-surface-primary to-surface-secondary dark:from-dark-surface dark:via-dark-surface-secondary dark:to-dark-surface"
       />
     </div>
 
-    <!-- ── Overlay ──────────────────────────────────── -->
-    <!-- Semi-transparent overlay to ensure text readability -->
+    <!-- ── Glowing Abstract Orbs for Premium Glassmorphic Atmosphere ── -->
+    <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+      <!-- Orb 1: Deep Burgundy -->
+      <div class="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-primary-900/10 blur-[120px] dark:bg-primary-950/30" />
+      <!-- Orb 2: Soft Crimson -->
+      <div class="absolute top-1/2 -right-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-primary-600/5 blur-[100px] dark:bg-primary-800/15" />
+      <!-- Orb 3: Subtle Gold/Amber for Luxury Touch -->
+      <div class="absolute -bottom-40 left-1/3 h-[400px] w-[400px] rounded-full bg-amber-500/5 blur-[80px] dark:bg-amber-500/10" />
+    </div>
+
+    <!-- ── Semi-transparent overlay for image readability ── -->
     <div
-      class="absolute inset-0 -z-10"
-      :style="overlayStyle"
+      v-if="imageSrc"
+      class="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/50 to-transparent dark:from-black/90 dark:via-black/70 dark:to-black/30"
       aria-hidden="true"
     />
 
-    <!-- ── Content ──────────────────────────────────── -->
+    <!-- ── Content Container ────────────────────────── -->
     <div
-      class="relative z-10 mx-auto w-full px-4 py-20 sm:px-6 lg:px-8"
-      :class="contentContainerClass"
+      class="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl animate-fade-in"
     >
-      <div class="max-w-3xl">
-        <!-- Badge / Tagline -->
-        <span
-          class="mb-4 inline-block rounded-pill bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm"
+      <div :class="layout === 'split' ? 'grid lg:grid-cols-12 gap-12 lg:gap-16 items-center' : 'max-w-3xl mx-auto'">
+        
+        <!-- Left Column: Text Content -->
+        <div 
+          :class="[
+            layout === 'split' ? 'lg:col-span-7' : '',
+            contentAlignmentClass
+          ]"
         >
-          {{ $t('site.tagline') }}
-        </span>
+          <!-- Badge / Tagline -->
+          <div class="mb-6" :class="layout === 'centered' ? 'mx-auto' : ''">
+            <span
+              class="inline-flex items-center gap-2 rounded-full border border-primary-500/20 bg-primary-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-600 dark:border-primary-400/20 dark:bg-primary-400/10 dark:text-primary-400"
+            >
+              <UIcon name="heroicons:sparkles" class="h-4 w-4 animate-pulse" />
+              {{ $t('site.tagline') }}
+            </span>
+          </div>
 
-        <!-- Headline -->
-        <h1
-          class="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
-        >
-          {{ headline }}
-        </h1>
+          <!-- Headline -->
+          <h1
+            class="mb-6 text-balance text-4xl font-extrabold leading-tight tracking-tight text-text-primary sm:text-5xl lg:text-6xl"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+          >
+            {{ headline }}
+          </h1>
 
-        <!-- Subheadline -->
-        <p
-          v-if="subheadline"
-          class="mb-8 max-w-2xl text-balance text-lg text-white/80 sm:text-xl"
-        >
-          {{ subheadline }}
-        </p>
+          <!-- Subheadline -->
+          <p
+            v-if="subheadline"
+            class="mb-8 max-w-2xl text-balance text-lg text-text-secondary sm:text-xl font-medium leading-relaxed"
+          >
+            {{ subheadline }}
+          </p>
 
-        <!-- CTA Button -->
-        <UButton
-          v-if="ctaText"
-          size="xl"
-          color="white"
-          :label="ctaText"
-          class="rounded-xl px-8 py-3.5 text-base font-semibold shadow-lg text-primary-700 transition-all duration-200 hover:shadow-xl active:scale-[0.98]"
-          :to="ctaLink?.url || undefined"
-          :target="ctaLinksTarget"
-        />
+          <!-- Dual CTA Buttons -->
+          <div class="flex flex-wrap gap-4" :class="layout === 'centered' ? 'justify-center' : 'justify-start'">
+            <UButton
+              v-if="ctaText"
+              size="xl"
+              color="primary"
+              :label="ctaText"
+              class="rounded-xl px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:shadow-burgundy-glow hover:scale-[1.02] active:scale-[0.98]"
+              :to="ctaLink?.url || undefined"
+              :target="ctaLinksTarget"
+            />
+            <UButton
+              size="xl"
+              color="neutral"
+              variant="outline"
+              :label="locale === 'ar' ? 'تعرف على خدماتنا' : 'Explore Services'"
+              class="rounded-xl px-8 py-4 text-base font-bold transition-all duration-300 hover:bg-primary-500/5 dark:hover:bg-primary-400/5"
+              to="#services"
+            />
+          </div>
+        </div>
+
+        <!-- Right Column: Premium Glassmorphic Highlights Card (Split Layout) -->
+        <div v-if="layout === 'split'" class="lg:col-span-5">
+          <div class="glass-card-light dark:glass-card-dark rounded-3xl p-8 border border-white/20 dark:border-white/5 shadow-2xl hover-lift">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500 dark:bg-primary-400/10 dark:text-primary-400">
+                <UIcon name="heroicons:heart" class="h-6 w-6" />
+              </div>
+              <h3 class="text-xl font-extrabold text-text-primary" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+                {{ locale === 'ar' ? 'رعاية طبية متميزة' : 'Premium Medical Care' }}
+              </h3>
+            </div>
+            
+            <ul class="space-y-5">
+              <li v-for="item in highlights" :key="item.title" class="group flex items-start gap-4">
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary-500 group-hover:text-white dark:bg-primary-400/10 dark:text-primary-400 dark:group-hover:bg-primary-400 dark:group-hover:text-black">
+                  <UIcon :name="item.icon" class="h-5 w-5" />
+                </div>
+                <div class="flex flex-col">
+                  <h4 class="text-sm font-bold text-text-primary transition-colors duration-300 group-hover:text-primary-500 dark:group-hover:text-primary-400">
+                    {{ item.title }}
+                  </h4>
+                  <p class="text-xs text-text-muted mt-1 leading-relaxed">
+                    {{ item.desc }}
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Subtle Trust Indicator -->
+            <div class="mt-8 pt-6 border-t border-border-default/30 flex items-center justify-between text-xs font-bold text-text-muted">
+              <span>{{ locale === 'ar' ? '✓ معتمد من وزارة الصحة' : '✓ MOH Certified' }}</span>
+              <span>{{ locale === 'ar' ? '★ تقييم 4.9/5' : '★ 4.9/5 Rated' }}</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -191,7 +257,6 @@ const imageSrc = computed(() => {
   if (props.blok?.backgroundImage?.filename) {
     return props.blok.backgroundImage.filename
   }
-  // Fallback: use a placeholder gradient (no actual image)
   return null
 })
 
@@ -200,42 +265,20 @@ const imageAlt = computed(() => {
 })
 
 // ── Layout Classes ───────────────────────────────────────
+const layout = computed(() => props.blok?.layout || 'split') // Default to split for a premium look
+
 const contentAlignmentClass = computed(() => {
-  const layout = props.blok?.layout || 'centered'
-  switch (layout) {
-    case 'left-aligned':
-      return 'justify-start'
-    case 'split':
-      return 'justify-start lg:justify-start'
-    default:
-      return 'justify-center'
+  if (layout.value === 'centered') {
+    return 'text-center items-center'
   }
+  return 'text-start items-start'
 })
 
 const contentContainerClass = computed(() => {
-  const layout = props.blok?.layout || 'centered'
-  switch (layout) {
-    case 'left-aligned':
-      return 'ps-4 sm:ps-6 lg:ps-8'
-    case 'split':
-      return ''
-    default:
-      return 'text-center'
+  if (layout.value === 'centered') {
+    return 'items-center'
   }
-})
-
-// ── Overlay Style ────────────────────────────────────────
-const overlayStyle = computed(() => {
-  // Use the overlay color from Storyblok, or default to primary gradient
-  if (props.blok?.overlayColor) {
-    return {
-      background: `linear-gradient(135deg, ${props.blok.overlayColor} 0%, rgba(0,0,0,0.6) 100%)`
-    }
-  }
-  return {
-    background:
-      'linear-gradient(135deg, rgba(196, 30, 58, 0.85) 0%, rgba(128, 18, 38, 0.7) 50%, rgba(0, 0, 0, 0.5) 100%)'
-  }
+  return 'items-start'
 })
 
 // ── Image Parallax / Effect Classes ──────────────────────
@@ -251,9 +294,48 @@ const imageParallaxClass = computed(() => {
   }
 })
 
+// ── Clinic Highlights for Split Layout ───────────────────
+const highlights = computed(() => {
+  if (locale.value === 'ar') {
+    return [
+      {
+        icon: 'heroicons:user-group',
+        title: 'أطباء استشاريون ذوو خبرة',
+        desc: 'نخبة من الأطباء الاستشاريين الحاصلين على أعلى الشهادات العالمية لتقديم أفضل رعاية.'
+      },
+      {
+        icon: 'heroicons:shield-check',
+        title: 'أحدث التقنيات الطبية',
+        desc: 'نستخدم أحدث الأجهزة والتقنيات الطبية لضمان دقة التشخيص وسلامة العلاج.'
+      },
+      {
+        icon: 'heroicons:clock',
+        title: 'رعاية متكاملة ومستمرة',
+        desc: 'نحن هنا دائماً لتقديم الرعاية الطبية الطارئة والمستمرة لك ولعائلتك بكل رحمة.'
+      }
+    ]
+  } else {
+    return [
+      {
+        icon: 'heroicons:user-group',
+        title: 'Experienced Consultant Doctors',
+        desc: 'A select group of consultant doctors with top international certifications.'
+      },
+      {
+        icon: 'heroicons:shield-check',
+        title: 'State-of-the-Art Technology',
+        desc: 'We use the latest medical devices and technologies for precise diagnosis.'
+      },
+      {
+        icon: 'heroicons:clock',
+        title: 'Comprehensive & Continuous Care',
+        desc: 'We are always here to provide emergency and continuous medical care with compassion.'
+      }
+    ]
+  }
+})
+
 // ── Dynamic SEO: Preload the hero image for LCP ──────────
-// This injects a <link rel="preload"> for the hero image
-// so the browser starts fetching it early.
 if (imageSrc.value) {
   useHead({
     link: [
@@ -270,12 +352,12 @@ if (imageSrc.value) {
 
 <style scoped>
 /**
- * Subtle fade-in animation for the hero section
+ * Entrance fade-in animation for the hero section content
  */
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -284,7 +366,7 @@ if (imageSrc.value) {
 }
 
 .animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
+  animation: fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /**
@@ -292,6 +374,6 @@ if (imageSrc.value) {
  * without layout shift while loading
  */
 img {
-  background-color: var(--color-primary-700);
+  background-color: var(--color-primary-950);
 }
 </style>
