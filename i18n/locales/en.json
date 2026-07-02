@@ -1,0 +1,78 @@
+{
+  "site": {
+    "name": "Shafa Care Clinic",
+    "tagline": "Your Health, Our Priority",
+    "description": "Professional, compassionate medical care at Shafa Care Clinic."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "doctors": "Medical Staff",
+    "testimonials": "Testimonials",
+    "contact": "Contact Us",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Welcome to Shafa Care Clinic",
+    "subtitle": "Comprehensive medical care with compassion and expertise",
+    "cta": "Book an Appointment"
+  },
+  "about": {
+    "title": "About Shafa Care Clinic",
+    "description": "Providing quality healthcare services to our community with a patient-centered approach.",
+    "missionStatement": "Our mission is to deliver exceptional, patient-centered healthcare that improves the wellbeing of our community through clinical excellence, compassion, and innovation.",
+    "ourValues": "Our Values"
+  },
+  "services": {
+    "title": "Our Medical Services",
+    "subtitle": "Comprehensive healthcare tailored to your needs"
+  },
+  "doctors": {
+    "title": "Meet Our Medical Team",
+    "subtitle": "Experienced professionals dedicated to your wellbeing"
+  },
+  "testimonials": {
+    "title": "What Our Patients Say",
+    "subtitle": "Hear from those who trust us with their health"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "We're here to help. Reach out to us.",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "Working Hours",
+    "form": {
+      "name": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you! Your message has been sent.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contactInfo": "Contact Information",
+    "copyright": "© {year} Shafa Care Clinic. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "skipToContent": "Skip to main content",
+    "readMore": "Read More",
+    "bookNow": "Book Now",
+    "learnMore": "Learn More",
+    "close": "Close",
+    "menu": "Menu",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language"
+  }
+}

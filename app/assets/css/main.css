@@ -1,0 +1,216 @@
+/* ========================================================
+   Shafa Care Clinic – Global Stylesheet
+   ========================================================
+   This file serves as the single source of truth for the
+   design system using Tailwind CSS v4 CSS-first configuration.
+
+   NOTE on fonts: Inter (English) and Tajawal (Arabic) are
+   loaded via useHead in app.vue (preconnect + preload)
+   for optimal LCP performance instead of CSS @import.
+   ======================================================== */
+
+/* ── Nuxt UI (includes Tailwind CSS v4) ──────────────── */
+@import "@nuxt/ui";
+@import "tailwindcss";
+
+/* ========================================================
+   2. DESIGN TOKENS (Tailwind CSS v4 @theme)
+   ========================================================
+   These tokens extend the default Tailwind theme and are
+   available as utility classes (e.g., bg-primary-500,
+   text-primary, rounded-xl, font-arabic).
+   ======================================================== */
+
+@theme {
+  /* ── Font Families ────────────────────────────────── */
+  --font-family-arabic: 'Tajawal', 'Cairo', sans-serif;
+  --font-family-english: 'Inter', 'Plus Jakarta Sans', sans-serif;
+
+  /* ── Primary Color: Deep Burgundy / Crimson Red ──────
+     Represents premium care, authority, and medical
+     expertise. Extracted from the clinic's logo.       */
+  --color-primary-50: #FFF5F5;
+  --color-primary-100: #FFE8E8;
+  --color-primary-200: #FFCACA;
+  --color-primary-300: #FF9E9E;
+  --color-primary-400: #FF6B6B;
+  --color-primary-500: #C41E3A;
+  --color-primary-600: #A01830;
+  --color-primary-700: #801226;
+  --color-primary-800: #6B0F1F;
+  --color-primary-900: #580A1A;
+
+  /* ── Surface / Background Colors ──────────────────── */
+  --color-surface-primary: #FFFFFF;
+  --color-surface-secondary: #F8F9FA;
+  --color-surface-tertiary: #E9ECEF;
+
+  /* ── Dark Mode Surfaces (applied via .dark class) ─── */
+  --color-dark-surface: #1A1A1A;
+  --color-dark-surface-secondary: #242424;
+  --color-dark-surface-tertiary: #2D2D2D;
+
+  /* ── Text Colors (Light Mode) ─────────────────────── */
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-muted: #6C757D;
+
+  /* ── Border Colors ────────────────────────────────── */
+  --color-border-default: #DEE2E6;
+  --color-border-focus: #C41E3A;
+
+  /* ── Border Radius ────────────────────────────────── */
+  --radius-xl: 1rem;       /* 16px – cards, images */
+  --radius-2xl: 1.5rem;    /* 24px – modals, dialogs */
+  --radius-pill: 9999px;   /* Fully rounded – badges, pills */
+}
+
+/* ========================================================
+   3. DARK MODE OVERRIDES
+   ========================================================
+   When the `.dark` class is applied to <html>, these
+   tokens override the light-mode defaults. Nuxt UI's
+   color mode handles toggling the `.dark` class.       */
+
+.dark {
+  /* ── Primary becomes slightly brighter for contrast ─ */
+  --color-primary-400: #FF8A8A;
+  --color-primary-500: #E02844;
+  --color-primary-600: #C41E3A;
+
+  /* ── Surface colors invert ───────────────────────── */
+  --color-surface-primary: #1A1A1A;
+  --color-surface-secondary: #242424;
+  --color-surface-tertiary: #2D2D2D;
+
+  /* ── Text colors invert (high contrast) ──────────── */
+  --color-text-primary: #F8F9FA;
+  --color-text-secondary: #CED4DA;
+  --color-text-muted: #ADB5BD;
+
+  /* ── Borders in dark mode ────────────────────────── */
+  --color-border-default: #495057;
+}
+
+/* ========================================================
+   4. BASE LAYER – Global element resets & defaults
+   ======================================================== */
+
+@layer base {
+  /**
+   * Smooth scrolling (but not for users who prefer reduced motion)
+   */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /**
+   * Body defaults
+   */
+  body {
+    @apply bg-surface-primary text-text-primary antialiased;
+    font-family: var(--font-family-english);
+    min-height: 100vh;
+  }
+
+  /**
+   * Arabic locale body override
+   * The `dir="rtl"` attribute triggers this via the CSS
+   * attribute selector. The font-family switches to Arabic.
+   */
+  html[dir="rtl"] body {
+    font-family: var(--font-family-arabic);
+  }
+
+  /**
+   * Focus styles for accessibility
+   */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+
+  /**
+   * Minimum touch target size for mobile
+   * All interactive elements must be at least 48x48px
+   * with 8px spacing between them.
+   */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    @apply min-h-[48px];
+  }
+
+  button,
+  a {
+    @apply min-w-[48px];
+  }
+}
+
+/* ========================================================
+   5. UTILITY LAYER – Custom RTL/LTR utility classes
+   ======================================================== */
+
+@layer utilities {
+  /**
+   * RTL-aware margin and padding utilities.
+   * These automatically flip based on the document direction.
+   */
+  .ms-auto {
+    margin-inline-start: auto;
+  }
+
+  .me-auto {
+    margin-inline-end: auto;
+  }
+
+  .ps-4 {
+    padding-inline-start: 1rem;
+  }
+
+  .pe-4 {
+    padding-inline-end: 1rem;
+  }
+
+  /**
+   * RTL-aware text alignment
+   */
+  .text-start {
+    text-align: start;
+  }
+
+  .text-end {
+    text-align: end;
+  }
+}
+
+/* ========================================================
+   6. FONT-FACE DECLARATIONS (Fallback / Self-hosted)
+   ========================================================
+   Uncomment and update the `src` paths if you choose to
+   self-host fonts instead of using Google Fonts CDN.    */
+
+/*
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  src: url('/fonts/tajawal/Tajawal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/

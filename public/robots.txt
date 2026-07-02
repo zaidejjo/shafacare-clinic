@@ -1,0 +1,17 @@
+# ───────────────────────────────────────────────
+# Shafa Care Clinic – Robots Exclusion Protocol
+# ───────────────────────────────────────────────
+# Production: https://shafacare.com
+# Allow all respectable crawlers; disallow admin/internal paths.
+
+User-agent: *
+Allow: /
+Disallow: /_nuxt/
+Disallow: /_payload/
+Disallow: /api/
+
+# Crawl-delay: be gentle to the server
+Crawl-delay: 10
+
+# ── Sitemaps ──────────────────────────────────
+Sitemap: https://shafacare.com/sitemap.xml
