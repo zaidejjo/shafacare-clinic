@@ -233,16 +233,24 @@ const props = withDefaults(
 
 // ── Content Values ────────────────────────────────────────
 const title: ComputedRef<string> = computed(() =>
-  props.blok?.title || t('about.title')
+  props.blok?.title || (locale.value === 'ar' ? 'عن عيادة شفاء كير' : 'About Shafa Care Clinic')
 )
 
-const description: ComputedRef<string> = computed(() =>
-  props.blok?.description || t('about.description')
-)
+const description: ComputedRef<string> = computed(() => {
+  if (props.blok?.description) return props.blok.description
+  
+  return locale.value === 'ar' 
+    ? 'تعد عيادة شفاء كير صرحاً طبياً متميزاً يهدف إلى تقديم رعاية صحية عالمية المستوى. تحت القيادة الخبيرة للدكتور فراس عجو، نجمع بين أحدث التقنيات الطبية والنهج الإنساني في العلاج، لضمان حصول كل مريض على تشخيص دقيق وعلاج فعال في بيئة مريحة وفاخرة.'
+    : 'Shafa Care Clinic is a premier healthcare destination dedicated to providing world-class medical services. Under the expert leadership of Dr. Firas Ajo, we combine cutting-edge medical technology with a compassionate, patient-first approach, ensuring every patient receives an accurate diagnosis and effective treatment in a comfortable, luxury environment.'
+})
 
-const missionStatementText: ComputedRef<string | undefined> = computed(() =>
-  props.blok?.missionStatement || undefined
-)
+const missionStatementText: ComputedRef<string | undefined> = computed(() => {
+  if (props.blok?.missionStatement) return props.blok.missionStatement
+  
+  return locale.value === 'ar'
+    ? 'رؤيتنا هي الارتقاء بمعايير الرعاية الصحية في المنطقة من خلال الابتكار المستمر والالتزام بأعلى معايير الجودة العالمية.'
+    : 'Our vision is to elevate healthcare standards in the region through continuous innovation and an unwavering commitment to the highest global quality standards.'
+})
 
 const layout: ComputedRef<string> = computed(() =>
   props.blok?.layout || 'image-left'

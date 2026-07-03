@@ -7,63 +7,74 @@ export default defineNuxtConfig({
    */
   app: {
     head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-      title: 'Shafa Care Clinic - عيادة شفا الطبية',
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+      title: "Shafa Care Clinic - عيادة شفا الطبية",
       meta: [
         {
-          name: 'description',
-          content: 'Professional, compassionate medical care at Shafa Care Clinic. Your health is our priority — عيادة شفا الطبية تقدم رعاية صحية متكاملة بثقة واحترافية.'
+          name: "description",
+          content:
+            "Professional, compassionate medical care at Shafa Care Clinic. Your health is our priority — عيادة شفا الطبية تقدم رعاية صحية متكاملة بثقة واحترافية.",
         },
         {
-          name: 'theme-color',
-          content: '#C41E3A'
-        }
+          name: "theme-color",
+          content: "#C41E3A",
+        },
       ],
       link: [
         {
-          rel: 'icon',
-          type: 'image/x-icon',
-          href: '/favicon.ico'
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
         },
         {
-          rel: 'canonical',
-          href: 'https://shafacare.com'
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon.png",
+          sizes: "32x32",
+        },
+        {
+          rel: "apple-touch-icon",
+          href: "/favicon.png",
+        },
+        {
+          rel: "canonical",
+          href: "https://shafacare.pages.dev",
         },
         // ── Google Fonts Preconnect ─────────────────────
         {
-          rel: 'preconnect',
-          href: 'https://fonts.googleapis.com'
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
         },
         {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: ''
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
         },
         // ── Google Fonts Preload (Inter + Tajawal) ────
         {
-          rel: 'preload',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-          as: 'style'
+          rel: "preload",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+          as: "style",
         },
         {
-          rel: 'preload',
-          href: 'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap',
-          as: 'style'
+          rel: "preload",
+          href: "https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap",
+          as: "style",
         },
         // ── Google Fonts Stylesheets ───────────────────
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-          crossorigin: ''
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+          crossorigin: "",
         },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap',
-          crossorigin: ''
-        }
-      ]
-    }
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap",
+          crossorigin: "",
+        },
+      ],
+    },
   },
 
   /**
@@ -72,7 +83,7 @@ export default defineNuxtConfig({
    * ========================================================
    */
   devtools: {
-    enabled: true
+    enabled: true,
   },
 
   /**
@@ -80,7 +91,7 @@ export default defineNuxtConfig({
    * CSS – Global stylesheet with Tailwind v4 and design tokens
    * ========================================================
    */
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
 
   /**
    * ========================================================
@@ -92,7 +103,13 @@ export default defineNuxtConfig({
    * - @storyblok/nuxt: Headless CMS visual editor integration
    * ========================================================
    */
-  modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/sitemap', '@storyblok/nuxt'],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/image",
+    "@nuxtjs/i18n",
+    "@nuxtjs/sitemap",
+    "@storyblok/nuxt",
+  ],
 
   /**
    * ========================================================
@@ -103,9 +120,9 @@ export default defineNuxtConfig({
    */
   ui: {
     colors: {
-      primary: 'primary',
-      neutral: 'slate'
-    }
+      primary: "primary",
+      neutral: "slate",
+    },
   },
 
   /**
@@ -122,39 +139,39 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       {
-        code: 'en',
-        name: 'English',
-        language: 'en-US',
-        file: 'en.json',
-        dir: 'ltr'
+        code: "en",
+        name: "English",
+        language: "en-US",
+        file: "en.json",
+        dir: "ltr",
       },
       {
-        code: 'ar',
-        name: 'العربية',
-        language: 'ar-SA',
-        file: 'ar.json',
-        dir: 'rtl'
-      }
+        code: "ar",
+        name: "العربية",
+        language: "ar-SA",
+        file: "ar.json",
+        dir: "rtl",
+      },
     ],
-    defaultLocale: 'ar',
-    strategy: 'prefix',
+    defaultLocale: "ar",
+    strategy: "prefix",
     lazy: true,
-    langDir: 'locales',
+    langDir: "locales",
     // vueI18n is deprecated in v9 – config is handled via nuxt.config.ts
     // Locale files are stored in i18n/locales/
     bundle: {
-      optimizeTranslationDirective: false
+      optimizeTranslationDirective: false,
     },
     seo: {
       canonicalUrl: true,
       selfReferencing: true,
-      hreflang: true
+      hreflang: true,
     },
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root'
-    }
+      cookieKey: "i18n_redirected",
+      redirectOn: "root",
+    },
   },
 
   /**
@@ -171,8 +188,8 @@ export default defineNuxtConfig({
     zeroRuntime: true,
     gzip: true,
     i18n: {
-      locales: ['en', 'ar'],
-      defaultLocale: 'ar'
+      locales: ["en", "ar"],
+      defaultLocale: "ar",
     },
     urls: async () => {
       // Dynamic routes from Storyblok will be added here in Phase 2
@@ -183,8 +200,8 @@ export default defineNuxtConfig({
       //     starts_with: 'pages/'
       //   })
       //   return data.stories.map(story => `/${story.slug}`)
-      return []
-    }
+      return [];
+    },
   },
 
   /**
@@ -197,11 +214,11 @@ export default defineNuxtConfig({
   storyblok: {
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
     bridge: {
-      resolveRelations: []
+      resolveRelations: [],
     },
     apiOptions: {
-      region: 'eu' // Adjust based on your Storyblok space region
-    }
+      region: "eu", // Adjust based on your Storyblok space region
+    },
   },
 
   /**
@@ -211,9 +228,10 @@ export default defineNuxtConfig({
    */
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://shafacare.com',
-      storyblokAccessToken: process.env.STORYBLOK_ACCESS_TOKEN
-    }
+      siteUrl:
+        process.env.NUXT_PUBLIC_SITE_URL || "https://shafacare.pages.dev",
+      storyblokAccessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+    },
   },
 
   /**
@@ -222,11 +240,11 @@ export default defineNuxtConfig({
    * ========================================================
    */
   routeRules: {
-    '/': { prerender: true },
-    '/ar': { prerender: true },
-    '/en': { prerender: true },
-    '/privacy': { prerender: true },
-    '/terms': { prerender: true }
+    "/": { prerender: true },
+    "/ar": { prerender: true },
+    "/en": { prerender: true },
+    "/privacy": { prerender: true },
+    "/terms": { prerender: true },
   },
 
   /**
@@ -234,7 +252,7 @@ export default defineNuxtConfig({
    * Compatibility
    * ========================================================
    */
-  compatibilityDate: '2026-06-30',
+  compatibilityDate: "2026-06-30",
 
   /**
    * ========================================================
@@ -244,9 +262,9 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
-    }
-  }
-})
+        commaDangle: "never",
+        braceStyle: "1tbs",
+      },
+    },
+  },
+});

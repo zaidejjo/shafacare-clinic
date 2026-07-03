@@ -1,216 +1,115 @@
 /* ========================================================
-   Shafa Care Clinic – Global Stylesheet
+   Shafa Care Clinic – Luxury Design System (Production)
    ========================================================
-   This file serves as the single source of truth for the
-   design system using Tailwind CSS v4 CSS-first configuration.
-
-   NOTE on fonts: Inter (English) and Tajawal (Arabic) are
-   loaded via useHead in app.vue (preconnect + preload)
-   for optimal LCP performance instead of CSS @import.
+   Tailwind CSS v4 Configuration
+   Primary Color: Deep Burgundy (#800020)
+   Theme: Premium Medical Glassmorphism
    ======================================================== */
 
-/* ── Nuxt UI (includes Tailwind CSS v4) ──────────────── */
 @import "@nuxt/ui";
 @import "tailwindcss";
 
-/* ========================================================
-   2. DESIGN TOKENS (Tailwind CSS v4 @theme)
-   ========================================================
-   These tokens extend the default Tailwind theme and are
-   available as utility classes (e.g., bg-primary-500,
-   text-primary, rounded-xl, font-arabic).
-   ======================================================== */
-
 @theme {
   /* ── Font Families ────────────────────────────────── */
-  --font-family-arabic: 'Tajawal', 'Cairo', sans-serif;
-  --font-family-english: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  --font-arabic: 'Tajawal', 'Cairo', sans-serif;
+  --font-english: 'Inter', 'Plus Jakarta Sans', sans-serif;
 
-  /* ── Primary Color: Deep Burgundy / Crimson Red ──────
-     Represents premium care, authority, and medical
-     expertise. Extracted from the clinic's logo.       */
-  --color-primary-50: #FFF5F5;
-  --color-primary-100: #FFE8E8;
-  --color-primary-200: #FFCACA;
-  --color-primary-300: #FF9E9E;
-  --color-primary-400: #FF6B6B;
-  --color-primary-500: #C41E3A;
-  --color-primary-600: #A01830;
-  --color-primary-700: #801226;
-  --color-primary-800: #6B0F1F;
-  --color-primary-900: #580A1A;
+  /* ── Brand Color: Deep Rich Burgundy ──────────────── */
+  /* Extracted from shafa-care-logo.jpg */
+  --color-primary-50: #fdf2f4;
+  --color-primary-100: #fbe4e8;
+  --color-primary-200: #f7c2ca;
+  --color-primary-300: #f096a5;
+  --color-primary-400: #e66a7e;
+  --color-primary-500: #800020; /* Signature Deep Burgundy */
+  --color-primary-600: #6b001a;
+  --color-primary-700: #570014;
+  --color-primary-800: #42000e;
+  --color-primary-900: #2e0008;
+  --color-primary-950: #1f0004;
 
-  /* ── Surface / Background Colors ──────────────────── */
-  --color-surface-primary: #FFFFFF;
-  --color-surface-secondary: #F8F9FA;
-  --color-surface-tertiary: #E9ECEF;
+  /* ── Surface & Backgrounds ───────────────────────── */
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #f8f9fa;
+  --color-surface-tertiary: #e9ecef;
 
-  /* ── Dark Mode Surfaces (applied via .dark class) ─── */
-  --color-dark-surface: #1A1A1A;
-  --color-dark-surface-secondary: #242424;
-  --color-dark-surface-tertiary: #2D2D2D;
+  /* ── Dark Mode Surfaces ──────────────────────────── */
+  --color-dark-surface: #121212;
+  --color-dark-surface-secondary: #1e1e1e;
+  --color-dark-surface-tertiary: #2d2d2d;
 
-  /* ── Text Colors (Light Mode) ─────────────────────── */
-  --color-text-primary: #212529;
-  --color-text-secondary: #495057;
-  --color-text-muted: #6C757D;
+  /* ── Text Colors ──────────────────────────────────── */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: #757575;
 
-  /* ── Border Colors ────────────────────────────────── */
-  --color-border-default: #DEE2E6;
-  --color-border-focus: #C41E3A;
+  /* ── Border & Radius ─────────────────────────────── */
+  --color-border-default: #e5e7eb;
+  --color-border-focus: #800020;
+  
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-pill: 9999px;
 
-  /* ── Border Radius ────────────────────────────────── */
-  --radius-xl: 1rem;       /* 16px – cards, images */
-  --radius-2xl: 1.5rem;    /* 24px – modals, dialogs */
-  --radius-pill: 9999px;   /* Fully rounded – badges, pills */
+  /* ── Custom Shadows ───────────────────────────────── */
+  --shadow-glass: 0 8px 32px 0 rgba(128, 0, 32, 0.08);
+  --shadow-premium: 0 20px 40px -15px rgba(128, 0, 32, 0.15);
 }
 
-/* ========================================================
-   3. DARK MODE OVERRIDES
-   ========================================================
-   When the `.dark` class is applied to <html>, these
-   tokens override the light-mode defaults. Nuxt UI's
-   color mode handles toggling the `.dark` class.       */
-
+/* ── Dark Mode Overrides ───────────────────────────── */
 .dark {
-  /* ── Primary becomes slightly brighter for contrast ─ */
-  --color-primary-400: #FF8A8A;
-  --color-primary-500: #E02844;
-  --color-primary-600: #C41E3A;
-
-  /* ── Surface colors invert ───────────────────────── */
-  --color-surface-primary: #1A1A1A;
-  --color-surface-secondary: #242424;
-  --color-surface-tertiary: #2D2D2D;
-
-  /* ── Text colors invert (high contrast) ──────────── */
-  --color-text-primary: #F8F9FA;
-  --color-text-secondary: #CED4DA;
-  --color-text-muted: #ADB5BD;
-
-  /* ── Borders in dark mode ────────────────────────── */
-  --color-border-default: #495057;
+  --color-surface-primary: #121212;
+  --color-surface-secondary: #1e1e1e;
+  --color-surface-tertiary: #2d2d2d;
+  --color-text-primary: #f8f9fa;
+  --color-text-secondary: #ced4da;
+  --color-text-muted: #adb5bd;
+  --color-border-default: #374151;
+  
+  --color-primary-500: #a31534; /* Slightly brighter for dark mode contrast */
 }
-
-/* ========================================================
-   4. BASE LAYER – Global element resets & defaults
-   ======================================================== */
 
 @layer base {
-  /**
-   * Smooth scrolling (but not for users who prefer reduced motion)
-   */
   html {
     scroll-behavior: smooth;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-
-  /**
-   * Body defaults
-   */
   body {
     @apply bg-surface-primary text-text-primary antialiased;
-    font-family: var(--font-family-english);
+    font-family: var(--font-english);
     min-height: 100vh;
   }
-
-  /**
-   * Arabic locale body override
-   * The `dir="rtl"` attribute triggers this via the CSS
-   * attribute selector. The font-family switches to Arabic.
-   */
   html[dir="rtl"] body {
-    font-family: var(--font-family-arabic);
-  }
-
-  /**
-   * Focus styles for accessibility
-   */
-  *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary-500;
-  }
-
-  /**
-   * Minimum touch target size for mobile
-   * All interactive elements must be at least 48x48px
-   * with 8px spacing between them.
-   */
-  button,
-  a,
-  input,
-  select,
-  textarea {
-    @apply min-h-[48px];
-  }
-
-  button,
-  a {
-    @apply min-w-[48px];
+    font-family: var(--font-arabic);
   }
 }
-
-/* ========================================================
-   5. UTILITY LAYER – Custom RTL/LTR utility classes
-   ======================================================== */
 
 @layer utilities {
-  /**
-   * RTL-aware margin and padding utilities.
-   * These automatically flip based on the document direction.
-   */
-  .ms-auto {
-    margin-inline-start: auto;
+  /* Premium Glassmorphism */
+  .glass-morphism {
+    @apply backdrop-blur-md bg-white/70 dark:bg-black/60 border border-white/20 dark:border-white/10 shadow-glass;
   }
 
-  .me-auto {
-    margin-inline-end: auto;
+  .glass-burgundy {
+    @apply backdrop-blur-lg bg-primary-900/80 border border-primary-500/20 shadow-lg;
   }
 
-  .ps-4 {
-    padding-inline-start: 1rem;
+  /* Smooth Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 
-  .pe-4 {
-    padding-inline-end: 1rem;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
   }
 
-  /**
-   * RTL-aware text alignment
-   */
-  .text-start {
-    text-align: start;
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .text-end {
-    text-align: end;
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
-
-/* ========================================================
-   6. FONT-FACE DECLARATIONS (Fallback / Self-hosted)
-   ========================================================
-   Uncomment and update the `src` paths if you choose to
-   self-host fonts instead of using Google Fonts CDN.    */
-
-/*
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter/Inter-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/tajawal/Tajawal-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-*/

@@ -1,0 +1,5326 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+The content has been processed where content has been compressed (code blocks are separated by ⋮---- delimiter).
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Content has been compressed - code blocks are separated by ⋮---- delimiter
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.opencode/
+  plans/
+    medical-clinic-blueprint.md
+app/
+  assets/
+    css/
+      main.css
+  components/
+    global/
+      AppFooter.vue
+      AppHeader.vue
+    seo/
+      MedicalSchema.vue
+    storyblok/
+      AboutUs.vue
+      HeroSection.vue
+      MedicalStaff.vue
+      Services.vue
+      TestimonialCard.vue
+      Testimonials.vue
+  composables/
+    useClinicSeo.ts
+  layouts/
+    default.vue
+  middleware/
+    storyblok.ts
+  pages/
+    index.vue
+    privacy.vue
+    terms.vue
+  app.config.ts
+  app.vue
+i18n/
+  locales/
+    ar.json
+    en.json
+public/
+  images/
+    .gitkeep
+  robots.txt
+.editorconfig
+.env.example
+.gitignore
+eslint.config.mjs
+i18n.config.ts
+logo.jpg
+nuxt.config.ts
+package.json
+tailwind.config.ts
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".opencode/plans/medical-clinic-blueprint.md">
+# Shafa Care Clinic - Comprehensive Project Blueprint & Execution Plan
+
+**Project:** High-Performance Medical Landing Page  
+**Clinic Name:** Shafa Care Clinic (عيادة شفا الطبية)  
+**Date:** July 2, 2026  
+**Version:** 1.0.0
+
+---
+
+## 1. Design System Specification
+
+### 1.1 Color Tokens
+
+#### Light Mode Palette
+
+| Token Name        | Hex Code  | Usage                                                        |
+| ----------------- | --------- | ------------------------------------------------------------ |
+| `primary-50`      | `#FFF5F5` | Background accents, subtle highlights                        |
+| `primary-100`     | `#FFE8E8` | Hover states, soft backgrounds                               |
+| `primary-200`     | `#FFCACA` | Secondary accents                                            |
+| `primary-300`     | `#FF9E9E` | Interactive elements                                         |
+| `primary-400`     | `#FF6B6B` | Focus states                                                 |
+| `primary-500`     | `#C41E3A` | **Primary CTA buttons**, key accents (Deep Burgundy/Crimson) |
+| `primary-600`     | `#A01830` | CTA hover states                                             |
+| `primary-700`     | `#801226` | CTA active states                                            |
+| `secondary-white` | `#FFFFFF` | Card backgrounds, main content areas                         |
+| `secondary-gray`  | `#F8F9FA` | Section backgrounds, subtle dividers                         |
+| `text-primary`    | `#212529` | Headings, primary body text                                  |
+| `text-secondary`  | `#495057` | Secondary text, descriptions                                 |
+| `text-muted`      | `#6C757D` | Captions, metadata                                           |
+| `border-default`  | `#DEE2E6` | Default borders                                              |
+| `border-focus`    | `#C41E3A` | Focus ring colors                                            |
+
+#### Dark Mode Palette
+
+| Token Name          | Hex Code  | Usage                              |
+| ------------------- | --------- | ---------------------------------- |
+| `primary-500`       | `#E02844` | Brighter variant for dark mode CTA |
+| `primary-600`       | `#C41E3A` | Dark mode primary                  |
+| `surface-primary`   | `#1A1A1A` | Main background                    |
+| `surface-secondary` | `#242424` | Card backgrounds                   |
+| `surface-tertiary`  | `#2D2D2D` | Hover states                       |
+| `text-primary`      | `#F8F9FA` | Primary text (high contrast)       |
+| `text-secondary`    | `#CED4DA` | Secondary text                     |
+| `text-muted`        | `#ADB5BD` | Muted text                         |
+| `border-default`    | `#495057` | Default borders                    |
+
+### 1.2 Typography Scale
+
+#### Arabic Fonts (Primary)
+
+- **Primary Font:** `Tajawal` (Modern, clean, highly readable)
+- **Fallback:** `Cairo`, system fonts
+- **Weights:** 300, 400, 500, 600, 700
+
+#### English Fonts (Primary)
+
+- **Primary Font:** `Inter` (Professional, neutral, excellent readability)
+- **Fallback:** `Plus Jakarta Sans`, system fonts
+- **Weights:** 300, 400, 500, 600, 700
+
+#### Type Scale (Mobile First)
+
+| Element | Mobile          | Tablet          | Desktop         | Line Height |
+| ------- | --------------- | --------------- | --------------- | ----------- |
+| `h1`    | 2rem (32px)     | 2.5rem (40px)   | 3.5rem (56px)   | 1.2         |
+| `h2`    | 1.75rem (28px)  | 2rem (32px)     | 2.75rem (44px)  | 1.25        |
+| `h3`    | 1.5rem (24px)   | 1.75rem (28px)  | 2rem (32px)     | 1.3         |
+| `h4`    | 1.25rem (20px)  | 1.5rem (24px)   | 1.75rem (28px)  | 1.4         |
+| `body`  | 1rem (16px)     | 1rem (16px)     | 1rem (16px)     | 1.6         |
+| `small` | 0.875rem (14px) | 0.875rem (14px) | 0.875rem (14px) | 1.5         |
+
+### 1.3 Border Radius Guidelines
+
+| Component Type | Border Radius    | Rationale                               |
+| -------------- | ---------------- | --------------------------------------- |
+| Buttons        | `0.75rem` (12px) | Soft, approachable, matches logo curves |
+| Cards          | `1rem` (16px)    | Prominent rounded corners for warmth    |
+| Images         | `1rem` (16px)    | Consistent with card styling            |
+| Inputs         | `0.5rem` (8px)   | Subtle rounding for form elements       |
+| Modal/Dialog   | `1.5rem` (24px)  | Large, friendly modal corners           |
+| Badges/Tags    | `9999px`         | Pill-shaped for modern feel             |
+
+### 1.4 Spacing System
+
+- Base unit: `0.25rem` (4px)
+- Scale: `0.25`, `0.5`, `0.75`, `1`, `1.5`, `2`, `3`, `4`, `6`, `8`, `12`, `16`
+- Touch targets: Minimum `48x48px` (12 units)
+
+---
+
+## 2. SEO & Mobile Strategy
+
+### 2.1 Technical SEO Implementation
+
+#### Semantic HTML5 Structure
+
+- **Header:** `<header>` with `<nav>` for primary navigation
+- **Main Content:** `<main>` with proper `role="main"`
+- **Sections:** `<section>` with descriptive `aria-label` for each block
+- **Articles:** `<article>` for blog posts, testimonials, service cards
+- **Footer:** `<footer>` with `<address>` for clinic contact info
+- **Heading Hierarchy:** Single `<h1>` per page, logical `<h2>`-`<h6>` nesting
+
+#### Dynamic Meta Tags (Nuxt `useHead` & `useSeoMeta`)
+
+```
+Per-page configuration:
+- Title: "{Page Title} | Shafa Care Clinic - عيادة شفا الطبية"
+- Description: Dynamic based on locale (Arabic/English)
+- Open Graph: og:title, og:description, og:image, og:url, og:type
+- Twitter Cards: twitter:card, twitter:title, twitter:description, twitter:image
+- Canonical URLs: Self-referencing with locale parameters
+```
+
+#### Sitemap & Robots
+
+- **Auto-generated `sitemap.xml`:** Dynamic routes from Nuxt routes + Storyblok stories
+- **Multi-language support:** Separate sitemaps for `/en/` and `/ar/`
+- **`robots.txt`:** Allow all crawlers, sitemap reference, crawl-delay optimization
+- **Dynamic generation:** Use `@nuxtjs/sitemap` module with i18n integration
+
+#### Structured Data (Schema.org)
+
+**Primary Schema: `MedicalBusiness`**
+
+```
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Shafa Care Clinic",
+  "alternateName": "عيادة شفا الطبية",
+  "url": "https://shafacare.pages.dev",
+  "logo": "https://shafacare.pages.dev/logo.png",
+  "image": ["https://shafacare.pages.dev/clinic-interior.jpg", "https://shafacare.pages.dev/team.jpg"],
+  "telephone": "+966-XX-XXXX-XXXX",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "XX Street",
+    "addressLocality": "City",
+    "addressRegion": "Province",
+    "postalCode": "XXXXX",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": XX.XXXXX,
+    "longitude": XX.XXXXX
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
+  ],
+  "priceRange": "$$",
+  "medicalSpecialty": ["FamilyMedicine", "GeneralPractice"],
+  "acceptsInsurance": ["Insurance1", "Insurance2"],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": "Free parking available"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "WheelchairAccessible",
+      "value": true
+    }
+  ]
+}
+```
+
+**Secondary Schema: `Physician`** (for each doctor profile)
+**Tertiary Schema: `Review`** (for testimonials)
+
+#### Core Web Vitals Optimization Targets
+
+| Metric                             | Target  | Implementation Strategy                                                   |
+| ---------------------------------- | ------- | ------------------------------------------------------------------------- |
+| **LCP** (Largest Contentful Paint) | < 2.5s  | Preload hero images, optimize server response, use CDN                    |
+| **FID** (First Input Delay)        | < 100ms | Minimize JavaScript, code splitting, lazy load non-critical scripts       |
+| **CLS** (Cumulative Layout Shift)  | < 0.1   | Reserve image space, explicit dimensions, avoid dynamic content injection |
+
+### 2.2 Mobile-First Responsive Strategy
+
+#### Breakpoint Strategy
+
+| Breakpoint | Name          | Width       | Use Case                        |
+| ---------- | ------------- | ----------- | ------------------------------- |
+| `xs`       | Mobile        | 0-640px     | Primary design target           |
+| `sm`       | Small Tablet  | 640-768px   | Landscape phones, small tablets |
+| `md`       | Tablet        | 768-1024px  | Portrait tablets                |
+| `lg`       | Desktop       | 1024-1280px | Small laptops                   |
+| `xl`       | Large Desktop | 1280-1536px | Standard desktops               |
+| `2xl`      | Extra Large   | 1536px+     | Large monitors                  |
+
+#### Mobile-Specific Optimizations
+
+- **Touch Targets:** All interactive elements minimum `48x48px` with `8px` spacing
+- **Font Sizes:** Minimum `16px` for body text to prevent iOS zoom
+- **Navigation:** Hamburger menu for mobile, full nav for desktop
+- **Images:** `srcset` with WebP/AVIF formats, lazy loading with `loading="lazy"`
+- **Forms:** Mobile-optimized input types (`tel`, `email`), large touch targets
+- **Performance:** Critical CSS inlined, non-critical JS deferred
+
+### 2.3 Asset Optimization Pipeline
+
+- **Images:** Auto-convert to WebP/AVIF, responsive `srcset`, lazy loading
+- **Fonts:** `font-display: swap`, subset Arabic/English glyphs, preload critical fonts
+- **CSS:** Purge unused Tailwind classes, minify, critical CSS extraction
+- **JavaScript:** Tree-shaking, code splitting, dynamic imports for non-critical components
+- **Caching:** HTTP cache headers, service worker for offline capability (PWA-ready)
+
+---
+
+## 3. Storyblok Component Architecture
+
+### 3.1 Storyblok Space Structure
+
+#### Top-Level Folder Structure
+
+```
+📁 Pages
+  └── 📄 Home (Main landing page)
+📁 Components (Reusable blocks)
+  ├── 📦 Hero Section
+  ├── 📦 About Us
+  ├── 📦 Services
+  ├── 📦 Medical Staff
+  ├── 📦 Testimonials
+  ├── 📦 Contact Section
+  ├── 📦 FAQ
+  ├── 📦 CTA Banner
+  └── 📦 Footer
+```
+
+### 3.2 Component Block Specifications
+
+#### **Hero Section Block**
+
+**Fields:**
+
+- `headline` (Text, required, multi-language)
+- `subheadline` (Text, multi-language)
+- `ctaText` (Text, multi-language)
+- `ctaLink` (Link, multi-language)
+- `backgroundImage` (Asset, required)
+- `overlayColor` (Color picker, default: primary with opacity)
+- `layout` (Enum: "centered", "left-aligned", "split")
+- `animationType` (Enum: "fade", "slide", "none")
+
+**Vue Component Mapping:** `components/Storyblok/HeroSection.vue`
+
+---
+
+#### **About Us Block**
+
+**Fields:**
+
+- `title` (Text, required, multi-language)
+- `description` (Rich Text, multi-language)
+- `storyText` (Rich Text, multi-language)
+- `missionStatement` (Text, multi-language)
+- `values` (Array of objects: `icon`, `title`, `description`)
+- `image` (Asset, required)
+- `layout` (Enum: "image-left", "image-right", "centered")
+
+**Vue Component Mapping:** `components/Storyblok/AboutUs.vue`
+
+---
+
+#### **Services Block**
+
+**Fields:**
+
+- `title` (Text, required, multi-language)
+- `subtitle` (Text, multi-language)
+- `services` (Array of objects:
+  - `icon` (Asset or Icon picker)
+  - `title` (Text, multi-language)
+  - `description` (Rich Text, multi-language)
+  - `linkText` (Text, optional)
+  - `linkUrl` (Link, optional)
+    )
+- `layout` (Enum: "grid-2", "grid-3", "grid-4", "list")
+- `showCta` (Boolean)
+- `ctaText` (Text, optional)
+- `ctaLink` (Link, optional)
+
+**Vue Component Mapping:** `components/Storyblok/Services.vue`
+
+---
+
+#### **Medical Staff Block**
+
+**Fields:**
+
+- `title` (Text, required, multi-language)
+- `subtitle` (Text, multi-language)
+- `doctors` (Array of objects:
+  - `name` (Text, required, multi-language)
+  - `specialty` (Text, required, multi-language)
+  - `bio` (Rich Text, multi-language)
+  - `photo` (Asset, required)
+  - `email` (Text, optional)
+  - `phone` (Text, optional)
+  - `socialLinks` (Array: `platform`, `url`)
+  - `order` (Number, for sorting)
+    )
+- `layout` (Enum: "grid-2", "grid-3", "grid-4")
+- `showContactButton` (Boolean)
+
+**Vue Component Mapping:** `components/Storyblok/MedicalStaff.vue`
+
+---
+
+#### **Testimonials Block**
+
+**Fields:**
+
+- `title` (Text, required, multi-language)
+- `subtitle` (Text, multi-language)
+- `testimonials` (Array of objects:
+  - `patientName` (Text, required, multi-language)
+  - `rating` (Number, 1-5, required)
+  - `reviewText` (Rich Text, required, multi-language)
+  - `photo` (Asset, optional)
+  - `date` (Date, optional)
+  - `serviceType` (Text, optional)
+    )
+- `layout` (Enum: "carousel", "grid", "list")
+- `autoSlide` (Boolean, default: true)
+- `slideInterval` (Number, milliseconds)
+
+**Vue Component Mapping:** `components/Storyblok/Testimonials.vue`
+
+---
+
+#### **Contact Section Block**
+
+**Fields:**
+
+- `title` (Text, required, multi-language)
+- `subtitle` (Text, multi-language)
+- `address` (Text, multi-language)
+- `phone` (Text, required, multi-language)
+- `email` (Text, required, multi-language)
+- `mapEmbedUrl` (Text, required)
+- `mapImage` (Asset, optional)
+- `hours` (Array: `day`, `openTime`, `closeTime`)
+- `showForm` (Boolean)
+- `formFields` (Array of form field configurations)
+
+**Vue Component Mapping:** `components/Storyblok/ContactSection.vue`
+
+---
+
+#### **FAQ Block**
+
+**Fields:**
+
+- `title` (Text, required, multi-language)
+- `faqs` (Array of objects:
+  - `question` (Text, required, multi-language)
+  - `answer` (Rich Text, required, multi-language)
+  - `order` (Number)
+    )
+- `layout` (Enum: "accordion", "grid")
+- `expandMultiple` (Boolean, default: false)
+
+**Vue Component Mapping:** `components/Storyblok/FAQ.vue`
+
+---
+
+#### **CTA Banner Block**
+
+**Fields:**
+
+- `headline` (Text, required, multi-language)
+- `subheadline` (Text, multi-language)
+- `ctaText` (Text, required, multi-language)
+- `ctaLink` (Link, required)
+- `secondaryCtaText` (Text, optional)
+- `secondaryCtaLink` (Link, optional)
+- `backgroundColor` (Color picker)
+- `backgroundImage` (Asset, optional)
+- `layout` (Enum: "centered", "split")
+
+**Vue Component Mapping:** `components/Storyblok/CTABanner.vue`
+
+---
+
+#### **Footer Block** (Global Component)
+
+**Fields:**
+
+- `logo` (Asset, required)
+- `tagline` (Text, multi-language)
+- `quickLinks` (Array: `title`, `url`)
+- `servicesLinks` (Array: `title`, `url`)
+- `contactInfo` (Object: `phone`, `email`, `address`)
+- `socialLinks` (Array: `platform`, `url`)
+- `copyrightText` (Text, multi-language)
+- `privacyPolicyUrl` (Link)
+- `termsOfServiceUrl` (Link)
+
+**Vue Component Mapping:** `components/Global/Footer.vue`
+
+---
+
+### 3.3 Storyblok Visual Editor Bridge
+
+- **Component Registration:** Auto-register all Storyblok components using `storyblok-rich-text` resolver
+- **Live Preview:** Configure Nuxt middleware for Storyblok preview mode
+- **Draft Mode:** Use Nuxt `useRoute().query._storyblok` for draft preview
+- **Webhook Integration:** Set up Storyblok webhooks for cache invalidation on content updates
+
+---
+
+## 4. Nuxt.js & Bun Setup Configuration
+
+### 4.1 Project Initialization with Bun
+
+#### Step 1: Create Project
+
+```bash
+# Initialize Nuxt project with Bun
+bunx nuxi@latest init shafa-care-clinic --packageManager=bun
+cd shafa-care-clinic
+```
+
+#### Step 2: Install Dependencies
+
+```bash
+# Core dependencies
+bun add nuxt @nuxt/ui @nuxtjs/i18n @nuxtjs/sitemap @storyblok/nuxt
+
+# Storyblok SDK
+bun add @storyblok/vue
+
+# Icons
+bun add @iconify-json/heroicons @iconify-json/mdi
+
+# Utilities
+bun add date-fns slugify
+
+# Dev dependencies
+bun add -d @types/node
+```
+
+### 4.2 Nuxt Configuration (`nuxt.config.ts`)
+
+#### Core Configuration
+
+```typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  // App configuration
+  app: {
+    head: {
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+      title: "Shafa Care Clinic - عيادة شفا الطبية",
+      meta: [
+        {
+          name: "description",
+          content: "Professional medical care at Shafa Care Clinic",
+        },
+      ],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "canonical", href: "https://shafacare.pages.dev" },
+      ],
+    },
+  },
+
+  // Modules
+  modules: ["@nuxt/ui", "@nuxtjs/i18n", "@nuxtjs/sitemap", "@storyblok/nuxt"],
+
+  // Nuxt UI configuration
+  ui: {
+    icons: ["heroicons", "mdi"],
+  },
+
+  // i18n configuration
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        name: "English",
+        language: "en-US",
+        file: "en.json",
+        dir: "ltr",
+      },
+      {
+        code: "ar",
+        name: "العربية",
+        language: "ar-SA",
+        file: "ar.json",
+        dir: "rtl",
+      },
+    ],
+    defaultLocale: "ar",
+    strategy: "prefix",
+    vueI18n: "./i18n.config.ts",
+    seo: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root",
+    },
+  },
+
+  // Sitemap configuration
+  sitemap: {
+    urls: async () => {
+      // Dynamic routes from Storyblok
+      const stories = await fetchStoryblokStories();
+      return stories.map((story) => `/en/${story.slug}`);
+    },
+    i18n: {
+      locales: ["en", "ar"],
+      defaultLocale: "ar",
+    },
+  },
+
+  // Storyblok configuration
+  storyblok: {
+    accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+    use: ["vue"],
+    resolveRelations: ["storyblok-component"],
+  },
+
+  // CSS
+  css: ["~/assets/css/main.css"],
+
+  // PostCSS for Tailwind
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
+  // Runtime config
+  runtimeConfig: {
+    public: {
+      storyblok: {
+        accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+      },
+    },
+  },
+
+  // Vite configuration
+  vite: {
+    optimizeDeps: {
+      include: ["@storyblok/vue"],
+    },
+  },
+});
+```
+
+### 4.3 i18n Configuration (`i18n.config.ts`)
+
+```typescript
+// i18n.config.ts
+export default defineI18nConfig(() => ({
+  legacy: false,
+  locale: "ar",
+  messages: {
+    en: await import("./locales/en.json"),
+    ar: await import("./locales/ar.json"),
+  },
+}));
+```
+
+### 4.4 Tailwind Configuration (`tailwind.config.ts`)
+
+```typescript
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
+
+export default <Partial<Config>>{
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: "#FFF5F5",
+          100: "#FFE8E8",
+          200: "#FFCACA",
+          300: "#FF9E9E",
+          400: "#FF6B6B",
+          500: "#C41E3A",
+          600: "#A01830",
+          700: "#801226",
+          800: "#6B0F1F",
+          900: "#580A1A",
+        },
+        dark: {
+          surface: "#1A1A1A",
+          "surface-secondary": "#242424",
+          "surface-tertiary": "#2D2D2D",
+        },
+      },
+      fontFamily: {
+        arabic: ["Tajawal", "Cairo", "sans-serif"],
+        english: ["Inter", "Plus Jakarta Sans", "sans-serif"],
+      },
+      borderRadius: {
+        xl: "1rem",
+        "2xl": "1.5rem",
+        pill: "9999px",
+      },
+    },
+  },
+};
+```
+
+### 4.5 Storyblok Connection Setup
+
+#### Environment Variables (`.env`)
+
+```bash
+# .env
+STORYBLOK_ACCESS_TOKEN=your_access_token_here
+STORYBLOK_SPACE_ID=your_space_id
+NUXT_PUBLIC_STORYBLOK_PREVIEW_URL=https://app.storyblok.com/#!/preview
+```
+
+#### Storyblok Middleware (`middleware/storyblok.ts`)
+
+```typescript
+// middleware/storyblok.ts
+export default defineNuxtRouteMiddleware(async (to) => {
+  if (to.query._storyblok) {
+    // Enable draft mode
+    useCookie("storyblok_preview", { value: "true" });
+  }
+});
+```
+
+---
+
+## 5. Step-by-Step Milestones & Timeline
+
+### Phase 1: Environment Setup (Day 1-2)
+
+#### Milestone 1.1: Project Initialization
+
+- [ ] Initialize Nuxt project with Bun
+- [ ] Install all dependencies (Nuxt UI, i18n, Storyblok, Sitemap)
+- [ ] Configure Git repository with `.gitignore`
+- [ ] Set up environment variables structure
+
+#### Milestone 1.2: Base Configuration
+
+- [ ] Configure `nuxt.config.ts` with all modules
+- [ ] Set up Tailwind with custom color tokens
+- [ ] Configure i18n with Arabic/English locales
+- [ ] Create base locale files (`en.json`, `ar.json`)
+- [ ] Set up Storyblok connection
+
+#### Milestone 1.3: Design System Implementation
+
+- [ ] Create global CSS with Tailwind directives
+- [ ] Define CSS variables for theme colors
+- [ ] Set up font imports (Tajawal, Inter)
+- [ ] Configure dark mode strategy (class-based)
+- [ ] Create utility classes for RTL/LTR
+
+**Deliverable:** Fully configured development environment with design system foundation
+
+---
+
+### Phase 2: CMS Mapping & Storyblok Setup (Day 3-4)
+
+#### Milestone 2.1: Storyblok Space Configuration
+
+- [ ] Create Storyblok space for Shafa Care Clinic
+- [ ] Set up component folder structure
+- [ ] Create all component schemas (Hero, About, Services, etc.)
+- [ ] Configure multi-language fields for each component
+- [ ] Set up asset folders for images
+
+#### Milestone 2.2: Content Modeling
+
+- [ ] Define field types and validation rules
+- [ ] Set up default values for components
+- [ ] Configure component preview templates
+- [ ] Create content guidelines documentation
+- [ ] Set up webhook for cache invalidation
+
+#### Milestone 2.3: Nuxt-Storyblok Bridge
+
+- [ ] Implement Storyblok component resolver
+- [ ] Create dynamic component loader
+- [ ] Set up draft/preview mode middleware
+- [ ] Configure live preview functionality
+- [ ] Test content fetching from Storyblok
+
+**Deliverable:** Storyblok space fully configured with all component schemas and Nuxt integration
+
+---
+
+### Phase 3: Component Development (Day 5-10)
+
+#### Milestone 3.1: Layout Components (Day 5)
+
+- [ ] Create `AppHeader` component with responsive navigation
+- [ ] Implement mobile hamburger menu
+- [ ] Create `AppFooter` with all required sections
+- [ ] Build language switcher component
+- [ ] Implement dark/light mode toggle
+- [ ] Test responsive behavior across breakpoints
+
+#### Milestone 3.2: Hero Section (Day 6)
+
+- [ ] Create `HeroSection` component
+- [ ] Implement multiple layout variants
+- [ ] Add responsive image handling
+- [ ] Configure animations (fade, slide)
+- [ ] Test RTL/LTR flipping
+- [ ] Optimize LCP with preload
+
+#### Milestone 3.3: About & Services (Day 7-8)
+
+- [ ] Build `AboutUs` component with image layouts
+- [ ] Create `Services` grid/list variants
+- [ ] Implement icon rendering (Iconify)
+- [ ] Add hover states and interactions
+- [ ] Test accessibility (ARIA labels)
+- [ ] Optimize image loading
+
+#### Milestone 3.4: Medical Staff & Testimonials (Day 9)
+
+- [ ] Create `MedicalStaff` grid component
+- [ ] Implement doctor card with social links
+- [ ] Build `Testimonials` carousel/grid
+- [ ] Add star rating component
+- [ ] Implement auto-slide functionality
+- [ ] Test touch gestures on mobile
+
+#### Milestone 3.5: Contact & FAQ (Day 10)
+
+- [ ] Build `ContactSection` with map integration
+- [ ] Create contact form with validation
+- [ ] Implement `FAQ` accordion component
+- [ ] Add business hours display
+- [ ] Test form submission (mock endpoint)
+- [ ] Verify map responsiveness
+
+#### Milestone 3.6: CTA & Utility Components (Day 10)
+
+- [ ] Create `CTABanner` component
+- [ ] Build `FAQ` component
+- [ ] Implement loading states
+- [ ] Create error boundary components
+- [ ] Add skeleton loaders
+
+**Deliverable:** All Storyblok components fully implemented and tested
+
+---
+
+### Phase 4: SEO & i18n Rigging (Day 11-13)
+
+#### Milestone 4.1: Meta Tags & Dynamic SEO (Day 11)
+
+- [ ] Implement `useHead` for each page/component
+- [ ] Create SEO helper composable
+- [ ] Configure Open Graph tags
+- [ ] Set up Twitter Card metadata
+- [ ] Implement canonical URLs
+- [ ] Test meta tag rendering
+
+#### Milestone 4.2: Structured Data (Day 12)
+
+- [ ] Create `MedicalBusiness` schema generator
+- [ ] Implement `Physician` schema for doctors
+- [ ] Add `Review` schema for testimonials
+- [ ] Create schema injection utility
+- [ ] Test with Google Rich Results Test
+- [ ] Validate JSON-LD syntax
+
+#### Milestone 4.3: Sitemap & Robots (Day 12)
+
+- [ ] Configure dynamic sitemap generation
+- [ ] Implement multi-language sitemap
+- [ ] Create `robots.txt` with rules
+- [ ] Test sitemap.xml rendering
+- [ ] Submit to Google Search Console (mock)
+
+#### Milestone 4.4: i18n SEO Features (Day 13)
+
+- [ ] Configure hreflang tags automatically
+- [ ] Implement self-referencing URLs
+- [ ] Test language switcher SEO impact
+- [ ] Verify locale-specific meta tags
+- [ ] Test cross-language linking
+
+**Deliverable:** Complete SEO implementation with structured data and multi-language support
+
+---
+
+### Phase 5: Performance Optimization (Day 14-15)
+
+#### Milestone 5.1: Image Optimization (Day 14)
+
+- [ ] Implement WebP/AVIF conversion
+- [ ] Configure `srcset` for responsive images
+- [ ] Add lazy loading with Intersection Observer
+- [ ] Set up image CDN integration (if applicable)
+- [ ] Test Core Web Vitals (LCP, CLS)
+
+#### Milestone 5.2: Code Splitting & Loading (Day 14)
+
+- [ ] Implement dynamic imports for non-critical components
+- [ ] Configure route-based code splitting
+- [ ] Add preload/prefetch directives
+- [ ] Optimize font loading with `font-display: swap`
+- [ ] Minimize JavaScript bundle size
+
+#### Milestone 5.3: Caching & CDN (Day 15)
+
+- [ ] Configure HTTP cache headers
+- [ ] Set up service worker (PWA-ready)
+- [ ] Implement stale-while-revalidate strategy
+- [ ] Test offline functionality
+- [ ] Configure CDN rules (if applicable)
+
+**Deliverable:** Optimized performance targeting 90+ Lighthouse scores
+
+---
+
+### Phase 6: QA & Mobile Testing (Day 16-18)
+
+#### Milestone 6.1: Cross-Browser Testing (Day 16)
+
+- [ ] Test on Chrome (latest)
+- [ ] Test on Firefox (latest)
+- [ ] Test on Safari (latest)
+- [ ] Test on Edge (latest)
+- [ ] Test on mobile browsers (iOS Safari, Chrome Mobile)
+- [ ] Fix browser-specific issues
+
+#### Milestone 6.2: Mobile Responsiveness (Day 17)
+
+- [ ] Test all breakpoints (xs, sm, md, lg, xl, 2xl)
+- [ ] Verify touch targets (48x48px minimum)
+- [ ] Test landscape/portrait orientations
+- [ ] Validate mobile navigation
+- [ ] Test form inputs on mobile
+- [ ] Check font readability on small screens
+
+#### Milestone 6.3: RTL/LTR Testing (Day 17)
+
+- [ ] Verify all layouts flip correctly
+- [ ] Test icon mirroring
+- [ ] Validate text alignment
+- [ ] Check margin/padding flipping
+- [ ] Test form layouts in RTL
+- [ ] Verify navigation in Arabic
+
+#### Milestone 6.4: Accessibility Audit (Day 18)
+
+- [ ] Run axe-core accessibility tests
+- [ ] Verify WCAG 2.1 AA compliance
+- [ ] Test keyboard navigation
+- [ ] Check screen reader compatibility (NVDA, VoiceOver)
+- [ ] Validate ARIA labels
+- [ ] Test color contrast ratios
+
+#### Milestone 6.5: Performance Validation (Day 18)
+
+- [ ] Run Lighthouse audits (mobile & desktop)
+- [ ] Verify Core Web Vitals scores
+- [ ] Test with real devices (if available)
+- [ ] Run WebPageTest analysis
+- [ ] Optimize any remaining bottlenecks
+
+**Deliverable:** Fully tested, production-ready website
+
+---
+
+### Phase 7: Deployment & Handoff (Day 19-20)
+
+#### Milestone 7.1: Production Build (Day 19)
+
+- [ ] Configure production environment variables
+- [ ] Build production bundle
+- [ ] Test production build locally
+- [ ] Set up staging environment
+- [ ] Deploy to staging server
+
+#### Milestone 7.2: Final QA on Staging (Day 19)
+
+- [ ] Test all features on staging
+- [ ] Verify Storyblok preview mode
+- [ ] Test form submissions
+- [ ] Check analytics integration
+- [ ] Validate SEO tags in production
+
+#### Milestone 7.3: Documentation & Handoff (Day 20)
+
+- [ ] Create content editor guide (Storyblok)
+- [ ] Document component usage patterns
+- [ ] Write deployment runbook
+- [ ] Create troubleshooting guide
+- [ ] Conduct client training session
+
+#### Milestone 7.4: Production Launch (Day 20)
+
+- [ ] Deploy to production server
+- [ ] Configure DNS and SSL
+- [ ] Set up monitoring (error tracking, analytics)
+- [ ] Submit sitemap to search engines
+- [ ] Configure backup strategy
+- [ ] Final production verification
+
+**Deliverable:** Live, production-ready website with full documentation
+
+---
+
+## 6. Post-Launch Maintenance Plan
+
+### Ongoing Tasks
+
+- **Weekly:** Monitor analytics and Core Web Vitals
+- **Monthly:** Update dependencies, review security patches
+- **Quarterly:** A/B test CTAs, optimize conversion rates
+- **Bi-annually:** Content audit, SEO review
+
+### Monitoring Stack
+
+- **Analytics:** Google Analytics 4 + Search Console
+- **Error Tracking:** Sentry or similar
+- **Performance:** Lighthouse CI, WebPageTest
+- **Uptime:** UptimeRobot or Pingdom
+
+---
+
+## 7. Risk Mitigation
+
+### Technical Risks
+
+1. **Storyblok API Rate Limits:** Implement caching layer
+2. **Large Bundle Size:** Aggressive code splitting, tree-shaking
+3. **RTL Layout Issues:** Extensive testing, CSS logical properties
+4. **Mobile Performance:** Prioritize critical CSS, lazy load everything
+
+### Mitigation Strategies
+
+- **Backup Plan:** Static fallback if Storyblok fails
+- **Performance Budget:** Max 100KB JS, 500KB images per page
+- **Rollback Strategy:** Versioned deployments, instant rollback capability
+
+---
+
+## 8. Success Metrics
+
+### Key Performance Indicators (KPIs)
+
+- **Lighthouse Score:** 90+ on all metrics (mobile & desktop)
+- **Core Web Vitals:** LCP < 2.5s, FID < 100ms, CLS < 0.1
+- **SEO:** Indexing within 48 hours, rich snippets appearing
+- **Conversion:** Contact form submissions, phone clicks
+- **Accessibility:** WCAG 2.1 AA compliance (100% pass)
+
+---
+
+**Document Version:** 1.0.0  
+**Last Updated:** July 2, 2026  
+**Next Step:** Begin Phase 1 - Environment Setup
+</file>
+
+<file path="app/assets/css/main.css">
+/* ========================================================
+   Shafa Care Clinic – Global Stylesheet
+   ========================================================
+   This file serves as the single source of truth for the
+   design system using Tailwind CSS v4 CSS-first configuration.
+
+   NOTE on fonts: Inter (English) and Tajawal (Arabic) are
+   loaded via useHead in app.vue (preconnect + preload)
+   for optimal LCP performance instead of CSS @import.
+   ======================================================== */
+⋮----
+/* ── Nuxt UI (includes Tailwind CSS v4) ──────────────── */
+⋮----
+/* ========================================================
+   2. DESIGN TOKENS (Tailwind CSS v4 @theme)
+   ========================================================
+   These tokens extend the default Tailwind theme and are
+   available as utility classes (e.g., bg-primary-500,
+   text-primary, rounded-xl, font-arabic).
+   ======================================================== */
+⋮----
+@theme {
+⋮----
+/* ── Font Families ────────────────────────────────── */
+⋮----
+/* ── Primary Color: Deep Burgundy / Crimson Red ──────
+     Represents premium care, authority, and medical
+     expertise. Extracted from the clinic's logo.       */
+⋮----
+/* ── Surface / Background Colors ──────────────────── */
+⋮----
+/* ── Dark Mode Surfaces (applied via .dark class) ─── */
+⋮----
+/* ── Text Colors (Light Mode) ─────────────────────── */
+⋮----
+/* ── Border Colors ────────────────────────────────── */
+⋮----
+/* ── Border Radius ────────────────────────────────── */
+--radius-xl: 1rem;       /* 16px – cards, images */
+--radius-2xl: 1.5rem;    /* 24px – modals, dialogs */
+--radius-pill: 9999px;   /* Fully rounded – badges, pills */
+⋮----
+/* ========================================================
+   3. DARK MODE OVERRIDES
+   ========================================================
+   When the `.dark` class is applied to <html>, these
+   tokens override the light-mode defaults. Nuxt UI's
+   color mode handles toggling the `.dark` class.       */
+⋮----
+.dark {
+⋮----
+/* ── Primary becomes slightly brighter for contrast ─ */
+⋮----
+/* ── Surface colors invert ───────────────────────── */
+⋮----
+/* ── Text colors invert (high contrast) ──────────── */
+⋮----
+/* ── Borders in dark mode ────────────────────────── */
+⋮----
+/* ========================================================
+   4. BASE LAYER – Global element resets & defaults
+   ======================================================== */
+⋮----
+@layer base {
+⋮----
+/**
+   * Smooth scrolling (but not for users who prefer reduced motion)
+   */
+html {
+⋮----
+/**
+   * Body defaults
+   */
+body {
+⋮----
+/**
+   * Arabic locale body override
+   * The `dir="rtl"` attribute triggers this via the CSS
+   * attribute selector. The font-family switches to Arabic.
+   */
+html[dir="rtl"] body {
+⋮----
+/**
+   * Focus styles for accessibility
+   */
+*:focus-visible {
+⋮----
+/**
+   * Minimum touch target size for mobile
+   * All interactive elements must be at least 48x48px
+   * with 8px spacing between them.
+   */
+button,
+⋮----
+/* ========================================================
+   5. UTILITY LAYER – Custom RTL/LTR utility classes
+   ======================================================== */
+⋮----
+@layer utilities {
+⋮----
+/**
+   * RTL-aware margin and padding utilities.
+   * These automatically flip based on the document direction.
+   */
+.ms-auto {
+⋮----
+.me-auto {
+⋮----
+.ps-4 {
+⋮----
+.pe-4 {
+⋮----
+/**
+   * RTL-aware text alignment
+   */
+.text-start {
+⋮----
+.text-end {
+⋮----
+/* ========================================================
+   6. FONT-FACE DECLARATIONS (Fallback / Self-hosted)
+   ========================================================
+   Uncomment and update the `src` paths if you choose to
+   self-host fonts instead of using Google Fonts CDN.    */
+⋮----
+/*
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tajawal';
+  src: url('/fonts/tajawal/Tajawal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+</file>
+
+<file path="app/components/global/AppFooter.vue">
+<template>
+  <!-- ====================================================
+       AppFooter – Semantic site footer with address
+       ====================================================
+       - HTML5 <footer> with <address> for contact info
+       - 4-column grid on lg, stacked on mobile
+       - Logo, quick links, services, contact, social
+       - Copyright bar with privacy + terms links
+       - RTL-aware column ordering
+  -->
+  <footer
+    class="border-t border-border-default bg-surface-secondary dark:bg-dark-surface"
+    role="contentinfo"
+  >
+    <!-- ── Main Footer Content ───────────────────────── -->
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div
+        class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12"
+      >
+        <!-- ── Column 1: Logo + Tagline ──────────────── -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <!-- Logo -->
+          <NuxtLink
+            :to="localePath('/')"
+            class="mb-4 inline-flex items-center gap-2.5"
+            :aria-label="$t('site.name')"
+          >
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500 text-xs font-bold tracking-tight text-white shadow-sm"
+            >
+              SC
+            </div>
+            <span
+              class="text-lg font-bold text-text-primary"
+              :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+            >
+              {{ $t('site.name') }}
+            </span>
+          </NuxtLink>
+
+          <!-- Tagline -->
+          <p class="mb-4 text-sm text-text-secondary leading-relaxed">
+            {{ $t('site.tagline') }}
+          </p>
+
+          <p class="text-sm text-text-muted leading-relaxed">
+            {{ $t('site.description') }}
+          </p>
+        </div>
+
+        <!-- ── Column 2: Quick Links ─────────────────── -->
+        <div>
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-text-primary">
+            {{ $t('footer.quickLinks') }}
+          </h3>
+          <ul class="space-y-3">
+            <li v-for="link in quickLinks" :key="link.key">
+              <NuxtLink
+                :to="link.to"
+                class="text-sm text-text-secondary transition-colors hover:text-primary-500"
+              >
+                {{ $t(link.label) }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ── Column 3: Services ────────────────────── -->
+        <div>
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-text-primary">
+            {{ $t('footer.services') }}
+          </h3>
+          <ul class="space-y-3">
+            <li v-for="link in serviceLinks" :key="link.key">
+              <NuxtLink
+                :to="link.to"
+                class="text-sm text-text-secondary transition-colors hover:text-primary-500"
+              >
+                {{ $t(link.label) }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ── Column 4: Contact Info ────────────────── -->
+        <div>
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-text-primary">
+            {{ $t('footer.contactInfo') }}
+          </h3>
+
+          <!--
+            Using <address> for contact information as per
+            HTML5 semantics. This improves accessibility
+            for screen readers.
+          -->
+          <address class="not-italic space-y-4">
+            <!-- Phone -->
+            <div class="flex items-start gap-3">
+              <UIcon
+                name="heroicons:phone"
+                class="mt-0.5 h-5 w-5 shrink-0 text-primary-500"
+                aria-hidden="true"
+              />
+              <a
+                :href="`tel:${contactPhone}`"
+                class="text-sm text-text-secondary transition-colors hover:text-primary-500"
+              >
+                {{ contactPhone }}
+              </a>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start gap-3">
+              <UIcon
+                name="heroicons:envelope"
+                class="mt-0.5 h-5 w-5 shrink-0 text-primary-500"
+                aria-hidden="true"
+              />
+              <a
+                :href="`mailto:${contactEmail}`"
+                class="text-sm text-text-secondary transition-colors hover:text-primary-500"
+              >
+                {{ contactEmail }}
+              </a>
+            </div>
+
+            <!-- Address -->
+            <div class="flex items-start gap-3">
+              <UIcon
+                name="heroicons:map-pin"
+                class="mt-0.5 h-5 w-5 shrink-0 text-primary-500"
+                aria-hidden="true"
+              />
+              <span class="text-sm text-text-secondary">
+                {{ $t('contact.address') }}: {{ contactAddress }}
+              </span>
+            </div>
+          </address>
+
+          <!-- Social Links -->
+          <div class="mt-6 flex items-center gap-2">
+            <template v-for="social in socialLinks" :key="social.label">
+              <UButton
+                :to="social.url"
+                :icon="social.icon"
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                square
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="social.label"
+              />
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Copyright Bar ─────────────────────────────── -->
+    <div class="border-t border-border-default bg-surface-primary/50 dark:bg-dark-surface-secondary/50">
+      <div
+        class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6 lg:px-8"
+      >
+        <p class="text-sm text-text-muted">
+          {{ $t('footer.copyright', { year: currentYear }) }}
+        </p>
+
+        <div class="flex items-center gap-6">
+          <NuxtLink
+            to="/privacy"
+            class="text-sm text-text-muted transition-colors hover:text-text-secondary"
+          >
+            {{ $t('footer.privacy') }}
+          </NuxtLink>
+          <NuxtLink
+            to="/terms"
+            class="text-sm text-text-muted transition-colors hover:text-text-secondary"
+          >
+            {{ $t('footer.terms') }}
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+⋮----
+<!-- ====================================================
+       AppFooter – Semantic site footer with address
+       ====================================================
+       - HTML5 <footer> with <address> for contact info
+       - 4-column grid on lg, stacked on mobile
+       - Logo, quick links, services, contact, social
+       - Copyright bar with privacy + terms links
+       - RTL-aware column ordering
+  -->
+⋮----
+<!-- ── Main Footer Content ───────────────────────── -->
+⋮----
+<!-- ── Column 1: Logo + Tagline ──────────────── -->
+⋮----
+<!-- Logo -->
+⋮----
+{{ $t('site.name') }}
+⋮----
+<!-- Tagline -->
+⋮----
+{{ $t('site.tagline') }}
+⋮----
+{{ $t('site.description') }}
+⋮----
+<!-- ── Column 2: Quick Links ─────────────────── -->
+⋮----
+{{ $t('footer.quickLinks') }}
+⋮----
+{{ $t(link.label) }}
+⋮----
+<!-- ── Column 3: Services ────────────────────── -->
+⋮----
+{{ $t('footer.services') }}
+⋮----
+{{ $t(link.label) }}
+⋮----
+<!-- ── Column 4: Contact Info ────────────────── -->
+⋮----
+{{ $t('footer.contactInfo') }}
+⋮----
+<!--
+            Using <address> for contact information as per
+            HTML5 semantics. This improves accessibility
+            for screen readers.
+          -->
+⋮----
+<!-- Phone -->
+⋮----
+{{ contactPhone }}
+⋮----
+<!-- Email -->
+⋮----
+{{ contactEmail }}
+⋮----
+<!-- Address -->
+⋮----
+{{ $t('contact.address') }}: {{ contactAddress }}
+⋮----
+<!-- Social Links -->
+⋮----
+<template v-for="social in socialLinks" :key="social.label">
+              <UButton
+                :to="social.url"
+                :icon="social.icon"
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                square
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="social.label"
+              />
+            </template>
+⋮----
+<!-- ── Copyright Bar ─────────────────────────────── -->
+⋮----
+{{ $t('footer.copyright', { year: currentYear }) }}
+⋮----
+{{ $t('footer.privacy') }}
+⋮----
+{{ $t('footer.terms') }}
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * AppFooter – Global Footer Component
+ * ========================================================
+ *
+ * Features:
+ * - Semantic HTML5 <footer> with <address> for contact
+ * - 4-column responsive grid (stacks on mobile)
+ * - Quick links, services, contact info, social links
+ * - Dynamic copyright year
+ * - RTL-aware layout via Tailwind logical properties
+ * ========================================================
+ */
+
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
+
+// ── Current Year for Copyright ───────────────────────────
+const currentYear = new Date().getFullYear()
+
+// ── Contact Details ──────────────────────────────────────
+const contactPhone = '+966 XX XXX XXXX'
+const contactEmail = 'info@shafacare.com'
+const contactAddress = 'City, Street Name, Building X'
+
+// ── Navigation Links ─────────────────────────────────────
+interface FooterLink {
+  key: string
+  label: string
+  to: string
+}
+
+const quickLinks: FooterLink[] = [
+  { key: 'nav.home', label: 'nav.home', to: localePath('/') },
+  { key: 'nav.about', label: 'nav.about', to: localePath('/#about') },
+  { key: 'nav.doctors', label: 'nav.doctors', to: localePath('/#doctors') },
+  { key: 'nav.testimonials', label: 'nav.testimonials', to: localePath('/#testimonials') },
+  { key: 'nav.contact', label: 'nav.contact', to: localePath('/#contact') }
+]
+
+const serviceLinks: FooterLink[] = [
+  { key: 'nav.services', label: 'nav.services', to: localePath('/#services') },
+  { key: 'nav.faq', label: 'nav.faq', to: localePath('/#faq') }
+]
+
+// ── Social Media Links ───────────────────────────────────
+interface SocialLink {
+  label: string
+  icon: string
+  url: string
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    label: 'Facebook',
+    icon: 'mdi:facebook',
+    url: 'https://facebook.com/shafacare'
+  },
+  {
+    label: 'Twitter / X',
+    icon: 'mdi:twitter',
+    url: 'https://twitter.com/shafacare'
+  },
+  {
+    label: 'Instagram',
+    icon: 'mdi:instagram',
+    url: 'https://instagram.com/shafacare'
+  },
+  {
+    label: 'LinkedIn',
+    icon: 'mdi:linkedin',
+    url: 'https://linkedin.com/company/shafacare'
+  }
+]
+</script>
+</file>
+
+<file path="app/components/global/AppHeader.vue">
+<template>
+  <!-- ====================================================
+       AppHeader – Sticky navigation with mobile slideover
+       ====================================================
+       - Responsive: hamburger on mobile, full nav on lg+
+       - RTL-aware: slides from correct side
+       - Dark mode toggle + Language switcher
+       - Glassmorphism effect with backdrop blur
+  -->
+  <header
+    ref="headerRef"
+    class="sticky top-0 z-50 w-full border-b border-border-default/50 bg-surface-primary/80 backdrop-blur-xl transition-all duration-300"
+  >
+    <nav
+      class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+      aria-label="Main navigation"
+    >
+      <!-- ── Logo ────────────────────────────────────── -->
+      <NuxtLink
+        :to="localePath('/')"
+        class="flex shrink-0 items-center gap-2.5"
+        :aria-label="$t('site.name')"
+      >
+        <!-- Logo mark -->
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500 text-xs font-bold tracking-tight text-white shadow-sm"
+        >
+          <span aria-hidden="true">SC</span>
+        </div>
+        <!-- Logo text (hidden on smallest screens) -->
+        <span
+          class="hidden text-lg font-bold text-text-primary sm:inline"
+          :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+        >
+          {{ $t('site.name') }}
+        </span>
+      </NuxtLink>
+
+      <!-- ── Desktop Navigation ──────────────────────── -->
+      <ul class="hidden items-center gap-0.5 lg:flex">
+        <li v-for="link in navLinks" :key="link.key">
+          <NuxtLink
+            :to="link.to"
+            class="inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-surface-tertiary hover:text-text-primary"
+            :class="{ 'text-primary-600': isActive(link.to) }"
+          >
+            {{ $t(link.label) }}
+          </NuxtLink>
+        </li>
+      </ul>
+
+      <!-- ── Right Actions ───────────────────────────── -->
+      <div class="flex items-center gap-0.5">
+        <!-- Language Switcher -->
+        <UButton
+          :label="otherLocaleCode === 'en' ? 'EN' : 'AR'"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          class="font-semibold tracking-wide"
+          :aria-label="$t('common.language')"
+          @click="switchLanguage"
+        />
+
+        <!-- Dark / Light Mode Toggle -->
+        <UButton
+          :icon="isDark ? 'heroicons:sun' : 'heroicons:moon'"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          square
+          :aria-label="$t(isDark ? 'common.lightMode' : 'common.darkMode')"
+          @click="toggleColorMode"
+        />
+
+        <!-- Mobile Hamburger -->
+        <UButton
+          icon="heroicons:bars-3"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          square
+          class="lg:hidden"
+          :aria-label="$t('common.menu')"
+          @click="mobileMenuOpen = true"
+        />
+      </div>
+    </nav>
+
+    <!-- ==================================================
+         Mobile Navigation – Slideover Panel
+         ==================================================
+         Uses Nuxt UI's USlideover with RTL-aware side.
+         In RTL mode, the panel slides from the left (end).
+    -->
+    <USlideover
+      v-model:open="mobileMenuOpen"
+      :side="locale === 'ar' ? 'left' : 'right'"
+      :title="$t('site.name')"
+      :close="{
+        color: 'neutral',
+        variant: 'ghost',
+        size: 'sm'
+      }"
+      :ui="{
+        width: 'max-w-sm w-full',
+        container: 'h-full flex flex-col',
+        body: 'flex-1 overflow-y-auto px-6 pb-6',
+        header: 'px-6 pt-4 pb-0',
+        footer: 'px-6 pb-6 pt-2'
+      }"
+      @close="mobileMenuOpen = false"
+    >
+      <!-- Header slot with logo -->
+      <template #title>
+        <NuxtLink
+          :to="localePath('/')"
+          class="flex items-center gap-2.5"
+          @click="mobileMenuOpen = false"
+        >
+          <div
+            class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500 text-xs font-bold text-white"
+          >
+            SC
+          </div>
+          <span
+            class="text-base font-bold text-text-primary"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+          >
+            {{ $t('site.name') }}
+          </span>
+        </NuxtLink>
+      </template>
+
+      <!-- Body slot – Navigation links -->
+      <ul class="space-y-1">
+        <li v-for="link in navLinks" :key="link.key">
+          <NuxtLink
+            :to="link.to"
+            class="flex items-center rounded-xl px-4 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-surface-tertiary hover:text-text-primary"
+            :class="isActive(link.to) ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400' : ''"
+            @click="mobileMenuOpen = false"
+          >
+            {{ $t(link.label) }}
+          </NuxtLink>
+        </li>
+      </ul>
+
+      <!-- Footer slot – Language + Theme toggles -->
+      <template #footer>
+        <div class="flex flex-col gap-3">
+          <hr class="border-border-default" />
+          <div class="flex items-center gap-3">
+            <UButton
+              :label="otherLocaleCode === 'en' ? 'English' : 'العربية'"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="flex-1"
+              @click="switchLanguage; mobileMenuOpen = false"
+            />
+            <UButton
+              :icon="isDark ? 'heroicons:sun' : 'heroicons:moon'"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="flex-1"
+              @click="toggleColorMode"
+            >
+              {{ $t(isDark ? 'common.lightMode' : 'common.darkMode') }}
+            </UButton>
+          </div>
+        </div>
+      </template>
+    </USlideover>
+  </header>
+</template>
+⋮----
+<!-- ====================================================
+       AppHeader – Sticky navigation with mobile slideover
+       ====================================================
+       - Responsive: hamburger on mobile, full nav on lg+
+       - RTL-aware: slides from correct side
+       - Dark mode toggle + Language switcher
+       - Glassmorphism effect with backdrop blur
+  -->
+⋮----
+<!-- ── Logo ────────────────────────────────────── -->
+⋮----
+<!-- Logo mark -->
+⋮----
+<!-- Logo text (hidden on smallest screens) -->
+⋮----
+{{ $t('site.name') }}
+⋮----
+<!-- ── Desktop Navigation ──────────────────────── -->
+⋮----
+{{ $t(link.label) }}
+⋮----
+<!-- ── Right Actions ───────────────────────────── -->
+⋮----
+<!-- Language Switcher -->
+⋮----
+<!-- Dark / Light Mode Toggle -->
+⋮----
+<!-- Mobile Hamburger -->
+⋮----
+<!-- ==================================================
+         Mobile Navigation – Slideover Panel
+         ==================================================
+         Uses Nuxt UI's USlideover with RTL-aware side.
+         In RTL mode, the panel slides from the left (end).
+    -->
+⋮----
+<!-- Header slot with logo -->
+<template #title>
+        <NuxtLink
+          :to="localePath('/')"
+          class="flex items-center gap-2.5"
+          @click="mobileMenuOpen = false"
+        >
+          <div
+            class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500 text-xs font-bold text-white"
+          >
+            SC
+          </div>
+          <span
+            class="text-base font-bold text-text-primary"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+          >
+            {{ $t('site.name') }}
+          </span>
+        </NuxtLink>
+      </template>
+⋮----
+{{ $t('site.name') }}
+⋮----
+<!-- Body slot – Navigation links -->
+⋮----
+{{ $t(link.label) }}
+⋮----
+<!-- Footer slot – Language + Theme toggles -->
+<template #footer>
+        <div class="flex flex-col gap-3">
+          <hr class="border-border-default" />
+          <div class="flex items-center gap-3">
+            <UButton
+              :label="otherLocaleCode === 'en' ? 'English' : 'العربية'"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="flex-1"
+              @click="switchLanguage; mobileMenuOpen = false"
+            />
+            <UButton
+              :icon="isDark ? 'heroicons:sun' : 'heroicons:moon'"
+              color="neutral"
+              variant="outline"
+              size="sm"
+              class="flex-1"
+              @click="toggleColorMode"
+            >
+              {{ $t(isDark ? 'common.lightMode' : 'common.darkMode') }}
+            </UButton>
+          </div>
+        </div>
+      </template>
+⋮----
+{{ $t(isDark ? 'common.lightMode' : 'common.darkMode') }}
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * AppHeader – Global Navigation Component
+ * ========================================================
+ *
+ * Features:
+ * - Sticky header with glassmorphism effect
+ * - Desktop: horizontal nav links
+ * - Mobile: USlideover panel with nav + actions
+ * - Language switcher (AR ↔ EN)
+ * - Dark/Light mode toggle
+ * - Fully RTL-aware (slideover side flips, margins invert)
+ * - Touch targets all ≥ 48×48px
+ * ========================================================
+ */
+
+// ── i18n ─────────────────────────────────────────────────
+const { locale, t } = useI18n()
+const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
+
+// ── Color Mode (Dark / Light) ────────────────────────────
+const colorMode = useColorMode()
+const isDark = computed(() => colorMode.value === 'dark')
+
+function toggleColorMode(): void {
+  colorMode.value = isDark.value ? 'light' : 'dark'
+}
+
+// ── Language Switcher ────────────────────────────────────
+const otherLocaleCode = computed(() => (locale.value === 'ar' ? 'en' : 'ar'))
+
+function switchLanguage(): void {
+  const targetPath = switchLocalePath(otherLocaleCode.value)
+  if (targetPath) {
+    navigateTo(targetPath)
+  }
+}
+
+// ── Navigation Links ─────────────────────────────────────
+interface NavLink {
+  key: string
+  label: string
+  to: string
+}
+
+const navLinks: NavLink[] = [
+  { key: 'nav.home', label: 'nav.home', to: '#' },
+  { key: 'nav.about', label: 'nav.about', to: '#about' },
+  { key: 'nav.services', label: 'nav.services', to: '#services' },
+  { key: 'nav.doctors', label: 'nav.doctors', to: '#doctors' },
+  { key: 'nav.testimonials', label: 'nav.testimonials', to: '#testimonials' },
+  { key: 'nav.contact', label: 'nav.contact', to: '#contact' }
+]
+
+// ── Active Link Detection ────────────────────────────────
+const route = useRoute()
+
+function isActive(to: string): boolean {
+  if (to === '#') return route.path === localePath('/')
+  if (to.startsWith('#')) {
+    // For hash links, check if we're on the home page
+    return route.path === localePath('/')
+  }
+  return route.path === to
+}
+
+// ── Mobile Menu State ────────────────────────────────────
+const mobileMenuOpen = ref(false)
+
+/**
+ * Close mobile menu on route change (user navigates to a new page).
+ * This handles both NuxtLink clicks and browser back/forward.
+ */
+watch(
+  () => route.path,
+  () => {
+    mobileMenuOpen.value = false
+  }
+)
+</script>
+</file>
+
+<file path="app/components/seo/MedicalSchema.vue">
+<!--
+  ============================================================
+  SeoMedicalSchema – Renderless JSON-LD Structured Data
+  ============================================================
+  Injects MedicalBusiness schema.org structured data via useHead.
+  No visual output – acts purely as a head-data injector.
+
+  Automatically uses i18n locale to set name/alternateName.
+  Accepts override props for production clinic data.
+
+  Usage:
+    <SeoMedicalSchema
+      telephone="+966-12-345-6789"
+      :address="{ streetAddress: '123 Example St', ... }"
+      :geo="{ latitude: 24.7136, longitude: 46.6753 }"
+    />
+
+  Blueprint reference:
+    .opencode/plans/medical-clinic-blueprint.md § 2.1
+  ============================================================
+-->
+<script setup lang="ts">
+import type { ComputedRef } from 'vue'
+
+// ── Props ─────────────────────────────────────────────────
+export interface MedicalSchemaAddress {
+  streetAddress: string
+  addressLocality: string
+  addressRegion: string
+  postalCode: string
+  addressCountry: string
+}
+
+export interface MedicalSchemaGeo {
+  latitude: number
+  longitude: number
+}
+
+export interface MedicalSchemaHours {
+  dayOfWeek: string[]
+  opens: string
+  closes: string
+}
+
+export interface MedicalSchemaAmenity {
+  name: string
+  value: string | boolean
+}
+
+export interface MedicalSchemaProps {
+  /** Full business name (default: t('site.name')) */
+  name?: string
+  /** Alternative name – defaults to opposite locale's site.name */
+  alternateName?: string
+  /** Website URL */
+  url?: string
+  /** Logo image URL */
+  logo?: string
+  /** Array of clinic images */
+  image?: string[]
+  /** Contact telephone */
+  telephone?: string
+  /** Physical address */
+  address?: MedicalSchemaAddress
+  /** GPS coordinates */
+  geo?: MedicalSchemaGeo
+  /** Opening hours specifications */
+  openingHours?: MedicalSchemaHours[]
+  /** Price range indicator (default: "$$") */
+  priceRange?: string
+  /** Medical specialties (default: FamilyMedicine, GeneralPractice) */
+  medicalSpecialty?: string[]
+  /** Insurance providers accepted */
+  acceptsInsurance?: string[]
+  /** Amenity features (parking, wheelchair access, etc.) */
+  amenityFeature?: MedicalSchemaAmenity[]
+}
+
+const props = withDefaults(defineProps<MedicalSchemaProps>(), {
+  url: 'https://shafacare.pages.dev',
+  logo: 'https://shafacare.pages.dev/logo.png',
+  telephone: '+966-XX-XXXX-XXXX',
+  priceRange: '$$',
+  medicalSpecialty: () => ['FamilyMedicine', 'GeneralPractice'],
+  acceptsInsurance: () => [],
+  amenityFeature: () => [
+    {
+      name: 'Parking',
+      value: 'Free parking available'
+    },
+    {
+      name: 'WheelchairAccessible',
+      value: true
+    }
+  ],
+  address: (): MedicalSchemaAddress => ({
+    streetAddress: 'XX Street',
+    addressLocality: 'City',
+    addressRegion: 'Province',
+    postalCode: 'XXXXX',
+    addressCountry: 'SA'
+  }),
+  geo: (): MedicalSchemaGeo => ({
+    latitude: 24.7136,
+    longitude: 46.6753
+  }),
+  openingHours: (): MedicalSchemaHours[] => [
+    {
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '20:00'
+    }
+  ]
+})
+
+const { t, locale } = useI18n()
+const config = useRuntimeConfig()
+const siteUrl: string =
+  (config.public as Record<string, string>).siteUrl || 'https://shafacare.pages.dev'
+
+// ── Locale-aware name / alternateName ─────────────────────
+const businessName: ComputedRef<string> = computed(() => {
+  return props.name || t('site.name')
+})
+
+const businessAlternateName: ComputedRef<string> = computed(() => {
+  if (props.alternateName) return props.alternateName
+  // Default: swap to the other locale's site name
+  return locale.value === 'ar'
+    ? 'Shafa Care Clinic'
+    : 'عيادة شفا الطبية'
+})
+
+const defaultImages: string[] = [
+  `${siteUrl}/images/clinic-interior.jpg`,
+  `${siteUrl}/images/team.jpg`
+]
+
+// ── Build the full MedicalBusiness schema ─────────────────
+const schema = computed<Record<string, unknown>>(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: businessName.value,
+  alternateName: businessAlternateName.value,
+  url: props.url,
+  logo: props.logo,
+  image: props.image && props.image.length > 0 ? props.image : defaultImages,
+  telephone: props.telephone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: props.address.streetAddress,
+    addressLocality: props.address.addressLocality,
+    addressRegion: props.address.addressRegion,
+    postalCode: props.address.postalCode,
+    addressCountry: props.address.addressCountry
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: props.geo.latitude,
+    longitude: props.geo.longitude
+  },
+  openingHoursSpecification: props.openingHours.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.dayOfWeek,
+    opens: h.opens,
+    closes: h.closes
+  })),
+  priceRange: props.priceRange,
+  medicalSpecialty: props.medicalSpecialty,
+  acceptsInsurance: props.acceptsInsurance,
+  amenityFeature: props.amenityFeature.map((a) => ({
+    '@type': 'LocationFeatureSpecification',
+    name: a.name,
+    value: a.value
+  }))
+}))
+
+// ── Inject JSON-LD into document <head> ───────────────────
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      children: computed(() => JSON.stringify(schema.value))
+    }
+  ]
+})
+</script>
+⋮----
+<template>
+  <!-- Renderless: MedicalBusiness JSON-LD structured data injection -->
+</template>
+⋮----
+<!-- Renderless: MedicalBusiness JSON-LD structured data injection -->
+</file>
+
+<file path="app/components/storyblok/AboutUs.vue">
+<template>
+  <!-- ====================================================
+       StoryblokAboutUs – About Us Section
+       ====================================================
+       - Image + text intro with layout variants
+       - Mission statement highlight block
+       - Values grid with icon, title, description
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+  <section
+    v-editable="blok"
+    :aria-label="title"
+    class="bg-surface-primary px-4 py-20 sm:py-28"
+  >
+    <div class="mx-auto max-w-7xl">
+      <!-- ── Intro: Image + Text Layout ──────────────── -->
+      <div
+        v-if="layout !== 'centered'"
+        class="grid items-center gap-12 lg:grid-cols-2"
+      >
+        <!-- Image -->
+        <div
+          class="overflow-hidden rounded-2xl"
+          :class="imageColumnOrder"
+        >
+          <NuxtImg
+            v-if="imageSrc"
+            :src="imageSrc"
+            :alt="imageAlt"
+            loading="lazy"
+            class="h-full w-full object-cover"
+            :class="imageSizeClass"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            decoding="async"
+          />
+          <!-- Fallback placeholder -->
+          <div
+            v-else
+            class="flex h-80 w-full items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/50 dark:to-primary-800/50 lg:h-full lg:min-h-[480px]"
+          >
+            <UIcon
+              name="heroicons:heart"
+              class="h-16 w-16 text-primary-300 dark:text-primary-600"
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+
+        <!-- Text content -->
+        <div :class="textColumnOrder">
+          <h2
+            class="mb-6 text-balance text-3xl font-bold text-text-primary sm:text-4xl"
+          >
+            {{ title }}
+          </h2>
+          <p
+            class="mb-6 text-lg leading-relaxed text-text-secondary"
+          >
+            {{ description }}
+          </p>
+          <p
+            v-if="missionStatementText"
+            class="border-s-4 border-primary-500 bg-primary-50 ps-4 text-base leading-relaxed text-text-secondary dark:bg-primary-900/20 dark:text-text-muted"
+            :class="missionStatementClass"
+          >
+            {{ missionStatementText }}
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Centered Layout Variant ────────────────── -->
+      <div
+        v-else
+        class="mx-auto max-w-4xl text-center"
+      >
+        <!-- Image (centered, smaller) -->
+        <div
+          v-if="imageSrc"
+          class="mx-auto mb-10 overflow-hidden rounded-2xl max-w-2xl"
+        >
+          <NuxtImg
+            :src="imageSrc"
+            :alt="imageAlt"
+            loading="lazy"
+            class="h-full w-full object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            decoding="async"
+          />
+        </div>
+
+        <h2
+          class="mb-6 text-balance text-3xl font-bold text-text-primary sm:text-4xl"
+        >
+          {{ title }}
+        </h2>
+        <p
+          class="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-text-secondary"
+        >
+          {{ description }}
+        </p>
+        <p
+          v-if="missionStatementText"
+          class="mx-auto max-w-2xl rounded-xl bg-primary-50 px-6 py-4 text-base leading-relaxed text-text-secondary dark:bg-primary-900/20 dark:text-text-muted"
+        >
+          {{ missionStatementText }}
+        </p>
+      </div>
+
+      <!-- ── Values Section ─────────────────────────── -->
+      <div
+        v-if="values?.length"
+        class="mt-20"
+      >
+        <h3
+          class="mb-12 text-center text-2xl font-bold text-text-primary sm:text-3xl"
+        >
+          {{ $t('about.ourValues') }}
+        </h3>
+
+        <div
+          class="grid gap-8 sm:grid-cols-2"
+          :class="valuesGridClass"
+        >
+          <article
+            v-for="val in values"
+            :key="val._uid"
+            class="group rounded-xl border border-border-default bg-surface-secondary p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg dark:bg-dark-surface-secondary"
+          >
+            <!-- Icon -->
+            <div
+              class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-500 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900/70"
+            >
+              <UIcon
+                v-if="resolveIcon(val.icon)?.type === 'iconify'"
+                :name="resolveIcon(val.icon)?.name || 'heroicons:sparkles'"
+                class="h-6 w-6"
+                aria-hidden="true"
+              />
+<NuxtImg
+                v-else-if="resolveIcon(val.icon)?.type === 'image'"
+                :src="resolveIcon(val.icon)?.src || ''"
+                :alt="resolveIcon(val.icon)?.alt || val.title || ''"
+                class="h-6 w-6 object-contain"
+                loading="lazy"
+                aria-hidden="true"
+              />
+            </div>
+
+            <h4
+              class="mb-2 text-lg font-semibold text-text-primary"
+            >
+              {{ val.title }}
+            </h4>
+            <p
+              class="text-sm leading-relaxed text-text-secondary"
+            >
+              {{ val.description }}
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+⋮----
+<!-- ====================================================
+       StoryblokAboutUs – About Us Section
+       ====================================================
+       - Image + text intro with layout variants
+       - Mission statement highlight block
+       - Values grid with icon, title, description
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+⋮----
+<!-- ── Intro: Image + Text Layout ──────────────── -->
+⋮----
+<!-- Image -->
+⋮----
+<!-- Fallback placeholder -->
+⋮----
+<!-- Text content -->
+⋮----
+{{ title }}
+⋮----
+{{ description }}
+⋮----
+{{ missionStatementText }}
+⋮----
+<!-- ── Centered Layout Variant ────────────────── -->
+⋮----
+<!-- Image (centered, smaller) -->
+⋮----
+{{ title }}
+⋮----
+{{ description }}
+⋮----
+{{ missionStatementText }}
+⋮----
+<!-- ── Values Section ─────────────────────────── -->
+⋮----
+{{ $t('about.ourValues') }}
+⋮----
+<!-- Icon -->
+⋮----
+{{ val.title }}
+⋮----
+{{ val.description }}
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * StoryblokAboutUs – About Us Section
+ * ========================================================
+ *
+ * Props:
+ *   blok – Storyblok content block object (optional)
+ *     - title           (string, multi-language)
+ *     - description     (string or rich text, multi-language)
+ *     - missionStatement (string, multi-language)
+ *     - image           ({ filename, alt, focus })
+ *     - values          (array of { icon, title, description })
+ *     - layout          ('image-left' | 'image-right' | 'centered')
+ *
+ * RTL behavior:
+ *   - "image-left" renders image as first DOM child (start side
+ *     in LTR → left, in RTL → right). The card grid naturally
+ *     flips with the document direction via CSS grid.
+ * ========================================================
+ */
+
+import type { ComputedRef } from 'vue'
+
+const { t, locale } = useI18n()
+
+// ── Types ─────────────────────────────────────────────────
+interface StoryblokAsset {
+  filename?: string
+  alt?: string
+  focus?: string
+}
+
+interface StoryblokIcon {
+  name?: string
+  type?: string
+  filename?: string
+  [key: string]: unknown
+}
+
+interface ValueItem {
+  _uid?: string
+  icon?: StoryblokIcon | string
+  title?: string
+  description?: string
+}
+
+interface AboutBlok {
+  _uid?: string
+  component?: string
+  title?: string
+  description?: string
+  missionStatement?: string
+  image?: StoryblokAsset
+  values?: ValueItem[]
+  layout?: 'image-left' | 'image-right' | 'centered'
+  [key: string]: unknown
+}
+
+const props = withDefaults(
+  defineProps<{
+    blok?: AboutBlok | null
+  }>(),
+  { blok: () => null }
+)
+
+// ── Content Values ────────────────────────────────────────
+const title: ComputedRef<string> = computed(() =>
+  props.blok?.title || t('about.title')
+)
+
+const description: ComputedRef<string> = computed(() =>
+  props.blok?.description || t('about.description')
+)
+
+const missionStatementText: ComputedRef<string | undefined> = computed(() =>
+  props.blok?.missionStatement || undefined
+)
+
+const layout: ComputedRef<string> = computed(() =>
+  props.blok?.layout || 'image-left'
+)
+
+const values: ComputedRef<ValueItem[] | undefined> = computed(() =>
+  props.blok?.values?.length ? props.blok.values : undefined
+)
+
+// ── Image ─────────────────────────────────────────────────
+const imageSrc: ComputedRef<string | undefined> = computed(() =>
+  props.blok?.image?.filename || undefined
+)
+
+const imageAlt: ComputedRef<string> = computed(() =>
+  props.blok?.image?.alt || ''
+)
+
+// ── Layout Classes ───────────────────────────────────────
+// RTL-aware: first DOM element appears on the start side.
+// We render image first for image-left, text first for image-right.
+const imageColumnOrder: ComputedRef<string> = computed(() => {
+  return layout.value === 'image-right' ? 'lg:order-last' : 'lg:order-first'
+})
+
+const textColumnOrder: ComputedRef<string> = computed(() => {
+  return layout.value === 'image-right' ? 'lg:order-first' : 'lg:order-last'
+})
+
+const imageSizeClass: ComputedRef<string> = computed(() => {
+  return 'max-h-96 lg:max-h-[520px] lg:min-h-[400px]'
+})
+
+const missionStatementClass: ComputedRef<string> = computed(() => {
+  return locale.value === 'ar' ? 'border-e-4 border-s-0 pe-4 ps-0' : ''
+})
+
+const valuesGridClass: ComputedRef<string> = computed(() => {
+  if (!values.value) return ''
+  const count = values.value.length
+  if (count >= 6) return 'lg:grid-cols-3'
+  if (count >= 4) return 'lg:grid-cols-2'
+  return 'lg:grid-cols-1 max-w-md mx-auto'
+})
+
+// ── Icon Resolver ─────────────────────────────────────────
+interface ResolvedIcon {
+  type: 'iconify' | 'image' | 'none'
+  name?: string
+  src?: string
+  alt?: string
+}
+
+function resolveIcon(icon: StoryblokIcon | string | undefined): ResolvedIcon {
+  if (!icon) return { type: 'none' }
+
+  // Direct string like "heroicons:heart"
+  if (typeof icon === 'string') {
+    return { type: 'iconify', name: icon }
+  }
+
+  // Icon picker plugin: { name: "heroicons:heart" }
+  if (typeof icon.name === 'string' && !icon.filename) {
+    return { type: 'iconify', name: icon.name }
+  }
+
+  // Asset: { filename: "https://..." }
+  if (typeof icon.filename === 'string') {
+    return {
+      type: 'image',
+      src: icon.filename,
+      alt: (icon as StoryblokAsset).alt || ''
+    }
+  }
+
+  return { type: 'none' }
+}
+</script>
+</file>
+
+<file path="app/components/storyblok/HeroSection.vue">
+<template>
+  <!-- ====================================================
+       HeroSection – LCP-optimized hero banner
+       ====================================================
+       - Full-viewport hero with responsive background image
+       - Burgundy gradient overlay for brand consistency
+       - Dynamic headline, subheadline, and CTA button
+       - RTL-aware text alignment (text-start / text-end)
+       - CTA button with 0.75rem rounded corners
+       - LCP optimization: fetchpriority="high" on hero img
+       - Storyblok compatible: accepts `blok` prop with
+         v-editable directive for visual editor
+  -->
+  <section
+    v-editable="blok"
+    :aria-label="blok?.headline || $t('hero.title')"
+    class="relative flex min-h-[80vh] items-center overflow-hidden"
+    :class="contentAlignmentClass"
+  >
+    <!-- ── Background Image ─────────────────────────── -->
+    <div
+      class="absolute inset-0 -z-10"
+      aria-hidden="true"
+    >
+<NuxtImg
+        v-if="imageSrc"
+        :src="imageSrc"
+        :alt="imageAlt"
+        fetchpriority="high"
+        loading="eager"
+        class="h-full w-full object-cover"
+        :class="imageParallaxClass"
+        sizes="100vw"
+        width="1920"
+        height="1080"
+        decoding="async"
+      />
+
+      <!-- Fallback gradient when no image is provided -->
+      <div
+        v-else
+        class="h-full w-full bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900"
+      />
+    </div>
+
+    <!-- ── Overlay ──────────────────────────────────── -->
+    <!-- Semi-transparent overlay to ensure text readability -->
+    <div
+      class="absolute inset-0 -z-10"
+      :style="overlayStyle"
+      aria-hidden="true"
+    />
+
+    <!-- ── Content ──────────────────────────────────── -->
+    <div
+      class="relative z-10 mx-auto w-full px-4 py-20 sm:px-6 lg:px-8"
+      :class="contentContainerClass"
+    >
+      <div class="max-w-3xl">
+        <!-- Badge / Tagline -->
+        <span
+          class="mb-4 inline-block rounded-pill bg-white/15 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm"
+        >
+          {{ $t('site.tagline') }}
+        </span>
+
+        <!-- Headline -->
+        <h1
+          class="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
+        >
+          {{ headline }}
+        </h1>
+
+        <!-- Subheadline -->
+        <p
+          v-if="subheadline"
+          class="mb-8 max-w-2xl text-balance text-lg text-white/80 sm:text-xl"
+        >
+          {{ subheadline }}
+        </p>
+
+        <!-- CTA Button -->
+        <UButton
+          v-if="ctaText"
+          size="xl"
+          color="white"
+          :label="ctaText"
+          class="rounded-xl px-8 py-3.5 text-base font-semibold shadow-lg text-primary-700 transition-all duration-200 hover:shadow-xl active:scale-[0.98]"
+          :to="ctaLink?.url || undefined"
+          :target="ctaLinksTarget"
+        />
+      </div>
+    </div>
+
+    <!-- ── Bottom Gradient Fade ──────────────────────── -->
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface-primary to-transparent"
+      aria-hidden="true"
+    />
+  </section>
+</template>
+⋮----
+<!-- ====================================================
+       HeroSection – LCP-optimized hero banner
+       ====================================================
+       - Full-viewport hero with responsive background image
+       - Burgundy gradient overlay for brand consistency
+       - Dynamic headline, subheadline, and CTA button
+       - RTL-aware text alignment (text-start / text-end)
+       - CTA button with 0.75rem rounded corners
+       - LCP optimization: fetchpriority="high" on hero img
+       - Storyblok compatible: accepts `blok` prop with
+         v-editable directive for visual editor
+  -->
+⋮----
+<!-- ── Background Image ─────────────────────────── -->
+⋮----
+<!-- Fallback gradient when no image is provided -->
+⋮----
+<!-- ── Overlay ──────────────────────────────────── -->
+<!-- Semi-transparent overlay to ensure text readability -->
+⋮----
+<!-- ── Content ──────────────────────────────────── -->
+⋮----
+<!-- Badge / Tagline -->
+⋮----
+{{ $t('site.tagline') }}
+⋮----
+<!-- Headline -->
+⋮----
+{{ headline }}
+⋮----
+<!-- Subheadline -->
+⋮----
+{{ subheadline }}
+⋮----
+<!-- CTA Button -->
+⋮----
+<!-- ── Bottom Gradient Fade ──────────────────────── -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * StoryblokHeroSection – Hero Banner Component
+ * ========================================================
+ *
+ * Accepts a Storyblok `blok` object for visual editor
+ * compatibility. Falls back to i18n translations when
+ * Storyblok content is not provided.
+ *
+ * Props:
+ *   blok – Storyblok content block object (optional)
+ *     - headline        (string, multi-language)
+ *     - subheadline     (string, multi-language)
+ *     - ctaText         (string, multi-language)
+ *     - ctaLink          ({ url, target?, cached_url? })
+ *     - backgroundImage  ({ filename, alt?, focus? })
+ *     - overlayColor     (string, hex with opacity)
+ *     - layout           ('centered' | 'left-aligned' | 'split')
+ *     - animationType    ('fade' | 'slide' | 'none')
+ *
+ * LCP Optimization:
+ * - fetchpriority="high" on hero <NuxtImg>
+ * - loading="eager" (above-fold)
+ * - Explicit width/height to prevent CLS
+ * - sizes="100vw" for responsive loading
+ * ========================================================
+ */
+
+const { t, locale } = useI18n()
+
+// ── Props ─────────────────────────────────────────────────
+interface StoryblokLink {
+  url?: string
+  target?: string
+  cached_url?: string
+}
+
+interface StoryblokAsset {
+  filename?: string
+  alt?: string
+  focus?: string
+}
+
+interface HeroBlok {
+  _uid?: string
+  component?: string
+  headline?: string
+  subheadline?: string
+  ctaText?: string
+  ctaLink?: StoryblokLink
+  backgroundImage?: StoryblokAsset
+  overlayColor?: string
+  layout?: 'centered' | 'left-aligned' | 'split'
+  animationType?: 'fade' | 'slide' | 'none'
+  [key: string]: unknown
+}
+
+const props = withDefaults(
+  defineProps<{
+    blok?: HeroBlok | null
+  }>(),
+  {
+    blok: () => null
+  }
+)
+
+// ── Computed Content Values ──────────────────────────────
+// Use Storyblok content when available, fall back to i18n
+const headline = computed(() => props.blok?.headline || t('hero.title'))
+const subheadline = computed(() => props.blok?.subheadline || t('hero.subtitle'))
+const ctaText = computed(() => props.blok?.ctaText || t('hero.cta'))
+
+// CTA Link
+const ctaLink = computed(() => {
+  if (props.blok?.ctaLink) {
+    return {
+      url: props.blok.ctaLink.cached_url || props.blok.ctaLink.url,
+      target: props.blok.ctaLink.target
+    }
+  }
+  return null
+})
+
+const ctaLinksTarget = computed(() => ctaLink.value?.target || undefined)
+
+// ── Background Image ─────────────────────────────────────
+const imageSrc = computed(() => {
+  if (props.blok?.backgroundImage?.filename) {
+    return props.blok.backgroundImage.filename
+  }
+  // Fallback: use a placeholder gradient (no actual image)
+  return null
+})
+
+const imageAlt = computed(() => {
+  return props.blok?.backgroundImage?.alt || ''
+})
+
+// ── Layout Classes ───────────────────────────────────────
+const contentAlignmentClass = computed(() => {
+  const layout = props.blok?.layout || 'centered'
+  switch (layout) {
+    case 'left-aligned':
+      return 'justify-start'
+    case 'split':
+      return 'justify-start lg:justify-start'
+    default:
+      return 'justify-center'
+  }
+})
+
+const contentContainerClass = computed(() => {
+  const layout = props.blok?.layout || 'centered'
+  switch (layout) {
+    case 'left-aligned':
+      return 'ps-4 sm:ps-6 lg:ps-8'
+    case 'split':
+      return ''
+    default:
+      return 'text-center'
+  }
+})
+
+// ── Overlay Style ────────────────────────────────────────
+const overlayStyle = computed(() => {
+  // Use the overlay color from Storyblok, or default to primary gradient
+  if (props.blok?.overlayColor) {
+    return {
+      background: `linear-gradient(135deg, ${props.blok.overlayColor} 0%, rgba(0,0,0,0.6) 100%)`
+    }
+  }
+  return {
+    background:
+      'linear-gradient(135deg, rgba(196, 30, 58, 0.85) 0%, rgba(128, 18, 38, 0.7) 50%, rgba(0, 0, 0, 0.5) 100%)'
+  }
+})
+
+// ── Image Parallax / Effect Classes ──────────────────────
+const imageParallaxClass = computed(() => {
+  const animation = props.blok?.animationType || 'none'
+  switch (animation) {
+    case 'fade':
+      return 'animate-fade-in'
+    case 'slide':
+      return 'scale-105'
+    default:
+      return ''
+  }
+})
+
+// ── Dynamic SEO: Preload the hero image for LCP ──────────
+// This injects a <link rel="preload"> for the hero image
+// so the browser starts fetching it early.
+if (imageSrc.value) {
+  useHead({
+    link: [
+      {
+        rel: 'preload',
+        as: 'image',
+        href: imageSrc.value,
+        fetchpriority: 'high'
+      }
+    ]
+  })
+}
+</script>
+⋮----
+<style scoped>
+/**
+ * Subtle fade-in animation for the hero section
+ */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+/**
+ * Ensure the hero image covers the entire section
+ * without layout shift while loading
+ */
+img {
+  background-color: var(--color-primary-700);
+}
+</style>
+</file>
+
+<file path="app/components/storyblok/MedicalStaff.vue">
+<template>
+  <!-- ====================================================
+       StoryblokMedicalStaff – Medical Team Section
+       ====================================================
+       - Section header with title + subtitle
+       - Doctor profile cards with photo, info, social links
+       - Layout variants: grid-2, grid-3, grid-4
+       - Photo containers: soft rounded-xl, aspect-square
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+  <section
+    v-editable="blok"
+    :aria-label="title"
+    class="bg-surface-primary px-4 py-20 sm:py-28"
+  >
+    <div class="mx-auto max-w-7xl">
+      <!-- ── Section Header ──────────────────────────── -->
+      <div class="mb-14 text-center">
+        <h2
+          class="mb-4 text-balance text-3xl font-bold text-text-primary sm:text-4xl"
+        >
+          {{ title }}
+        </h2>
+        <p
+          v-if="subtitleText"
+          class="mx-auto max-w-2xl text-lg text-text-secondary"
+        >
+          {{ subtitleText }}
+        </p>
+      </div>
+
+      <!-- ── Doctors Grid ────────────────────────────── -->
+      <div
+        v-if="doctorList?.length"
+        :class="gridClass"
+      >
+        <article
+          v-for="doctor in doctorList"
+          :key="doctor._uid"
+          class="group rounded-xl border border-border-default bg-surface-secondary p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-dark-surface-secondary"
+        >
+          <!-- ── Photo ──────────────────────────────── -->
+          <div
+            class="mx-auto mb-5 overflow-hidden rounded-xl"
+            :class="photoContainerClass"
+          >
+            <NuxtImg
+              v-if="resolvePhoto(doctor.photo)"
+              :src="resolvePhoto(doctor.photo)?.src || ''"
+              :alt="resolvePhoto(doctor.photo)?.alt || doctor.name || ''"
+              loading="lazy"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              decoding="async"
+            />
+            <!-- Fallback avatar placeholder -->
+            <div
+              v-else
+              class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/50 dark:to-primary-800/50"
+            >
+              <UIcon
+                name="heroicons:user"
+                class="h-12 w-12 text-primary-300 dark:text-primary-600"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+
+          <!-- ── Name ────────────────────────────────── -->
+          <h3
+            class="mb-1 text-xl font-bold text-text-primary"
+          >
+            {{ doctor.name }}
+          </h3>
+
+          <!-- ── Specialty Badge ─────────────────────── -->
+          <p
+            v-if="doctor.specialty"
+            class="mb-3 inline-block rounded-pill bg-primary-50 px-4 py-1 text-sm font-medium text-primary-600 dark:bg-primary-900/40 dark:text-primary-400"
+          >
+            {{ doctor.specialty }}
+          </p>
+
+          <!-- ── Bio ─────────────────────────────────── -->
+          <p
+            v-if="doctor.bio"
+            class="mb-5 text-sm leading-relaxed text-text-secondary"
+          >
+            {{ doctor.bio }}
+          </p>
+
+          <!-- ── Contact Info Row ────────────────────── -->
+          <div
+            v-if="doctor.email || doctor.phone"
+            class="mb-5 flex items-center justify-center gap-4 text-sm"
+          >
+            <a
+              v-if="doctor.email"
+              :href="`mailto:${doctor.email}`"
+              class="inline-flex items-center gap-1.5 text-text-muted transition-colors hover:text-primary-500 min-h-0"
+              :aria-label="`Email ${doctor.name}`"
+            >
+              <UIcon name="heroicons:envelope" class="h-4 w-4" aria-hidden="true" />
+              <span class="sr-only sm:not-sr-only">{{ doctor.email }}</span>
+            </a>
+            <a
+              v-if="doctor.phone"
+              :href="`tel:${doctor.phone}`"
+              class="inline-flex items-center gap-1.5 text-text-muted transition-colors hover:text-primary-500 min-h-0"
+              :aria-label="`Call ${doctor.name}`"
+            >
+              <UIcon name="heroicons:phone" class="h-4 w-4" aria-hidden="true" />
+              <span class="sr-only sm:not-sr-only">{{ doctor.phone }}</span>
+            </a>
+          </div>
+
+          <!-- ── Social Links ────────────────────────── -->
+          <div
+            v-if="doctor.socialLinks?.length"
+            class="flex items-center justify-center gap-1"
+          >
+            <UButton
+              v-for="(social, sIdx) in doctor.socialLinks"
+              :key="sIdx"
+              :to="social.url"
+              :icon="resolveSocialIcon(social.platform)"
+              color="neutral"
+              variant="ghost"
+              size="sm"
+              square
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="`${doctor.name} on ${social.platform}`"
+            />
+          </div>
+        </article>
+      </div>
+
+      <!-- ── Optional "Book Appointment" CTA ─────────── -->
+      <div
+        v-if="showContactBtn"
+        class="mt-14 text-center"
+      >
+        <UButton
+          size="xl"
+          color="primary"
+          :label="$t('hero.cta')"
+          class="rounded-xl px-8 py-3.5 text-base font-semibold shadow-lg transition-all duration-200 hover:shadow-xl active:scale-[0.98]"
+        />
+      </div>
+    </div>
+  </section>
+</template>
+⋮----
+<!-- ====================================================
+       StoryblokMedicalStaff – Medical Team Section
+       ====================================================
+       - Section header with title + subtitle
+       - Doctor profile cards with photo, info, social links
+       - Layout variants: grid-2, grid-3, grid-4
+       - Photo containers: soft rounded-xl, aspect-square
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+⋮----
+<!-- ── Section Header ──────────────────────────── -->
+⋮----
+{{ title }}
+⋮----
+{{ subtitleText }}
+⋮----
+<!-- ── Doctors Grid ────────────────────────────── -->
+⋮----
+<!-- ── Photo ──────────────────────────────── -->
+⋮----
+<!-- Fallback avatar placeholder -->
+⋮----
+<!-- ── Name ────────────────────────────────── -->
+⋮----
+{{ doctor.name }}
+⋮----
+<!-- ── Specialty Badge ─────────────────────── -->
+⋮----
+{{ doctor.specialty }}
+⋮----
+<!-- ── Bio ─────────────────────────────────── -->
+⋮----
+{{ doctor.bio }}
+⋮----
+<!-- ── Contact Info Row ────────────────────── -->
+⋮----
+<span class="sr-only sm:not-sr-only">{{ doctor.email }}</span>
+⋮----
+<span class="sr-only sm:not-sr-only">{{ doctor.phone }}</span>
+⋮----
+<!-- ── Social Links ────────────────────────── -->
+⋮----
+<!-- ── Optional "Book Appointment" CTA ─────────── -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * StoryblokMedicalStaff – Medical Team Section
+ * ========================================================
+ *
+ * Props:
+ *   blok – Storyblok content block (optional)
+ *     - title             (string, multi-language)
+ *     - subtitle          (string, multi-language)
+ *     - doctors           (array of:
+ *         name            – string
+ *         specialty       – string
+ *         bio             – string (short biography)
+ *         photo           – Storyblok asset
+ *         email           – string (optional)
+ *         phone           – string (optional)
+ *         socialLinks     – [{ platform: string, url: string }]
+ *       )
+ *     - layout            ('grid-2' | 'grid-3' | 'grid-4')
+ *     - showContactButton (boolean)
+ *
+ * RTL behavior:
+ *   - Grid columns naturally respect doc direction.
+ *   - Text alignment is centered (works well for both).
+ * ========================================================
+ */
+
+import type { ComputedRef } from 'vue'
+
+const { t } = useI18n()
+
+// ── Types ─────────────────────────────────────────────────
+interface StoryblokAsset {
+  filename?: string
+  alt?: string
+  focus?: string
+}
+
+interface SocialLinkItem {
+  platform?: string
+  url?: string
+}
+
+interface DoctorItem {
+  _uid?: string
+  name?: string
+  specialty?: string
+  bio?: string
+  photo?: StoryblokAsset
+  email?: string
+  phone?: string
+  socialLinks?: SocialLinkItem[]
+  order?: number
+}
+
+interface MedicalStaffBlok {
+  _uid?: string
+  component?: string
+  title?: string
+  subtitle?: string
+  doctors?: DoctorItem[]
+  layout?: 'grid-2' | 'grid-3' | 'grid-4'
+  showContactButton?: boolean
+  [key: string]: unknown
+}
+
+const props = withDefaults(
+  defineProps<{
+    blok?: MedicalStaffBlok | null
+  }>(),
+  { blok: () => null }
+)
+
+// ── Content Values ────────────────────────────────────────
+const title: ComputedRef<string> = computed(() =>
+  props.blok?.title || t('doctors.title')
+)
+
+const subtitleText: ComputedRef<string | undefined> = computed(() =>
+  props.blok?.subtitle || t('doctors.subtitle')
+)
+
+const layout: ComputedRef<string> = computed(() =>
+  props.blok?.layout || 'grid-3'
+)
+
+const showContactBtn: ComputedRef<boolean> = computed(() =>
+  props.blok?.showContactButton ?? true
+)
+
+const doctorList: ComputedRef<DoctorItem[] | undefined> = computed(() => {
+  const docs = props.blok?.doctors
+  if (!docs?.length) return undefined
+  // Sort by order if available
+  return [...docs].sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
+})
+
+// ── Grid Classes ──────────────────────────────────────────
+const gridClass: ComputedRef<string> = computed(() => {
+  switch (layout.value) {
+    case 'grid-2':
+      return 'grid gap-10 sm:grid-cols-2 max-w-3xl mx-auto'
+    case 'grid-4':
+      return 'grid gap-10 sm:grid-cols-2 lg:grid-cols-4'
+    default:
+      // grid-3
+      return 'grid gap-10 sm:grid-cols-2 lg:grid-cols-3'
+  }
+})
+
+// ── Photo Container ───────────────────────────────────────
+const photoContainerClass: ComputedRef<string> = computed(() => {
+  return 'h-48 w-48 sm:h-52 sm:w-52 lg:h-56 lg:w-56'
+})
+
+// ── Photo Resolver ────────────────────────────────────────
+interface ResolvedPhoto {
+  src: string
+  alt: string
+}
+
+function resolvePhoto(photo: StoryblokAsset | undefined): ResolvedPhoto | null {
+  if (!photo?.filename) return null
+  return {
+    src: photo.filename,
+    alt: photo.alt || ''
+  }
+}
+
+// ── Social Icon Resolver ──────────────────────────────────
+/**
+ * Maps platform names (from Storyblok) to Iconify icon names.
+ */
+const platformIconMap: Record<string, string> = {
+  facebook: 'mdi:facebook',
+  twitter: 'mdi:twitter',
+  x: 'mdi:twitter',
+  instagram: 'mdi:instagram',
+  linkedin: 'mdi:linkedin',
+  youtube: 'mdi:youtube',
+  whatsapp: 'mdi:whatsapp',
+  telegram: 'mdi:telegram',
+  tiktok: 'mdi:tiktok',
+  snapchat: 'mdi:snapchat'
+}
+
+function resolveSocialIcon(platform: string | undefined): string {
+  if (!platform) return 'mdi:web'
+  const normalized = platform.toLowerCase().trim()
+  return platformIconMap[normalized] || 'mdi:web'
+}
+</script>
+</file>
+
+<file path="app/components/storyblok/Services.vue">
+<template>
+  <!-- ====================================================
+       StoryblokServices – Services Section
+       ====================================================
+       - Section header with title + subtitle
+       - Service cards with icon, title, description, link
+       - Layout variants: grid-2, grid-3, grid-4, list
+       - Hover: subtle lift + deeper shadow
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+  <section
+    v-editable="blok"
+    :aria-label="title"
+    class="bg-surface-secondary px-4 py-20 sm:py-28"
+  >
+    <div class="mx-auto max-w-7xl">
+      <!-- ── Section Header ──────────────────────────── -->
+      <div class="mb-14 text-center">
+        <h2
+          class="mb-4 text-balance text-3xl font-bold text-text-primary sm:text-4xl"
+        >
+          {{ title }}
+        </h2>
+        <p
+          v-if="subtitle"
+          class="mx-auto max-w-2xl text-lg text-text-secondary"
+        >
+          {{ subtitle }}
+        </p>
+      </div>
+
+      <!-- ── Service Cards Grid ──────────────────────── -->
+      <div
+        v-if="serviceItems?.length"
+        :class="gridClass"
+      >
+        <article
+          v-for="service in serviceItems"
+          :key="service._uid"
+          class="group relative rounded-xl border border-border-default bg-surface-primary p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl dark:bg-dark-surface"
+        >
+          <!-- ── Icon ───────────────────────────────── -->
+          <div
+            class="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 text-primary-500 transition-all duration-300 group-hover:bg-primary-500 group-hover:text-white dark:bg-primary-900/40 dark:group-hover:bg-primary-600"
+          >
+            <UIcon
+              v-if="resolveIcon(service.icon)?.type === 'iconify'"
+              :name="resolveIcon(service.icon)?.name || 'heroicons:heart'"
+              class="h-7 w-7"
+              aria-hidden="true"
+            />
+            <NuxtImg
+              v-else-if="resolveIcon(service.icon)?.type === 'image'"
+              :src="resolveIcon(service.icon)?.src || ''"
+              :alt="resolveIcon(service.icon)?.alt || service.title || ''"
+              class="h-7 w-7 object-contain"
+              loading="lazy"
+              aria-hidden="true"
+            />
+          </div>
+
+          <!-- ── Title ──────────────────────────────── -->
+          <h3
+            class="mb-3 text-xl font-semibold text-text-primary"
+          >
+            {{ service.title }}
+          </h3>
+
+          <!-- ── Description ────────────────────────── -->
+          <p
+            class="mb-5 text-sm leading-relaxed text-text-secondary"
+          >
+            {{ service.description }}
+          </p>
+
+          <!-- ── Optional Link ──────────────────────── -->
+          <NuxtLink
+            v-if="service.linkUrl || service.linkText"
+            :to="resolveLink(service.linkUrl)"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-primary-500 transition-colors hover:text-primary-600"
+            :class="linkChevronClass"
+          >
+            {{ service.linkText || $t('common.learnMore') }}
+            <UIcon
+              :name="linkChevronIcon"
+              class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </NuxtLink>
+        </article>
+      </div>
+
+      <!-- ── Optional CTA Button ────────────────────── -->
+      <div
+        v-if="showCta && (ctaText || ctaLink)"
+        class="mt-14 text-center"
+      >
+        <UButton
+          size="xl"
+          color="primary"
+          :label="ctaText || $t('common.learnMore')"
+          class="rounded-xl px-8 py-3.5 text-base font-semibold shadow-lg transition-all duration-200 hover:shadow-xl active:scale-[0.98]"
+          :to="resolveLink(ctaLink)"
+        />
+      </div>
+    </div>
+  </section>
+</template>
+⋮----
+<!-- ====================================================
+       StoryblokServices – Services Section
+       ====================================================
+       - Section header with title + subtitle
+       - Service cards with icon, title, description, link
+       - Layout variants: grid-2, grid-3, grid-4, list
+       - Hover: subtle lift + deeper shadow
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+⋮----
+<!-- ── Section Header ──────────────────────────── -->
+⋮----
+{{ title }}
+⋮----
+{{ subtitle }}
+⋮----
+<!-- ── Service Cards Grid ──────────────────────── -->
+⋮----
+<!-- ── Icon ───────────────────────────────── -->
+⋮----
+<!-- ── Title ──────────────────────────────── -->
+⋮----
+{{ service.title }}
+⋮----
+<!-- ── Description ────────────────────────── -->
+⋮----
+{{ service.description }}
+⋮----
+<!-- ── Optional Link ──────────────────────── -->
+⋮----
+{{ service.linkText || $t('common.learnMore') }}
+⋮----
+<!-- ── Optional CTA Button ────────────────────── -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * StoryblokServices – Services Section
+ * ========================================================
+ *
+ * Props:
+ *   blok – Storyblok content block (optional)
+ *     - title          (string, multi-language)
+ *     - subtitle       (string, multi-language)
+ *     - services       (array of:
+ *         icon         – Iconify name | Storyblok asset | icon plugin
+ *         title        – string
+ *         description  – string
+ *         linkText     – string (optional)
+ *         linkUrl      – string | Storyblok link (optional)
+ *       )
+ *     - layout         ('grid-2' | 'grid-3' | 'grid-4' | 'list')
+ *     - showCta        (boolean)
+ *     - ctaText        (string, optional)
+ *     - ctaLink        (Storyblok link, optional)
+ *
+ * RTL behavior:
+ *   - Grid columns naturally respect doc direction
+ *   - Link chevron flips via icon change in RTL
+ * ========================================================
+ */
+
+import type { ComputedRef } from 'vue'
+
+const { t, locale } = useI18n()
+
+// ── Types ─────────────────────────────────────────────────
+interface StoryblokLink {
+  url?: string
+  cached_url?: string
+  target?: string
+}
+
+interface IconField {
+  name?: string
+  type?: string
+  filename?: string
+  alt?: string
+  [key: string]: unknown
+}
+
+interface ServiceItem {
+  _uid?: string
+  icon?: IconField | string
+  title?: string
+  description?: string
+  linkText?: string
+  linkUrl?: StoryblokLink | string
+}
+
+interface ServicesBlok {
+  _uid?: string
+  component?: string
+  title?: string
+  subtitle?: string
+  services?: ServiceItem[]
+  layout?: 'grid-2' | 'grid-3' | 'grid-4' | 'list'
+  showCta?: boolean
+  ctaText?: string
+  ctaLink?: StoryblokLink | string
+  [key: string]: unknown
+}
+
+const props = withDefaults(
+  defineProps<{
+    blok?: ServicesBlok | null
+  }>(),
+  { blok: () => null }
+)
+
+// ── Content Values ────────────────────────────────────────
+const title: ComputedRef<string> = computed(() =>
+  props.blok?.title || t('services.title')
+)
+
+const subtitle: ComputedRef<string | undefined> = computed(() =>
+  props.blok?.subtitle || t('services.subtitle')
+)
+
+const layout: ComputedRef<string> = computed(() =>
+  props.blok?.layout || 'grid-3'
+)
+
+const showCta: ComputedRef<boolean> = computed(() =>
+  props.blok?.showCta ?? false
+)
+
+const ctaText: ComputedRef<string | undefined> = computed(() =>
+  props.blok?.ctaText || undefined
+)
+
+const ctaLink: ComputedRef<StoryblokLink | string | undefined> = computed(() =>
+  props.blok?.ctaLink || undefined
+)
+
+const serviceItems: ComputedRef<ServiceItem[] | undefined> = computed(() =>
+  props.blok?.services?.length ? props.blok.services : undefined
+)
+
+// ── Grid Classes ──────────────────────────────────────────
+const gridClass: ComputedRef<string> = computed(() => {
+  switch (layout.value) {
+    case 'grid-2':
+      return 'grid gap-8 sm:grid-cols-2'
+    case 'grid-4':
+      return 'grid gap-8 sm:grid-cols-2 lg:grid-cols-4'
+    case 'list':
+      return 'grid gap-6 max-w-3xl mx-auto'
+    default:
+      // grid-3
+      return 'grid gap-8 sm:grid-cols-2 lg:grid-cols-3'
+  }
+})
+
+// ── Link Utilities ────────────────────────────────────────
+function resolveLink(link: StoryblokLink | string | undefined): string | undefined {
+  if (!link) return undefined
+  if (typeof link === 'string') return link
+  return link.cached_url || link.url || undefined
+}
+
+// RTL-aware chevron: flips direction
+const linkChevronIcon: ComputedRef<string> = computed(() =>
+  locale.value === 'ar'
+    ? 'heroicons:chevron-left-20-solid'
+    : 'heroicons:chevron-right-20-solid'
+)
+
+const linkChevronClass: ComputedRef<string> = computed(() =>
+  locale.value === 'ar' ? 'flex-row-reverse' : ''
+)
+
+// ── Icon Resolver ─────────────────────────────────────────
+interface ResolvedIcon {
+  type: 'iconify' | 'image' | 'none'
+  name?: string
+  src?: string
+  alt?: string
+}
+
+function resolveIcon(icon: IconField | string | undefined): ResolvedIcon {
+  if (!icon) return { type: 'none' }
+
+  // Direct string like "heroicons:heart"
+  if (typeof icon === 'string') {
+    return { type: 'iconify', name: icon }
+  }
+
+  // Storyblok icon plugin: { name: "heroicons:heart", type: "icon" }
+  if (typeof icon.name === 'string' && icon.name.includes(':') && !icon.filename) {
+    return { type: 'iconify', name: icon.name }
+  }
+
+  // Asset: { filename: "https://..." }
+  if (typeof icon.filename === 'string') {
+    return {
+      type: 'image',
+      src: icon.filename,
+      alt: icon.alt || ''
+    }
+  }
+
+  // Fallback: treat as iconify if there's a name but no filename
+  if (typeof icon.name === 'string') {
+    return { type: 'iconify', name: icon.name }
+  }
+
+  return { type: 'none' }
+}
+</script>
+</file>
+
+<file path="app/components/storyblok/TestimonialCard.vue">
+<template>
+  <!-- ====================================================
+       StoryblokTestimonialCard – Single Testimonial Card
+       ====================================================
+       - Star rating (1–5) with filled / outline MDI icons
+       - Quoted review text
+       - Patient avatar (photo or initials fallback)
+       - Service type + optional date
+       - Used by StoryblokTestimonials component
+       ==================================================== -->
+  <div class="flex h-full flex-col rounded-xl border border-border-default bg-surface-primary p-6 shadow-sm dark:bg-dark-surface">
+    <!-- Star Rating -->
+    <div
+      class="mb-4 flex items-center gap-0.5"
+      :aria-label="`${displayRating} out of 5 stars`"
+    >
+      <UIcon
+        v-for="(filled, idx) in starStates"
+        :key="idx"
+        :name="filled ? 'mdi:star' : 'mdi:star-outline'"
+        class="h-5 w-5 text-amber-400"
+        aria-hidden="true"
+      />
+    </div>
+
+    <!-- Review Text -->
+    <blockquote class="mb-5 flex-1 text-sm leading-relaxed text-text-secondary italic leading-[1.7]">
+      &ldquo;{{ displayReview }}&rdquo;
+    </blockquote>
+
+    <!-- Footer: patient info -->
+    <div class="flex items-center gap-3 border-t border-border-default pt-4">
+      <!-- Avatar photo -->
+      <div
+        v-if="photoSrc"
+        class="h-10 w-10 shrink-0 overflow-hidden rounded-full"
+      >
+        <NuxtImg
+          :src="photoSrc"
+          :alt="photoAlt"
+          loading="lazy"
+          class="h-full w-full object-cover"
+          width="40"
+          height="40"
+          decoding="async"
+        />
+      </div>
+      <!-- Initials fallback -->
+      <div
+        v-else
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-50 text-sm font-bold text-primary-500 dark:bg-primary-900/40 dark:text-primary-400"
+      >
+        {{ displayInitials }}
+      </div>
+
+      <div class="min-w-0">
+        <p class="truncate text-sm font-semibold text-text-primary">
+          {{ displayName }}
+        </p>
+        <p class="truncate text-xs text-text-muted">
+          <template v-if="displayServiceType">{{ displayServiceType }}</template>
+          <template v-if="displayServiceType && displayDate">&nbsp;&middot;&nbsp;</template>
+          <template v-if="displayDate">{{ displayDate }}</template>
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<!-- ====================================================
+       StoryblokTestimonialCard – Single Testimonial Card
+       ====================================================
+       - Star rating (1–5) with filled / outline MDI icons
+       - Quoted review text
+       - Patient avatar (photo or initials fallback)
+       - Service type + optional date
+       - Used by StoryblokTestimonials component
+       ==================================================== -->
+⋮----
+<!-- Star Rating -->
+⋮----
+<!-- Review Text -->
+⋮----
+&ldquo;{{ displayReview }}&rdquo;
+⋮----
+<!-- Footer: patient info -->
+⋮----
+<!-- Avatar photo -->
+⋮----
+<!-- Initials fallback -->
+⋮----
+{{ displayInitials }}
+⋮----
+{{ displayName }}
+⋮----
+<template v-if="displayServiceType">{{ displayServiceType }}</template>
+<template v-if="displayServiceType && displayDate">&nbsp;&middot;&nbsp;</template>
+<template v-if="displayDate">{{ displayDate }}</template>
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * StoryblokTestimonialCard
+ * ========================================================
+ *
+ * Props:
+ *   testimonial – TestimonialItem object with:
+ *     patientName, rating (1–5), reviewText, photo,
+ *     date, serviceType
+ * ========================================================
+ */
+
+import type { PropType } from 'vue'
+import { computed } from 'vue'
+
+interface StoryblokAsset {
+  filename?: string
+  alt?: string
+  focus?: string
+}
+
+export interface TestimonialItem {
+  _uid?: string
+  patientName?: string
+  rating?: number
+  reviewText?: string
+  photo?: StoryblokAsset
+  date?: string
+  serviceType?: string
+  [key: string]: unknown
+}
+
+const props = defineProps({
+  testimonial: {
+    type: Object as PropType<TestimonialItem>,
+    required: true
+  }
+})
+
+// ── Star Rating ───────────────────────────────────────────
+const displayRating = computed<number>(() => {
+  return Math.max(0, Math.min(5, Math.round(props.testimonial.rating || 0)))
+})
+
+const starStates = computed<boolean[]>(() => {
+  return Array.from({ length: 5 }, (_, i) => i < displayRating.value)
+})
+
+// ── Patient Info ──────────────────────────────────────────
+const displayName = computed<string>(() => {
+  return props.testimonial.patientName || ''
+})
+
+const displayInitials = computed<string>(() => {
+  const name = displayName.value
+  if (!name) return '?'
+  return name
+    .split(' ')
+    .map((part: string) => part.charAt(0))
+    .join('')
+    .toUpperCase()
+    .slice(0, 2)
+})
+
+const displayReview = computed<string>(() => {
+  return props.testimonial.reviewText || ''
+})
+
+const displayServiceType = computed<string | null>(() => {
+  return props.testimonial.serviceType || null
+})
+
+// ── Photo ─────────────────────────────────────────────────
+const photoSrc = computed<string | null>(() => {
+  return props.testimonial.photo?.filename || null
+})
+
+const photoAlt = computed<string>(() => {
+  return props.testimonial.photo?.alt || displayName.value
+})
+
+// ── Date ──────────────────────────────────────────────────
+const displayDate = computed<string | null>(() => {
+  const raw = props.testimonial.date
+  if (!raw) return null
+  try {
+    const date = new Date(raw)
+    return date.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  } catch {
+    return raw
+  }
+})
+</script>
+</file>
+
+<file path="app/components/storyblok/Testimonials.vue">
+<template>
+  <!-- ====================================================
+       StoryblokTestimonials – Patient Testimonials Section
+       ====================================================
+       - Section header with title + subtitle
+       - Three layout variants:
+         - carousel (default): CSS scroll-snap horizontal
+         - grid: responsive card grid
+         - list: stacked single-column
+       - Uses <StoryblokTestimonialCard /> sub-component
+       - Carousel: touch-swipeable, nav dots, desktop arrows
+       - Auto-slide timer with pause on interaction
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+  <section
+    v-editable="blok"
+    :aria-label="sectionTitle"
+    class="bg-surface-secondary px-4 py-20 sm:py-28"
+  >
+    <div class="mx-auto max-w-7xl">
+      <!-- ── Section Header ──────────────────────────── -->
+      <div class="mb-14 text-center">
+        <h2 class="mb-4 text-balance text-3xl font-bold text-text-primary sm:text-4xl">
+          {{ sectionTitle }}
+        </h2>
+        <p
+          v-if="sectionSubtitle"
+          class="mx-auto max-w-2xl text-lg text-text-secondary"
+        >
+          {{ sectionSubtitle }}
+        </p>
+      </div>
+
+      <!-- ── Grid Layout ────────────────────────────── -->
+      <div
+        v-if="currentLayout === 'grid' && items?.length"
+        class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <StoryblokTestimonialCard
+          v-for="item in items"
+          :key="item._uid"
+          :testimonial="item"
+        />
+      </div>
+
+      <!-- ── List Layout ────────────────────────────── -->
+      <div
+        v-else-if="currentLayout === 'list' && items?.length"
+        class="mx-auto max-w-3xl space-y-8"
+      >
+        <StoryblokTestimonialCard
+          v-for="item in items"
+          :key="item._uid"
+          :testimonial="item"
+        />
+      </div>
+
+      <!-- ── Carousel Layout ────────────────────────── -->
+      <div
+        v-else-if="items?.length"
+        class="relative"
+      >
+        <!-- Scrolling track -->
+        <div
+          ref="carouselRef"
+          @scroll="onCarouselScroll"
+          @mouseenter="pauseAutoSlide"
+          @mouseleave="resumeAutoSlide"
+          @touchstart.passive="pauseAutoSlide"
+          @touchend="debounceResumeSlide"
+          class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory -mx-4 px-4 pb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <div
+            v-for="item in items"
+            :key="item._uid"
+            class="snap-start shrink-0 w-[85vw] sm:w-[420px] lg:w-[460px]"
+          >
+            <StoryblokTestimonialCard :testimonial="item" />
+          </div>
+        </div>
+
+        <!-- Navigation dots -->
+        <div
+          v-if="items.length > 1"
+          class="mt-8 flex items-center justify-center gap-2"
+        >
+          <button
+            v-for="(_, idx) in items"
+            :key="idx"
+            @click="scrollToSlide(idx)"
+            class="rounded-full transition-all duration-300"
+            :class="activeSlide === idx ? 'w-6 bg-primary-500' : 'w-2.5 bg-border-default hover:bg-text-muted'"
+            :style="{ height: '10px' }"
+            :aria-label="`Go to testimonial ${idx + 1}`"
+          />
+        </div>
+
+        <!-- Desktop arrow buttons -->
+        <button
+          v-if="items.length > 1"
+          @click="scrollToSlide(activeSlide - 1)"
+          :disabled="activeSlide <= 0"
+          class="absolute start-0 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 rounded-full bg-surface-primary p-3 shadow-lg transition-all hover:bg-surface-secondary disabled:cursor-not-allowed disabled:opacity-0 lg:flex"
+          aria-label="Previous testimonial"
+        >
+          <UIcon
+            name="heroicons:chevron-left-20-solid"
+            class="h-5 w-5 text-text-primary"
+            aria-hidden="true"
+          />
+        </button>
+        <button
+          v-if="items.length > 1"
+          @click="scrollToSlide(activeSlide + 1)"
+          :disabled="activeSlide >= items.length - 1"
+          class="absolute end-0 top-1/2 z-10 hidden -translate-y-1/2 translate-x-1/2 rounded-full bg-surface-primary p-3 shadow-lg transition-all hover:bg-surface-secondary disabled:cursor-not-allowed disabled:opacity-0 lg:flex"
+          aria-label="Next testimonial"
+        >
+          <UIcon
+            name="heroicons:chevron-right-20-solid"
+            class="h-5 w-5 text-text-primary"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+    </div>
+  </section>
+</template>
+⋮----
+<!-- ====================================================
+       StoryblokTestimonials – Patient Testimonials Section
+       ====================================================
+       - Section header with title + subtitle
+       - Three layout variants:
+         - carousel (default): CSS scroll-snap horizontal
+         - grid: responsive card grid
+         - list: stacked single-column
+       - Uses <StoryblokTestimonialCard /> sub-component
+       - Carousel: touch-swipeable, nav dots, desktop arrows
+       - Auto-slide timer with pause on interaction
+       - RTL-aware via doc direction + logical properties
+       - Light/Dark mode via CSS variables
+       - Storyblok compatible: accepts `blok` prop
+       ==================================================== -->
+⋮----
+<!-- ── Section Header ──────────────────────────── -->
+⋮----
+{{ sectionTitle }}
+⋮----
+{{ sectionSubtitle }}
+⋮----
+<!-- ── Grid Layout ────────────────────────────── -->
+⋮----
+<!-- ── List Layout ────────────────────────────── -->
+⋮----
+<!-- ── Carousel Layout ────────────────────────── -->
+⋮----
+<!-- Scrolling track -->
+⋮----
+<!-- Navigation dots -->
+⋮----
+<!-- Desktop arrow buttons -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * StoryblokTestimonials – Testimonials Section
+ * ========================================================
+ *
+ * Props:
+ *   blok – Storyblok content block (optional)
+ *     - title          (string, multi-language)
+ *     - subtitle       (string, multi-language)
+ *     - testimonials   (array of TestimonialItem)
+ *     - layout         ('carousel' | 'grid' | 'list')
+ *     - autoSlide      (boolean, default: true)
+ *     - slideInterval  (number, ms, default: 5000)
+ *
+ * RTL behavior:
+ *   - Carousel scroll-snap respects doc direction
+ *   - Desktop arrows use logical start/end positioning
+ *   - Star ratings are direction-agnostic
+ *
+ * Uses:
+ *   <StoryblokTestimonialCard> from the same directory
+ * ========================================================
+ */
+
+import type { ComputedRef } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import type { TestimonialItem } from './TestimonialCard.vue'
+
+const { t } = useI18n()
+
+// ── Types ─────────────────────────────────────────────────
+interface TestimonialsBlok {
+  _uid?: string
+  component?: string
+  title?: string
+  subtitle?: string
+  testimonials?: TestimonialItem[]
+  layout?: 'carousel' | 'grid' | 'list'
+  autoSlide?: boolean
+  slideInterval?: number
+  [key: string]: unknown
+}
+
+const props = withDefaults(
+  defineProps<{
+    blok?: TestimonialsBlok | null
+  }>(),
+  { blok: () => null }
+)
+
+// ── Content Values ────────────────────────────────────────
+const sectionTitle: ComputedRef<string> = computed(() =>
+  props.blok?.title || t('testimonials.title')
+)
+
+const sectionSubtitle: ComputedRef<string | undefined> = computed(() =>
+  props.blok?.subtitle || t('testimonials.subtitle')
+)
+
+const currentLayout: ComputedRef<string> = computed(() =>
+  props.blok?.layout || 'carousel'
+)
+
+const autoSlideEnabled: ComputedRef<boolean> = computed(() =>
+  props.blok?.autoSlide ?? true
+)
+
+const slideIntervalMs: ComputedRef<number> = computed(() =>
+  props.blok?.slideInterval || 5000
+)
+
+const items: ComputedRef<TestimonialItem[] | undefined> = computed(() =>
+  props.blok?.testimonials?.length ? props.blok.testimonials : undefined
+)
+
+// ── Carousel Logic ────────────────────────────────────────
+const carouselRef = ref<HTMLElement | null>(null)
+const activeSlide = ref(0)
+
+function onCarouselScroll(): void {
+  const el = carouselRef.value
+  if (!el) return
+
+  const { scrollLeft, scrollWidth, clientWidth } = el
+  const maxScroll = scrollWidth - clientWidth
+
+  if (maxScroll <= 0) {
+    activeSlide.value = 0
+    return
+  }
+
+  const progress = scrollLeft / maxScroll
+  const count = items.value?.length || 1
+  activeSlide.value = Math.round(progress * (count - 1))
+}
+
+function scrollToSlide(index: number): void {
+  const el = carouselRef.value
+  if (!el || !items.value) return
+
+  const clamped = Math.max(0, Math.min(index, items.value.length - 1))
+  const children = el.children as HTMLCollection
+
+  if (clamped < children.length) {
+    const slide = children[clamped] as HTMLElement
+    slide.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start'
+    })
+    activeSlide.value = clamped
+  }
+}
+
+// ── Auto-slide Timer ─────────────────────────────────────
+let autoSlideTimer: ReturnType<typeof setInterval> | null = null
+
+function startAutoSlide(): void {
+  if (!autoSlideEnabled.value || !items.value || items.value.length <= 1) return
+
+  autoSlideTimer = setInterval(() => {
+    const count = items.value?.length || 0
+    if (count <= 1) return
+    const next = (activeSlide.value + 1) % count
+    scrollToSlide(next)
+  }, slideIntervalMs.value)
+}
+
+function pauseAutoSlide(): void {
+  if (autoSlideTimer !== null) {
+    clearInterval(autoSlideTimer)
+    autoSlideTimer = null
+  }
+}
+
+function resumeAutoSlide(): void {
+  // Don't restart immediately after pause – wait for debounce or clean restart
+  startAutoSlide()
+}
+
+let resumeTimeout: ReturnType<typeof setTimeout> | null = null
+
+function debounceResumeSlide(): void {
+  if (resumeTimeout !== null) {
+    clearTimeout(resumeTimeout)
+  }
+  resumeTimeout = setTimeout(() => {
+    startAutoSlide()
+  }, 3000)
+}
+
+onMounted(() => {
+  startAutoSlide()
+})
+
+onUnmounted(() => {
+  pauseAutoSlide()
+  if (resumeTimeout !== null) {
+    clearTimeout(resumeTimeout)
+  }
+})
+</script>
+</file>
+
+<file path="app/composables/useClinicSeo.ts">
+/**
+ * ========================================================
+ * useClinicSeo – Reusable SEO Meta Composable
+ * ========================================================
+ *
+ * Provides a consistent SEO meta-tagging API for all pages.
+ * - Auto-formats title: "{Page Title} | Shafa Care Clinic"
+ * - Sets Open Graph (og:), Twitter Card, and standard meta
+ * - Supports per-page overrides for title, description, image
+ * - Optional JSON-LD injection for structured data
+ * - Locale-aware via i18n – hreflang/canonical handled by
+ *   @nuxtjs/i18n v9 seo module (configured in nuxt.config.ts)
+ *
+ * Usage:
+ *   // Basic – uses i18n defaults for title/description
+ *   useClinicSeo()
+ *
+ *   // With custom values
+ *   useClinicSeo({
+ *     title: 'About Us',
+ *     description: 'Learn about our clinic and team.'
+ *   })
+ *
+ *   // With JSON-LD structured data
+ *   useClinicSeo({
+ *     title: 'Services',
+ *     jsonLd: { '@context': 'https://schema.org', '@type': 'MedicalBusiness', ... }
+ *   })
+ *
+ *   // With custom OG image
+ *   useClinicSeo({
+ *     title: 'Contact',
+ *     image: 'https://shafacare.pages.dev/images/contact-hero.jpg'
+ *   })
+ * ========================================================
+ */
+⋮----
+export interface ClinicSeoOptions {
+  /** Page title (without " | Shafa Care Clinic" suffix) */
+  title?: string
+  /** Meta description */
+  description?: string
+  /** Open Graph / Twitter Card image URL */
+  image?: string
+  /** Alt text for the OG image */
+  imageAlt?: string
+  /** og:type (default: "website") */
+  ogType?: string
+  /** JSON-LD structured data object(s) to inject */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
+}
+⋮----
+/** Page title (without " | Shafa Care Clinic" suffix) */
+⋮----
+/** Meta description */
+⋮----
+/** Open Graph / Twitter Card image URL */
+⋮----
+/** Alt text for the OG image */
+⋮----
+/** og:type (default: "website") */
+⋮----
+/** JSON-LD structured data object(s) to inject */
+⋮----
+export function useClinicSeo(options?: ClinicSeoOptions)
+⋮----
+// ── Build the fully-qualified page title ────────────────
+⋮----
+// ── Description (page-specific or site default) ─────────
+⋮----
+// ── Open Graph / Twitter image ─────────────────────────
+⋮----
+// ── Current page canonical URL ─────────────────────────
+⋮----
+// ── og:locale mapping ──────────────────────────────────
+⋮----
+// ── Inject all SEO meta tags ────────────────────────────
+⋮----
+// Standard meta
+⋮----
+// Open Graph
+⋮----
+// Twitter Card
+⋮----
+// ── Optional JSON-LD structured data injection ─────────
+⋮----
+// ── Return computed values for consumer use ────────────
+</file>
+
+<file path="app/layouts/default.vue">
+<template>
+  <!-- ====================================================
+       Default Layout – Wraps every page with header + footer
+       ====================================================
+       - Flex column layout that pushes footer to bottom
+       - Skip-to-content link for accessibility
+       - Semantic HTML5 structure
+       - RTL-aware: layout adapts via CSS logical properties
+  -->
+  <div class="flex min-h-screen flex-col">
+    <!--
+      Skip-to-content link for keyboard / screen reader users.
+      Hidden visually but focusable on Tab press.
+    -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:inset-x-0 focus:top-0 focus:z-[100] focus:flex focus:h-12 focus:items-center focus:justify-center focus:bg-primary-500 focus:text-white focus:outline-none"
+    >
+      {{ $t('common.skipToContent') }}
+    </a>
+
+    <!-- Global Header -->
+    <AppHeader />
+
+    <!--
+      Main Content Area
+      - `id="main-content"` – target for skip link
+      - `flex-1` – pushes footer to bottom on short pages
+      - `outline-none` – removes focus ring on programmatic focus
+    -->
+    <main
+      id="main-content"
+      class="flex-1 outline-none"
+      role="main"
+      tabindex="-1"
+    >
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <AppFooter />
+  </div>
+</template>
+⋮----
+<!-- ====================================================
+       Default Layout – Wraps every page with header + footer
+       ====================================================
+       - Flex column layout that pushes footer to bottom
+       - Skip-to-content link for accessibility
+       - Semantic HTML5 structure
+       - RTL-aware: layout adapts via CSS logical properties
+  -->
+⋮----
+<!--
+      Skip-to-content link for keyboard / screen reader users.
+      Hidden visually but focusable on Tab press.
+    -->
+⋮----
+{{ $t('common.skipToContent') }}
+⋮----
+<!-- Global Header -->
+⋮----
+<!--
+      Main Content Area
+      - `id="main-content"` – target for skip link
+      - `flex-1` – pushes footer to bottom on short pages
+      - `outline-none` – removes focus ring on programmatic focus
+    -->
+⋮----
+<!-- Global Footer -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * Default Layout
+ * ========================================================
+ *
+ * This layout wraps every page in the application.
+ * It provides:
+ * - Skip-to-content link for accessibility
+ * - Sticky header (GlobalAppHeader) at the top
+ * - Main content slot with proper landmark role
+ * - Global footer (GlobalAppFooter) at the bottom
+ * - Sticky footer behavior via flex column min-h-screen
+ *
+ * Nuxt automatically applies this layout because it's
+ * named `default.vue` in the `app/layouts/` directory.
+ * ========================================================
+ */
+
+// No additional setup needed — the layout is purely structural.
+</script>
+</file>
+
+<file path="app/middleware/storyblok.ts">
+/**
+ * ========================================================
+ * Storyblok Preview Middleware
+ * ========================================================
+ *
+ * This middleware detects when the Storyblok Visual Editor
+ * loads the page in preview/draft mode (via the `_storyblok`
+ * query parameter) and sets a cookie to indicate preview mode.
+ *
+ * When the preview cookie is present, the Storyblok bridge
+ * will fetch the latest draft content instead of the
+ * published version.
+ * ========================================================
+ */
+⋮----
+/**
+   * Check if the URL contains the Storyblok preview query param.
+   * Storyblok appends `?_storyblok=true` when loading the page
+   * inside the Visual Editor iframe.
+   */
+⋮----
+// Set a cookie to persist the preview mode during editing
+⋮----
+maxAge: 60 * 60 * 24 // 24 hours
+⋮----
+// Log for debugging in development
+⋮----
+/**
+   * Optional: Clear the preview cookie when leaving preview mode.
+   * The cookie will automatically expire after 24 hours.
+   */
+</file>
+
+<file path="app/pages/index.vue">
+<template>
+  <!-- ====================================================
+       Home Page – Shafa Care Clinic
+       ====================================================
+       Landing page composed of Storyblok-ready sections.
+       - HeroSection (LCP-optimized with Storyblok props)
+       - About, Services, CTA, Contact (placeholder sections
+         ready for Storyblok component migration in Phase 3+)
+       - Each section has proper aria-labels and semantic tags
+       - RTL-aware layout via logical CSS properties
+  -->
+  <div>
+    <!-- ── Hero Section ─────────────────────────────── -->
+    <StoryblokHeroSection
+      :blok="heroBlok"
+    />
+
+    <!-- ── About Us Section ─────────────────────────── -->
+    <section
+      id="about"
+      aria-label="About us"
+      class="bg-surface-primary px-4 py-20 sm:py-28"
+    >
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
+          {{ $t('about.title') }}
+        </h2>
+        <p class="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed">
+          {{ $t('about.description') }}
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Services Section ─────────────────────────── -->
+    <section
+      id="services"
+      aria-label="Our services"
+      class="bg-surface-secondary px-4 py-20 sm:py-28"
+    >
+      <div class="mx-auto max-w-6xl">
+        <!-- Section header -->
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-text-primary sm:text-4xl">
+            {{ $t('services.title') }}
+          </h2>
+          <p class="text-lg text-text-secondary">
+            {{ $t('services.subtitle') }}
+          </p>
+        </div>
+
+        <!-- Service cards grid -->
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article
+            v-for="i in 3"
+            :key="i"
+            class="group rounded-xl border border-border-default bg-surface-primary p-6 shadow-sm transition-all duration-200 hover:shadow-md"
+          >
+            <!-- Icon container -->
+            <div
+              class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900"
+            >
+              <UIcon
+                name="heroicons:heart"
+                class="h-6 w-6 text-primary-500"
+                aria-hidden="true"
+              />
+            </div>
+
+            <h3 class="mb-2 text-xl font-semibold text-text-primary">
+              {{ $t('services.title') }} {{ i }}
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Comprehensive medical service number {{ i }} — providing expert care with compassion and state-of-the-art facilities.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA Section ─────────────────────────────── -->
+    <section
+      aria-label="Call to action"
+      class="relative bg-primary-600 px-4 py-20 text-white"
+    >
+      <!-- Subtle pattern overlay -->
+      <div
+        class="pointer-events-none absolute inset-0 opacity-10"
+        style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px); background-size: 40px 40px;"
+        aria-hidden="true"
+      />
+
+      <div class="relative mx-auto max-w-3xl text-center">
+        <h2 class="mb-4 text-3xl font-bold sm:text-4xl">
+          {{ $t('hero.cta') }}
+        </h2>
+        <p class="mb-8 text-lg text-white/80">
+          {{ $t('hero.subtitle') }}
+        </p>
+        <UButton
+          size="xl"
+          color="white"
+          :label="$t('common.bookNow')"
+          class="rounded-xl px-8 py-3.5 text-base font-semibold text-primary-700 shadow-lg transition-all duration-200 hover:shadow-xl active:scale-[0.98]"
+        />
+      </div>
+    </section>
+
+    <!-- ── Structured Data (JSON-LD, renderless) ──── -->
+    <SeoMedicalSchema
+      url="https://shafacare.pages.dev"
+      price-range="$$"
+      :medical-specialty="['GeneralPractice', 'FamilyMedicine']"
+    />
+
+    <!-- ── Contact Section ──────────────────────────── -->
+    <section
+      id="contact"
+      aria-label="Contact information"
+      class="bg-surface-primary px-4 py-20 sm:py-28"
+    >
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
+          {{ $t('contact.title') }}
+        </h2>
+        <p class="mx-auto mb-10 max-w-2xl text-lg text-text-secondary">
+          {{ $t('contact.subtitle') }}
+        </p>
+
+        <div
+          class="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-10"
+        >
+          <!-- Phone -->
+          <a
+            href="tel:+966XXXXXXXXX"
+            class="group flex items-center gap-3 text-text-secondary transition-colors hover:text-primary-500"
+          >
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900">
+              <UIcon name="heroicons:phone" class="h-5 w-5 text-primary-500" />
+            </span>
+            <span class="text-base font-medium">+966 XX XXX XXXX</span>
+          </a>
+
+          <!-- Email -->
+          <a
+            href="mailto:info@shafacare.com"
+            class="group flex items-center gap-3 text-text-secondary transition-colors hover:text-primary-500"
+          >
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900">
+              <UIcon name="heroicons:envelope" class="h-5 w-5 text-primary-500" />
+            </span>
+            <span class="text-base font-medium">info@shafacare.com</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+⋮----
+<!-- ====================================================
+       Home Page – Shafa Care Clinic
+       ====================================================
+       Landing page composed of Storyblok-ready sections.
+       - HeroSection (LCP-optimized with Storyblok props)
+       - About, Services, CTA, Contact (placeholder sections
+         ready for Storyblok component migration in Phase 3+)
+       - Each section has proper aria-labels and semantic tags
+       - RTL-aware layout via logical CSS properties
+  -->
+⋮----
+<!-- ── Hero Section ─────────────────────────────── -->
+⋮----
+<!-- ── About Us Section ─────────────────────────── -->
+⋮----
+{{ $t('about.title') }}
+⋮----
+{{ $t('about.description') }}
+⋮----
+<!-- ── Services Section ─────────────────────────── -->
+⋮----
+<!-- Section header -->
+⋮----
+{{ $t('services.title') }}
+⋮----
+{{ $t('services.subtitle') }}
+⋮----
+<!-- Service cards grid -->
+⋮----
+<!-- Icon container -->
+⋮----
+{{ $t('services.title') }} {{ i }}
+⋮----
+Comprehensive medical service number {{ i }} — providing expert care with compassion and state-of-the-art facilities.
+⋮----
+<!-- ── CTA Section ─────────────────────────────── -->
+⋮----
+<!-- Subtle pattern overlay -->
+⋮----
+{{ $t('hero.cta') }}
+⋮----
+{{ $t('hero.subtitle') }}
+⋮----
+<!-- ── Structured Data (JSON-LD, renderless) ──── -->
+⋮----
+<!-- ── Contact Section ──────────────────────────── -->
+⋮----
+{{ $t('contact.title') }}
+⋮----
+{{ $t('contact.subtitle') }}
+⋮----
+<!-- Phone -->
+⋮----
+<!-- Email -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * Home Page – Shafa Care Clinic
+ * ========================================================
+ *
+ * Main landing page composed of modular sections.
+ * In the full build (Phase 3+), all sections will be
+ * driven by Storyblok CMS content blocks.
+ *
+ * For now, a static Storyblok-compatible heroBlok object
+ * provides the HeroSection props, demonstrating the
+ * Storyblok integration pattern with i18n fallbacks.
+ *
+ * SEO meta tags are set via useClinicSeo() composable.
+ * Structured data is injected via <SeoMedicalSchema />.
+ * ========================================================
+ */
+
+const { t } = useI18n()
+
+// ── Hero Section Storyblok-compatible props ─────────────
+// This static object mirrors what Storyblok would send.
+// When Storyblok is connected, this will come from the API.
+const heroBlok = {
+  _uid: 'hero-static',
+  component: 'hero-section',
+  headline: t('hero.title'),
+  subheadline: t('hero.subtitle'),
+  ctaText: t('hero.cta'),
+  ctaLink: {
+    url: '#contact'
+  },
+  // No background image → falls back to gradient
+  backgroundImage: null,
+  layout: 'centered',
+  animationType: 'fade'
+}
+
+// ── Dynamic SEO Meta Tags (via reusable composable) ────
+// Sets title, description, OG, Twitter Card, and og:locale
+// Title format: "Shafa Care Clinic – Your Health, Our Priority"
+useClinicSeo()
+
+// NOTE: JSON-LD structured data is injected via the
+// <SeoMedicalSchema /> component in the template below.
+// This keeps the schema logic in a single reusable component
+// and enables per-page override of business data.
+</script>
+</file>
+
+<file path="app/pages/privacy.vue">
+<template>
+  <!-- ====================================================
+       Privacy Policy Page
+       ====================================================
+       Static placeholder for the clinic's privacy policy.
+       Will be replaced with Storyblok content in Phase 2.
+  -->
+  <div class="mx-auto max-w-4xl px-4 py-20 sm:py-28">
+    <article>
+      <h1 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
+        {{ $t('footer.privacy') }}
+      </h1>
+
+      <div class="prose prose-slate max-w-none dark:prose-invert space-y-6 text-text-secondary leading-relaxed">
+        <p>
+          At {{ $t('site.name') }}, we are committed to protecting your privacy.
+          This Privacy Policy explains how we collect, use, disclose, and safeguard
+          your information when you visit our website.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Information We Collect</h2>
+        <p>
+          We may collect personal information such as your name, email address,
+          phone number, and any other details you provide when filling out our
+          contact form or booking an appointment.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">How We Use Your Information</h2>
+        <p>
+          The information we collect is used to respond to your inquiries, process
+          appointment requests, improve our services, and send relevant updates
+          with your consent.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Data Protection</h2>
+        <p>
+          We implement appropriate security measures to protect your personal
+          information. However, no method of transmission over the Internet is
+          100% secure.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us
+          at <a href="mailto:info@shafacare.com" class="text-primary-500 hover:underline">info@shafacare.com</a>.
+        </p>
+
+        <p class="pt-6 text-sm text-text-muted">
+          Last updated: July 2026
+        </p>
+      </div>
+    </article>
+  </div>
+</template>
+⋮----
+<!-- ====================================================
+       Privacy Policy Page
+       ====================================================
+       Static placeholder for the clinic's privacy policy.
+       Will be replaced with Storyblok content in Phase 2.
+  -->
+⋮----
+{{ $t('footer.privacy') }}
+⋮----
+At {{ $t('site.name') }}, we are committed to protecting your privacy.
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * Privacy Policy Page
+ * ========================================================
+ * Static placeholder page. Will be migrated to Storyblok
+ * CMS content in Phase 2.
+ * ========================================================
+ */
+
+useClinicSeo({
+  title: 'Privacy Policy',
+  description: 'Privacy Policy for Shafa Care Clinic – how we collect, use, and protect your personal information.'
+})
+</script>
+</file>
+
+<file path="app/pages/terms.vue">
+<template>
+  <!-- ====================================================
+       Terms of Service Page
+       ====================================================
+       Static placeholder for the clinic's terms of service.
+       Will be replaced with Storyblok content in Phase 2.
+  -->
+  <div class="mx-auto max-w-4xl px-4 py-20 sm:py-28">
+    <article>
+      <h1 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
+        {{ $t('footer.terms') }}
+      </h1>
+
+      <div class="prose prose-slate max-w-none dark:prose-invert space-y-6 text-text-secondary leading-relaxed">
+        <p>
+          Welcome to {{ $t('site.name') }}. By accessing and using this website,
+          you agree to comply with and be bound by the following terms and conditions.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Use of the Website</h2>
+        <p>
+          This website is provided for informational purposes only. It does not
+          constitute medical advice, diagnosis, or treatment. Always consult a
+          qualified healthcare provider for medical concerns.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Appointments & Services</h2>
+        <p>
+          Appointment requests submitted through this website are subject to
+          availability. We reserve the right to modify or cancel appointments
+          as necessary.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Intellectual Property</h2>
+        <p>
+          All content on this website, including text, graphics, logos, and images,
+          is the property of {{ $t('site.name') }} unless otherwise noted and is
+          protected by applicable copyright laws.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Limitation of Liability</h2>
+        <p>
+          {{ $t('site.name') }} shall not be liable for any damages arising from
+          the use or inability to use this website or its content.
+        </p>
+
+        <h2 class="text-xl font-semibold text-text-primary">Changes to Terms</h2>
+        <p>
+          We reserve the right to modify these terms at any time. Changes will be
+          effective immediately upon posting to this page.
+        </p>
+
+        <p class="pt-6 text-sm text-text-muted">
+          Last updated: July 2026
+        </p>
+      </div>
+    </article>
+  </div>
+</template>
+⋮----
+<!-- ====================================================
+       Terms of Service Page
+       ====================================================
+       Static placeholder for the clinic's terms of service.
+       Will be replaced with Storyblok content in Phase 2.
+  -->
+⋮----
+{{ $t('footer.terms') }}
+⋮----
+Welcome to {{ $t('site.name') }}. By accessing and using this website,
+⋮----
+is the property of {{ $t('site.name') }} unless otherwise noted and is
+⋮----
+{{ $t('site.name') }} shall not be liable for any damages arising from
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * Terms of Service Page
+ * ========================================================
+ * Static placeholder page. Will be migrated to Storyblok
+ * CMS content in Phase 2.
+ * ========================================================
+ */
+
+useClinicSeo({
+  title: 'Terms of Service',
+  description: 'Terms of Service for Shafa Care Clinic – rules and guidelines for using our website and services.'
+})
+</script>
+</file>
+
+<file path="app/app.config.ts">
+// https://ui.nuxt.com/docs/getting-started/theming
+⋮----
+/**
+     * Primary color: Uses the custom 'primary' palette defined
+     * in our Tailwind CSS @theme block (deep burgundy / crimson).
+     * Neutral: 'slate' provides clean, clinical undertones.
+     */
+</file>
+
+<file path="app/app.vue">
+<template>
+  <div>
+    <!--
+      NuxtRouteAnnouncer – Announces route changes to screen readers
+      for accessibility (WCAG 2.4.1 Skip Navigation).
+    -->
+    <NuxtRouteAnnouncer />
+
+    <!--
+      NuxtLoadingIndicator – Shows a top progress bar during
+      client-side navigation. Color matches our brand primary.
+    -->
+    <NuxtLoadingIndicator
+      color="#C41E3A"
+      :height="3"
+      :duration="3000"
+    />
+
+    <!--
+      Main application layout wrapper.
+      Nuxt resolves ~/layouts/default.vue automatically.
+    -->
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
+⋮----
+<!--
+      NuxtRouteAnnouncer – Announces route changes to screen readers
+      for accessibility (WCAG 2.4.1 Skip Navigation).
+    -->
+⋮----
+<!--
+      NuxtLoadingIndicator – Shows a top progress bar during
+      client-side navigation. Color matches our brand primary.
+    -->
+⋮----
+<!--
+      Main application layout wrapper.
+      Nuxt resolves ~/layouts/default.vue automatically.
+    -->
+⋮----
+<script setup lang="ts">
+/**
+ * ========================================================
+ * Root App Component
+ * ========================================================
+ *
+ * Responsibilities:
+ * 1. Set document direction (rtl/ltr) based on active locale
+ * 2. Set document lang attribute for accessibility and SEO
+ * 3. Provide Nuxt UI color mode context (light/dark)
+ * ========================================================
+ */
+
+const { locale } = useI18n()
+const colorMode = useColorMode()
+
+/**
+ * Sync the HTML `dir` and `lang` attributes whenever the locale changes.
+ * - Arabic (ar) → dir="rtl", lang="ar-SA"
+ * - English (en) → dir="ltr", lang="en-US"
+ *
+ * The `watch` runs `immediate: true` so the initial page load sets
+ * the correct direction before the first paint.
+ */
+/**
+ * Client-side helper to set the HTML `dir` and `lang` attributes
+ * based on the current locale. This ensures proper RTL/LTR rendering
+ * and accessibility (screen readers, search engines).
+ */
+function setHtmlAttributes(newLocale: string): void {
+  if (import.meta.client) {
+    const htmlElement = document.documentElement
+
+    if (newLocale === 'ar') {
+      htmlElement.dir = 'rtl'
+      htmlElement.lang = 'ar-SA'
+    } else {
+      htmlElement.dir = 'ltr'
+      htmlElement.lang = 'en-US'
+    }
+  }
+}
+
+/**
+ * Set initial attributes after DOM mount (client-side only).
+ * This avoids `document` being undefined during SSR.
+ */
+onMounted(() => {
+  setHtmlAttributes(locale.value)
+})
+
+/**
+ * Watch for locale changes and update DOM attributes accordingly.
+ * The `immediate` flag is intentionally omitted because the initial
+ * setup is handled by `onMounted` above.
+ */
+watch(locale, (newLocale) => {
+  setHtmlAttributes(newLocale)
+})
+
+/**
+ * Set HTML attributes during SSR for SEO and accessibility.
+ * - `dir`: Document direction (rtl for Arabic, ltr for English)
+ * - `lang`: Language code for search engines and screen readers
+ * - The `class` attribute is managed by `useColorMode` for dark mode
+ */
+useHead({
+  htmlAttrs: {
+    dir: computed(() => (locale.value === 'ar' ? 'rtl' : 'ltr')),
+    lang: computed(() => (locale.value === 'ar' ? 'ar-SA' : 'en-US'))
+  }
+})
+</script>
+</file>
+
+<file path="i18n/locales/ar.json">
+{
+  "site": {
+    "name": "عيادة شفا الطبية",
+    "tagline": "صحتك، أولويتنا",
+    "description": "رعاية طبية مهنية ورحيمة في عيادة شفا الطبية."
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "services": "الخدمات",
+    "doctors": "الكادر الطبي",
+    "testimonials": "آراء المرضى",
+    "contact": "اتصل بنا",
+    "faq": "الأسئلة الشائعة"
+  },
+  "hero": {
+    "title": "مرحباً بكم في عيادة شفا الطبية",
+    "subtitle": "رعاية طبية شاملة برحمة وخبرة",
+    "cta": "احجز موعداً"
+  },
+  "about": {
+    "title": "عن عيادة شفا الطبية",
+    "description": "نقدم خدمات رعاية صحية عالية الجودة لمجتمعنا بنهج يركز على المريض.",
+    "missionStatement": "مهمتنا هي تقديم رعاية صحية استثنائية تركز على المريض لتحسين رفاهية مجتمعنا من خلال التميز السريري والرحمة والابتكار.",
+    "ourValues": "قيمنا"
+  },
+  "services": {
+    "title": "خدماتنا الطبية",
+    "subtitle": "رعاية صحية شاملة مصممة خصيصاً لاحتياجاتك"
+  },
+  "doctors": {
+    "title": "تعرف على فريقنا الطبي",
+    "subtitle": "خبراء مخلصون لرعاية صحتك"
+  },
+  "testimonials": {
+    "title": "ماذا يقول مرضانا",
+    "subtitle": "استمع لمن يثقون بنا في صحتهم"
+  },
+  "contact": {
+    "title": "تواصل معنا",
+    "subtitle": "نحن هنا لمساعدتك. تواصل معنا.",
+    "address": "العنوان",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "hours": "ساعات العمل",
+    "form": {
+      "name": "الاسم الكامل",
+      "phone": "رقم الهاتف",
+      "email": "البريد الإلكتروني",
+      "message": "رسالتك",
+      "submit": "إرسال الرسالة",
+      "success": "شكراً لك! تم إرسال رسالتك بنجاح.",
+      "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+    }
+  },
+  "faq": {
+    "title": "الأسئلة الشائعة"
+  },
+  "footer": {
+    "quickLinks": "روابط سريعة",
+    "services": "خدماتنا",
+    "contactInfo": "معلومات الاتصال",
+    "copyright": "© {year} عيادة شفا الطبية. جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة"
+  },
+  "common": {
+    "skipToContent": "تخطى إلى المحتوى الرئيسي",
+    "readMore": "اقرأ المزيد",
+    "bookNow": "احجز الآن",
+    "learnMore": "اعرف المزيد",
+    "close": "إغلاق",
+    "menu": "القائمة",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "language": "اللغة"
+  }
+}
+</file>
+
+<file path="i18n/locales/en.json">
+{
+  "site": {
+    "name": "Shafa Care Clinic",
+    "tagline": "Your Health, Our Priority",
+    "description": "Professional, compassionate medical care at Shafa Care Clinic."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "doctors": "Medical Staff",
+    "testimonials": "Testimonials",
+    "contact": "Contact Us",
+    "faq": "FAQ"
+  },
+  "hero": {
+    "title": "Welcome to Shafa Care Clinic",
+    "subtitle": "Comprehensive medical care with compassion and expertise",
+    "cta": "Book an Appointment"
+  },
+  "about": {
+    "title": "About Shafa Care Clinic",
+    "description": "Providing quality healthcare services to our community with a patient-centered approach.",
+    "missionStatement": "Our mission is to deliver exceptional, patient-centered healthcare that improves the wellbeing of our community through clinical excellence, compassion, and innovation.",
+    "ourValues": "Our Values"
+  },
+  "services": {
+    "title": "Our Medical Services",
+    "subtitle": "Comprehensive healthcare tailored to your needs"
+  },
+  "doctors": {
+    "title": "Meet Our Medical Team",
+    "subtitle": "Experienced professionals dedicated to your wellbeing"
+  },
+  "testimonials": {
+    "title": "What Our Patients Say",
+    "subtitle": "Hear from those who trust us with their health"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "We're here to help. Reach out to us.",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "Working Hours",
+    "form": {
+      "name": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you! Your message has been sent.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contactInfo": "Contact Information",
+    "copyright": "© {year} Shafa Care Clinic. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "skipToContent": "Skip to main content",
+    "readMore": "Read More",
+    "bookNow": "Book Now",
+    "learnMore": "Learn More",
+    "close": "Close",
+    "menu": "Menu",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language"
+  }
+}
+</file>
+
+<file path="public/images/.gitkeep">
+
+</file>
+
+<file path="public/robots.txt">
+# ───────────────────────────────────────────────
+# Shafa Care Clinic – Robots Exclusion Protocol
+# ───────────────────────────────────────────────
+# Production: https://shafacare.pages.dev
+# Allow all respectable crawlers; disallow admin/internal paths.
+
+User-agent: *
+Allow: /
+Disallow: /_nuxt/
+Disallow: /_payload/
+Disallow: /api/
+
+# Crawl-delay: be gentle to the server
+Crawl-delay: 10
+
+# ── Sitemaps ──────────────────────────────────
+Sitemap: https://shafacare.pages.dev/sitemap.xml
+</file>
+
+<file path=".editorconfig">
+# editorconfig.org
+root = true
+
+[*]
+indent_size = 2
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+</file>
+
+<file path=".env.example">
+# ========================================================
+# Shafa Care Clinic – Environment Variables (Example)
+# ========================================================
+# Copy this file to .env and fill in your values:
+#   cp .env.example .env
+
+# ── Storyblok Headless CMS ─────────────────────────────
+# 1. Go to your Storyblok space: Settings > Access Tokens
+# 2. Create or copy the "Preview" token for development
+# 3. Create or copy the "Public" token for production
+STORYBLOK_ACCESS_TOKEN=
+
+# ── Site URL ───────────────────────────────────────────
+# The public URL of your website (no trailing slash).
+# Used for canonical URLs, sitemap, and Open Graph tags.
+NUXT_PUBLIC_SITE_URL=https://shafacare.pages.dev
+</file>
+
+<file path=".gitignore">
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+</file>
+
+<file path="eslint.config.mjs">
+// @ts-check
+⋮----
+// Your custom configs here
+</file>
+
+<file path="i18n.config.ts">
+// https://i18n.nuxtjs.org/docs/options/vue-i18n
+import type { I18nOptions } from 'vue-i18n'
+⋮----
+/**
+   * Disable legacy mode to use Vue I18n Composition API
+   * (required for Nuxt 4 / vue-i18n v10 compatibility)
+   */
+⋮----
+/**
+   * Fallback locale used when a translation key is missing
+   * in the active locale. Falls back to Arabic.
+   */
+⋮----
+/**
+   * Default locale for the Vue I18n instance.
+   * The actual initial locale is determined by the Nuxt i18n module
+   * based on browser detection and cookies.
+   */
+⋮----
+/**
+   * Silent fallback – don't warn when a key is missing
+   * in the active locale (it will fall back gracefully).
+   */
+⋮----
+/**
+   * Silent translation warnings in production
+   */
+</file>
+
+<file path="nuxt.config.ts">
+// https://nuxt.com/docs/api/configuration/nuxt-config
+⋮----
+/**
+   * ========================================================
+   * Application Metadata
+   * ========================================================
+   */
+⋮----
+// ── Google Fonts Preconnect ─────────────────────
+⋮----
+// ── Google Fonts Preload (Inter + Tajawal) ────
+⋮----
+// ── Google Fonts Stylesheets ───────────────────
+⋮----
+/**
+   * ========================================================
+   * Development Tools
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * CSS – Global stylesheet with Tailwind v4 and design tokens
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * Modules
+   * - @nuxt/ui: Tailwind-based UI component library
+   * - @nuxt/image: Optimized image component with WebP/AVIF
+   * - @nuxtjs/i18n: Internationalization (Arabic/English, RTL/LTR)
+   * - @nuxtjs/sitemap: Automatic sitemap.xml generation
+   * - @storyblok/nuxt: Headless CMS visual editor integration
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * Nuxt UI v4 Configuration
+   * - Primary color uses our deep burgundy custom palette
+   * - Neutral uses slate for clean medical aesthetic
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * Internationalization (i18n) v9 Configuration
+   * - Arabic (ar) is the default locale (RTL)
+   * - English (en) is secondary (LTR)
+   * - Strategy: prefix – /en/ for English, / for Arabic (default)
+   * - SEO features enabled for hreflang tags
+   * - Browser language detection with cookie persistence
+   * - Lazy loading for locale files to reduce initial bundle
+   * ========================================================
+   */
+⋮----
+// vueI18n is deprecated in v9 – config is handled via nuxt.config.ts
+// Locale files are stored in i18n/locales/
+⋮----
+/**
+   * ========================================================
+   * Sitemap Configuration (@nuxtjs/sitemap v7)
+   * - Pre-rendered at build time via zeroRuntime: true
+   * - Full i18n locale awareness for multi-language URLs
+   * - Dynamic route integration ready for Storyblok pages
+   * - Auto-compressed gzip sitemap output
+   * ========================================================
+   */
+⋮----
+// Dynamic routes from Storyblok will be added here in Phase 2
+// Example:
+//   const { storyblokApi } = useStoryblokApi()
+//   const { data } = await storyblokApi.get('cdn/stories', {
+//     version: 'published',
+//     starts_with: 'pages/'
+//   })
+//   return data.stories.map(story => `/${story.slug}`)
+⋮----
+/**
+   * ========================================================
+   * Storyblok Headless CMS Configuration
+   * - API bridge for visual editor and content delivery
+   * - Draft/preview mode support via _storyblok query param
+   * ========================================================
+   */
+⋮----
+region: 'eu' // Adjust based on your Storyblok space region
+⋮----
+/**
+   * ========================================================
+   * Runtime Config – Publicly accessible at runtime
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * Route Rules
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * Compatibility
+   * ========================================================
+   */
+⋮----
+/**
+   * ========================================================
+   * ESLint Configuration
+   * ========================================================
+   */
+</file>
+
+<file path="package.json">
+{
+  "name": "shafa-care-clinic",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@iconify-json/heroicons": "^1.2.0",
+    "@iconify-json/mdi": "^1.2.0",
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/ui": "^4.9.0",
+    "@nuxtjs/i18n": "^9.3.0",
+    "@nuxtjs/sitemap": "^7.2.0",
+    "@storyblok/nuxt": "^11.0.1",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.1",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.115",
+    "@nuxt/eslint": "^1.16.0",
+    "@tailwindcss/postcss": "^4.3.2",
+    "eslint": "^10.6.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.5"
+  }
+}
+</file>
+
+<file path="tailwind.config.ts">
+// ========================================================
+// Tailwind CSS Configuration
+// ========================================================
+//
+// IMPORTANT: This project uses Tailwind CSS v4 with Nuxt UI v4.
+// In Tailwind v4, theme configuration is done via CSS @theme
+// blocks in `assets/css/main.css` rather than in this file.
+//
+// This config file is provided for:
+//   - IDE autocompletion and IntelliSense
+//   - Documentation of design tokens in TypeScript format
+//   - Backward compatibility with tooling that expects this file
+//
+// The ACTUAL theme configuration that controls the build lives in:
+//   ~/assets/css/main.css  (see the @theme { ... } block)
+// ========================================================
+⋮----
+import type { Config } from 'tailwindcss'
+⋮----
+// ========================================================
+// Design Tokens (documentation only – see main.css for active config)
+// ========================================================
+//
+// Primary: Deep Burgundy / Crimson Red (#C41E3A)
+// Fonts:
+//   - Arabic: Tajawal, Cairo
+//   - English: Inter, Plus Jakarta Sans
+// Border Radius:
+//   - Cards/Images: 1rem (16px)
+//   - Buttons: 0.75rem (12px)
+//   - Modals: 1.5rem (24px)
+//   - Badges/Pills: 9999px (fully rounded)
+//
+// These tokens are implemented in main.css and available
+// via Tailwind utility classes (bg-primary-500, text-primary,
+// font-arabic, rounded-xl, etc.).
+</file>
+
+<file path="tsconfig.json">
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "files": [],
+  "references": [
+    { "path": "./.nuxt/tsconfig.app.json" },
+    { "path": "./.nuxt/tsconfig.server.json" },
+    { "path": "./.nuxt/tsconfig.shared.json" },
+    { "path": "./.nuxt/tsconfig.node.json" }
+  ]
+}
+</file>
+
+</files>

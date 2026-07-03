@@ -1,70 +1,62 @@
 <template>
-  <!-- ====================================================
-       Privacy Policy Page
-       ====================================================
-       Static placeholder for the clinic's privacy policy.
-       Will be replaced with Storyblok content in Phase 2.
-  -->
-  <div class="mx-auto max-w-4xl px-4 py-20 sm:py-28">
-    <article>
-      <h1 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
-        {{ $t('footer.privacy') }}
-      </h1>
-
-      <div class="prose prose-slate max-w-none dark:prose-invert space-y-6 text-text-secondary leading-relaxed">
-        <p>
-          At {{ $t('site.name') }}, we are committed to protecting your privacy.
-          This Privacy Policy explains how we collect, use, disclose, and safeguard
-          your information when you visit our website.
-        </p>
-
-        <h2 class="text-xl font-semibold text-text-primary">Information We Collect</h2>
-        <p>
-          We may collect personal information such as your name, email address,
-          phone number, and any other details you provide when filling out our
-          contact form or booking an appointment.
-        </p>
-
-        <h2 class="text-xl font-semibold text-text-primary">How We Use Your Information</h2>
-        <p>
-          The information we collect is used to respond to your inquiries, process
-          appointment requests, improve our services, and send relevant updates
-          with your consent.
-        </p>
-
-        <h2 class="text-xl font-semibold text-text-primary">Data Protection</h2>
-        <p>
-          We implement appropriate security measures to protect your personal
-          information. However, no method of transmission over the Internet is
-          100% secure.
-        </p>
-
-        <h2 class="text-xl font-semibold text-text-primary">Contact Us</h2>
-        <p>
-          If you have any questions about this Privacy Policy, please contact us
-          at <a href="mailto:info@shafacare.com" class="text-primary-500 hover:underline">info@shafacare.com</a>.
-        </p>
-
-        <p class="pt-6 text-sm text-text-muted">
-          Last updated: July 2026
-        </p>
+  <div class="min-h-screen bg-surface-primary py-24 lg:py-32">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <!-- Header Section -->
+      <div class="mb-12 text-center">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-text-primary sm:text-5xl" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+          {{ $t('footer.privacy') }}
+        </h1>
+        <div class="mx-auto h-1 w-20 rounded-full bg-primary-500" />
       </div>
-    </article>
+
+      <!-- Content Card -->
+      <div class="glass-morphism rounded-3xl p-8 shadow-premium dark:bg-dark-surface-secondary">
+        <div class="prose prose-slate max-w-none dark:prose-invert">
+          <p class="mb-6 text-lg leading-relaxed text-text-secondary" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+            {{ $t('privacy.intro') || 'Your privacy is important to us. This policy explains how we handle your personal information.' }}
+          </p>
+          
+          <div class="space-y-8">
+            <section>
+              <h2 class="mb-3 text-xl font-bold text-primary-600 dark:text-primary-400" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+                {{ $t('privacy.dataCollection') || 'Data Collection' }}
+              </h2>
+              <p class="text-text-secondary leading-relaxed" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+                We collect information necessary to provide the highest quality of medical care, including patient history, contact details, and insurance information.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="mb-3 text-xl font-bold text-primary-600 dark:text-primary-400" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+                {{ $t('privacy.dataUsage') || 'How We Use Your Data' }}
+              </h2>
+              <p class="text-text-secondary leading-relaxed" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
+                Your data is used strictly for clinical purposes, appointment scheduling, and improving our healthcare services.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Home -->
+      <div class="mt-12 text-center">
+        <UButton
+          to="/"
+          color="primary"
+          variant="outline"
+          size="md"
+          class="rounded-xl font-bold"
+          :label="locale === 'ar' ? 'العودة للرئيسية' : 'Back to Home'"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-/**
- * ========================================================
- * Privacy Policy Page
- * ========================================================
- * Static placeholder page. Will be migrated to Storyblok
- * CMS content in Phase 2.
- * ========================================================
- */
-
+const { locale } = useI18n()
 useClinicSeo({
-  title: 'Privacy Policy',
-  description: 'Privacy Policy for Shafa Care Clinic – how we collect, use, and protect your personal information.'
+  title: 'Privacy Policy | Shafa Care Clinic',
+  description: 'Learn how Shafa Care Clinic protects and manages your personal medical data.'
 })
 </script>

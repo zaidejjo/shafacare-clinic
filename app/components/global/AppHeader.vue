@@ -1,63 +1,89 @@
 <template>
   <!-- ====================================================
-       AppHeader – Sticky navigation with mobile slideover
+       AppHeader – Premium Sticky Glassmorphic Navigation
        ====================================================
        - Responsive: hamburger on mobile, full nav on lg+
-       - RTL-aware: slides from correct side
+       - RTL-aware: slides from correct side, logical properties
        - Dark mode toggle + Language switcher
-       - Glassmorphism effect with backdrop blur
+       - Glassmorphism effect with backdrop blur and scroll trigger
+       - High-end logo integration with explicit dimensions
   -->
   <header
     ref="headerRef"
-    class="sticky top-0 z-50 w-full border-b border-border-default/50 bg-surface-primary/80 backdrop-blur-xl transition-all duration-300"
+    class="sticky top-0 z-50 w-full transition-all duration-500"
+    :class="isScrolled 
+      ? 'glass-morphism py-2 shadow-lg' 
+      : 'bg-transparent py-4 border-b border-transparent'"
   >
     <nav
       class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       aria-label="Main navigation"
     >
-      <!-- ── Logo ────────────────────────────────────── -->
+      <!-- ── Logo & Brand ────────────────────────────── -->
       <NuxtLink
         :to="localePath('/')"
-        class="flex shrink-0 items-center gap-2.5"
+        class="group flex shrink-0 items-center gap-3 focus:outline-none"
         :aria-label="$t('site.name')"
       >
-        <!-- Logo mark -->
+        <!-- Logo Container with Premium Glassmorphic Border & Glow -->
         <div
-          class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500 text-xs font-bold tracking-tight text-white shadow-sm"
+          class="relative h-12 w-12 overflow-hidden rounded-xl border border-primary-500/20 bg-white/80 p-0.5 shadow-md transition-all duration-500 group-hover:scale-105 group-hover:border-primary-500/40 group-hover:shadow-burgundy-glow dark:border-white/10 dark:bg-black/40"
         >
-          <span aria-hidden="true">SC</span>
+          <NuxtImg
+            src="/shafa-care-logo.jpg"
+            alt="Shafa Care Clinic Logo"
+            class="h-full w-full rounded-lg object-cover"
+            width="48"
+            height="48"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
-        <!-- Logo text (hidden on smallest screens) -->
-        <span
-          class="hidden text-lg font-bold text-text-primary sm:inline"
-          :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
-        >
-          {{ $t('site.name') }}
-        </span>
+        
+        <!-- Brand Name with Editorial Typography -->
+        <div class="flex flex-col">
+          <span
+            class="text-lg font-extrabold tracking-tight text-text-primary transition-colors duration-300 group-hover:text-primary-500 dark:group-hover:text-primary-400 sm:text-xl"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+          >
+            {{ $t('site.name') }}
+          </span>
+          <span 
+            class="text-[10px] font-medium uppercase tracking-widest text-text-muted transition-colors duration-300 group-hover:text-primary-400"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+          >
+            {{ $t('site.tagline') }}
+          </span>
+        </div>
       </NuxtLink>
 
       <!-- ── Desktop Navigation ──────────────────────── -->
-      <ul class="hidden items-center gap-0.5 lg:flex">
+      <ul class="hidden items-center gap-1 lg:flex">
         <li v-for="link in navLinks" :key="link.key">
           <NuxtLink
             :to="link.to"
-            class="inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-surface-tertiary hover:text-text-primary"
-            :class="{ 'text-primary-600': isActive(link.to) }"
+            class="relative inline-flex items-center rounded-xl px-4 py-2 text-sm font-bold tracking-wide text-text-secondary transition-all duration-300 hover:bg-primary-500/5 hover:text-primary-500 dark:hover:bg-primary-400/5 dark:hover:text-primary-400"
+            :class="{ 'text-primary-500 dark:text-primary-400 bg-primary-500/5 dark:bg-primary-400/5': isActive(link.to) }"
           >
             {{ $t(link.label) }}
+            <!-- Active indicator dot -->
+            <span
+              v-if="isActive(link.to)"
+              class="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary-500 dark:bg-primary-400"
+            />
           </NuxtLink>
         </li>
       </ul>
 
       <!-- ── Right Actions ───────────────────────────── -->
-      <div class="flex items-center gap-0.5">
+      <div class="flex items-center gap-1.5">
         <!-- Language Switcher -->
         <UButton
           :label="otherLocaleCode === 'en' ? 'EN' : 'AR'"
           color="neutral"
           variant="ghost"
-          size="sm"
-          class="font-semibold tracking-wide"
+          size="md"
+          class="rounded-xl font-bold tracking-wider hover:bg-primary-500/10 hover:text-primary-600 dark:hover:bg-primary-400/10 dark:hover:text-primary-400"
           :aria-label="$t('common.language')"
           @click="switchLanguage"
         />
@@ -67,8 +93,9 @@
           :icon="isDark ? 'heroicons:sun' : 'heroicons:moon'"
           color="neutral"
           variant="ghost"
-          size="sm"
+          size="md"
           square
+          class="rounded-xl hover:bg-primary-500/10 hover:text-primary-600 dark:hover:bg-primary-400/10 dark:hover:text-primary-400"
           :aria-label="$t(isDark ? 'common.lightMode' : 'common.darkMode')"
           @click="toggleColorMode"
         />
@@ -78,36 +105,34 @@
           icon="heroicons:bars-3"
           color="neutral"
           variant="ghost"
-          size="sm"
+          size="md"
           square
-          class="lg:hidden"
+          class="rounded-xl lg:hidden hover:bg-primary-500/10 hover:text-primary-600 dark:hover:bg-primary-400/10 dark:hover:text-primary-400"
           :aria-label="$t('common.menu')"
           @click="mobileMenuOpen = true"
         />
       </div>
     </nav>
 
-    <!-- ==================================================
-         Mobile Navigation – Slideover Panel
-         ==================================================
-         Uses Nuxt UI's USlideover with RTL-aware side.
-         In RTL mode, the panel slides from the left (end).
-    -->
+    <!-- Mobile Navigation – Slideover Panel -->
+    <!-- v-if strictly prevents rendering on desktop screens and when closed -->
     <USlideover
+      v-if="mobileMenuOpen && !isLargeScreen"
       v-model:open="mobileMenuOpen"
       :side="locale === 'ar' ? 'left' : 'right'"
       :title="$t('site.name')"
       :close="{
         color: 'neutral',
         variant: 'ghost',
-        size: 'sm'
+        size: 'md',
+        class: 'rounded-xl'
       }"
       :ui="{
-        width: 'max-w-sm w-full',
-        container: 'h-full flex flex-col',
-        body: 'flex-1 overflow-y-auto px-6 pb-6',
-        header: 'px-6 pt-4 pb-0',
-        footer: 'px-6 pb-6 pt-2'
+        width: 'max-w-xs w-full',
+        container: 'h-full flex flex-col glass-morphism border-y-0 border-r-0',
+        body: 'flex-1 overflow-y-auto px-6 pb-6 pt-4',
+        header: 'px-6 pt-6 pb-2 border-b border-border-default/30',
+        footer: 'px-6 pb-6 pt-4 border-t border-border-default/30'
       }"
       @close="mobileMenuOpen = false"
     >
@@ -115,16 +140,22 @@
       <template #title>
         <NuxtLink
           :to="localePath('/')"
-          class="flex items-center gap-2.5"
+          class="flex items-center gap-3"
           @click="mobileMenuOpen = false"
         >
           <div
-            class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500 text-xs font-bold text-white"
+            class="h-10 w-10 overflow-hidden rounded-xl border border-primary-500/20 bg-white p-0.5 shadow-sm dark:border-white/10 dark:bg-black/40"
           >
-            SC
+            <NuxtImg
+              src="/shafa-care-logo.jpg"
+              alt="Shafa Care Clinic Logo"
+              class="h-full w-full rounded-lg object-cover"
+              width="40"
+              height="40"
+            />
           </div>
           <span
-            class="text-base font-bold text-text-primary"
+            class="text-base font-extrabold text-text-primary"
             :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
           >
             {{ $t('site.name') }}
@@ -133,12 +164,12 @@
       </template>
 
       <!-- Body slot – Navigation links -->
-      <ul class="space-y-1">
+      <ul class="space-y-1.5">
         <li v-for="link in navLinks" :key="link.key">
           <NuxtLink
             :to="link.to"
-            class="flex items-center rounded-xl px-4 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-surface-tertiary hover:text-text-primary"
-            :class="isActive(link.to) ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400' : ''"
+            class="flex items-center rounded-xl px-4 py-3 text-base font-bold text-text-secondary transition-all duration-300 hover:bg-primary-500/5 hover:text-primary-500 dark:hover:bg-primary-400/5 dark:hover:text-primary-400"
+            :class="isActive(link.to) ? 'bg-primary-500/10 text-primary-600 dark:bg-primary-400/10 dark:text-primary-400' : ''"
             @click="mobileMenuOpen = false"
           >
             {{ $t(link.label) }}
@@ -148,23 +179,22 @@
 
       <!-- Footer slot – Language + Theme toggles -->
       <template #footer>
-        <div class="flex flex-col gap-3">
-          <hr class="border-border-default" />
+        <div class="flex flex-col gap-4 w-full">
           <div class="flex items-center gap-3">
             <UButton
               :label="otherLocaleCode === 'en' ? 'English' : 'العربية'"
               color="neutral"
               variant="outline"
-              size="sm"
-              class="flex-1"
-              @click="switchLanguage; mobileMenuOpen = false"
+              size="md"
+              class="flex-1 rounded-xl font-bold hover:bg-primary-500/10 hover:text-primary-600 dark:hover:bg-primary-400/10 dark:hover:text-primary-400"
+              @click="switchLanguage(); mobileMenuOpen = false"
             />
             <UButton
               :icon="isDark ? 'heroicons:sun' : 'heroicons:moon'"
               color="neutral"
               variant="outline"
-              size="sm"
-              class="flex-1"
+              size="md"
+              class="flex-1 rounded-xl font-bold hover:bg-primary-500/10 hover:text-primary-600 dark:hover:bg-primary-400/10 dark:hover:text-primary-400"
               @click="toggleColorMode"
             >
               {{ $t(isDark ? 'common.lightMode' : 'common.darkMode') }}
@@ -244,8 +274,36 @@ function isActive(to: string): boolean {
   return route.path === to
 }
 
-// ── Mobile Menu State ────────────────────────────────────
+// ── Scroll Listener for Glassmorphism ────────────────────
+const isScrolled = ref(false)
 const mobileMenuOpen = ref(false)
+const isLargeScreen = ref(false)
+
+if (import.meta.client) {
+  const handleScroll = () => {
+    isScrolled.value = window.scrollY > 10
+  }
+  const handleResize = () => {
+    isLargeScreen.value = window.innerWidth >= 1024 // lg breakpoint
+  }
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
+    handleScroll()
+    handleResize()
+  })
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('resize', handleResize)
+  })
+}
+
+// ── Sync Mobile Menu State with Screen Size ──────────────
+watch(isLargeScreen, (newVal) => {
+  if (newVal) {
+    mobileMenuOpen.value = false
+  }
+})
 
 /**
  * Close mobile menu on route change (user navigates to a new page).

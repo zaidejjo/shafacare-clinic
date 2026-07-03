@@ -11,9 +11,7 @@
   -->
   <div>
     <!-- ── Hero Section ─────────────────────────────── -->
-    <StoryblokHeroSection
-      :blok="heroBlok"
-    />
+    <StoryblokHeroSection :blok="heroBlok" />
 
     <!-- ── About Us Section ─────────────────────────── -->
     <section
@@ -23,10 +21,12 @@
     >
       <div class="mx-auto max-w-4xl text-center">
         <h2 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
-          {{ $t('about.title') }}
+          {{ $t("about.title") }}
         </h2>
-        <p class="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed">
-          {{ $t('about.description') }}
+        <p
+          class="mx-auto max-w-2xl text-lg text-text-secondary leading-relaxed"
+        >
+          {{ $t("about.description") }}
         </p>
       </div>
     </section>
@@ -41,10 +41,10 @@
         <!-- Section header -->
         <div class="mb-12 text-center">
           <h2 class="mb-4 text-3xl font-bold text-text-primary sm:text-4xl">
-            {{ $t('services.title') }}
+            {{ $t("services.title") }}
           </h2>
           <p class="text-lg text-text-secondary">
-            {{ $t('services.subtitle') }}
+            {{ $t("services.subtitle") }}
           </p>
         </div>
 
@@ -67,10 +67,11 @@
             </div>
 
             <h3 class="mb-2 text-xl font-semibold text-text-primary">
-              {{ $t('services.title') }} {{ i }}
+              {{ $t("services.title") }} {{ i }}
             </h3>
             <p class="text-sm text-text-secondary leading-relaxed">
-              Comprehensive medical service number {{ i }} — providing expert care with compassion and state-of-the-art facilities.
+              Comprehensive medical service number {{ i }} — providing expert
+              care with compassion and state-of-the-art facilities.
             </p>
           </article>
         </div>
@@ -85,16 +86,23 @@
       <!-- Subtle pattern overlay -->
       <div
         class="pointer-events-none absolute inset-0 opacity-10"
-        style="background-image: radial-gradient(circle at 25% 25%, white 1px, transparent 1px); background-size: 40px 40px;"
+        style="
+          background-image: radial-gradient(
+            circle at 25% 25%,
+            white 1px,
+            transparent 1px
+          );
+          background-size: 40px 40px;
+        "
         aria-hidden="true"
       />
 
       <div class="relative mx-auto max-w-3xl text-center">
         <h2 class="mb-4 text-3xl font-bold sm:text-4xl">
-          {{ $t('hero.cta') }}
+          {{ $t("hero.cta") }}
         </h2>
         <p class="mb-8 text-lg text-white/80">
-          {{ $t('hero.subtitle') }}
+          {{ $t("hero.subtitle") }}
         </p>
         <UButton
           size="xl"
@@ -107,7 +115,7 @@
 
     <!-- ── Structured Data (JSON-LD, renderless) ──── -->
     <SeoMedicalSchema
-      url="https://shafacare.com"
+      url="https://shafacare.pages.dev"
       price-range="$$"
       :medical-specialty="['GeneralPractice', 'FamilyMedicine']"
     />
@@ -120,10 +128,10 @@
     >
       <div class="mx-auto max-w-4xl text-center">
         <h2 class="mb-6 text-3xl font-bold text-text-primary sm:text-4xl">
-          {{ $t('contact.title') }}
+          {{ $t("contact.title") }}
         </h2>
         <p class="mx-auto mb-10 max-w-2xl text-lg text-text-secondary">
-          {{ $t('contact.subtitle') }}
+          {{ $t("contact.subtitle") }}
         </p>
 
         <div
@@ -131,13 +139,15 @@
         >
           <!-- Phone -->
           <a
-            href="tel:+966XXXXXXXXX"
+            href="tel:+962782124190"
             class="group flex items-center gap-3 text-text-secondary transition-colors hover:text-primary-500"
           >
-            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900">
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900"
+            >
               <UIcon name="heroicons:phone" class="h-5 w-5 text-primary-500" />
             </span>
-            <span class="text-base font-medium">+966 XX XXX XXXX</span>
+            <span class="text-base font-medium">+962 7 8212 4190</span>
           </a>
 
           <!-- Email -->
@@ -145,8 +155,13 @@
             href="mailto:info@shafacare.com"
             class="group flex items-center gap-3 text-text-secondary transition-colors hover:text-primary-500"
           >
-            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900">
-              <UIcon name="heroicons:envelope" class="h-5 w-5 text-primary-500" />
+            <span
+              class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 transition-colors group-hover:bg-primary-100 dark:bg-primary-900/50 dark:group-hover:bg-primary-900"
+            >
+              <UIcon
+                name="heroicons:envelope"
+                class="h-5 w-5 text-primary-500"
+              />
             </span>
             <span class="text-base font-medium">info@shafacare.com</span>
           </a>
@@ -175,30 +190,30 @@
  * ========================================================
  */
 
-const { t } = useI18n()
+const { t } = useI18n();
 
 // ── Hero Section Storyblok-compatible props ─────────────
 // This static object mirrors what Storyblok would send.
 // When Storyblok is connected, this will come from the API.
 const heroBlok = {
-  _uid: 'hero-static',
-  component: 'hero-section',
-  headline: t('hero.title'),
-  subheadline: t('hero.subtitle'),
-  ctaText: t('hero.cta'),
+  _uid: "hero-static",
+  component: "hero-section",
+  headline: t("hero.title"),
+  subheadline: t("hero.subtitle"),
+  ctaText: t("hero.cta"),
   ctaLink: {
-    url: '#contact'
+    url: "#contact",
   },
   // No background image → falls back to gradient
   backgroundImage: null,
-  layout: 'centered',
-  animationType: 'fade'
-}
+  layout: "centered",
+  animationType: "fade",
+};
 
 // ── Dynamic SEO Meta Tags (via reusable composable) ────
 // Sets title, description, OG, Twitter Card, and og:locale
 // Title format: "Shafa Care Clinic – Your Health, Our Priority"
-useClinicSeo()
+useClinicSeo();
 
 // NOTE: JSON-LD structured data is injected via the
 // <SeoMedicalSchema /> component in the template below.

@@ -30,7 +30,7 @@
  *   // With custom OG image
  *   useClinicSeo({
  *     title: 'Contact',
- *     image: 'https://shafacare.com/images/contact-hero.jpg'
+ *     image: 'https://shafacare.pages.dev/images/contact-hero.jpg'
  *   })
  * ========================================================
  */
@@ -56,7 +56,7 @@ export function useClinicSeo(options?: ClinicSeoOptions) {
   const config = useRuntimeConfig()
 
   const siteUrl: string =
-    (config.public as Record<string, string>).siteUrl || 'https://shafacare.com'
+    (config.public as Record<string, string>).siteUrl || 'https://shafacare.pages.dev'
 
   // ── Build the fully-qualified page title ────────────────
   const fullTitle = computed<string>(() => {
