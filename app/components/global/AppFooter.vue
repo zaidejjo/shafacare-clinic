@@ -2,11 +2,11 @@
   <!-- ====================================================
        AppFooter – Premium Semantic Site Footer
        ====================================================
-       - HTML5 <footer> with <address> for contact info
-       - 4-column grid on lg, stacked on mobile
+       - HTML5 <footer> with <address> for contact
+       - 4-column responsive grid (stacks on mobile)
        - Logo, quick links, services, contact, social
        - Copyright bar with privacy + terms links
-       - RTL-aware column ordering and hover transitions
+       - RTL-aware layout via Tailwind logical properties
        - Top burgundy gradient accent line
   -->
   <footer
@@ -240,10 +240,12 @@ const localePath = useLocalePath()
 // ── Current Year for Copyright ───────────────────────────
 const currentYear = new Date().getFullYear()
 
-// ── Contact Details ──────────────────────────────────────
-const contactPhone = '+966 11 456 7890'
+// ── Contact Details (REAL PRODUCTION DATA) ────────────────
+const contactPhone = '+962 7 8212 4190'
 const contactEmail = 'info@shafacare.com.sa'
-const contactAddress = 'Riyadh, King Fahd Road, Al-Olaya District'
+const contactAddress = locale.value === 'ar' 
+  ? 'عمان - شفا بدران - إشارات جامعة العلوم التطبيقية - مجمع الصراوي'
+  : 'Amman - Shafa Badran - Applied Science University Signs - Al-Sarawi Complex'
 
 // ── Navigation Links ─────────────────────────────────────
 interface FooterLink {
@@ -265,7 +267,7 @@ const serviceLinks: FooterLink[] = [
   { key: 'nav.faq', label: 'nav.faq', to: localePath('/#faq') }
 ]
 
-// ── Social Media Links ───────────────────────────────────
+// ── Social Media Links (REAL PRODUCTION DATA) ─────────────
 interface SocialLink {
   label: string
   icon: string
@@ -273,6 +275,11 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
+  {
+    label: 'Instagram',
+    icon: 'mdi:instagram',
+    url: 'https://www.instagram.com/shafacareclinic/'
+  },
   {
     label: 'Facebook',
     icon: 'mdi:facebook',
@@ -282,11 +289,6 @@ const socialLinks: SocialLink[] = [
     label: 'Twitter / X',
     icon: 'mdi:twitter',
     url: 'https://twitter.com/shafacare'
-  },
-  {
-    label: 'Instagram',
-    icon: 'mdi:instagram',
-    url: 'https://instagram.com/shafacare'
   },
   {
     label: 'LinkedIn',

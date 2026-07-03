@@ -12,7 +12,7 @@
     ref="headerRef"
     class="sticky top-0 z-50 w-full transition-all duration-500"
     :class="isScrolled 
-      ? 'glass-header-light dark:glass-header-dark py-2 shadow-lg' 
+      ? 'glass-morphism py-2 shadow-lg' 
       : 'bg-transparent py-4 border-b border-transparent'"
   >
     <nav
@@ -114,12 +114,10 @@
       </div>
     </nav>
 
-    <!-- ==================================================
-         Mobile Navigation – Slideover Panel
-         ==================================================
-         Uses Nuxt UI's USlideover with RTL-aware side.
-    -->
+    <!-- Mobile Navigation – Slideover Panel -->
+    <!-- v-if strictly prevents rendering on desktop screens and when closed -->
     <USlideover
+      v-if="mobileMenuOpen && !isLargeScreen"
       v-model:open="mobileMenuOpen"
       :side="locale === 'ar' ? 'left' : 'right'"
       :title="$t('site.name')"
@@ -131,7 +129,7 @@
       }"
       :ui="{
         width: 'max-w-xs w-full',
-        container: 'h-full flex flex-col glass-card-light dark:glass-card-dark border-y-0 border-r-0',
+        container: 'h-full flex flex-col glass-morphism border-y-0 border-r-0',
         body: 'flex-1 overflow-y-auto px-6 pb-6 pt-4',
         header: 'px-6 pt-6 pb-2 border-b border-border-default/30',
         footer: 'px-6 pb-6 pt-4 border-t border-border-default/30'
@@ -278,22 +276,34 @@ function isActive(to: string): boolean {
 
 // ── Scroll Listener for Glassmorphism ────────────────────
 const isScrolled = ref(false)
+const mobileMenuOpen = ref(false)
+const isLargeScreen = ref(false)
 
 if (import.meta.client) {
   const handleScroll = () => {
     isScrolled.value = window.scrollY > 10
   }
+  const handleResize = () => {
+    isLargeScreen.value = window.innerWidth >= 1024 // lg breakpoint
+  }
   onMounted(() => {
     window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
     handleScroll()
+    handleResize()
   })
   onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('resize', handleResize)
   })
 }
 
-// ── Mobile Menu State ────────────────────────────────────
-const mobileMenuOpen = ref(false)
+// ── Sync Mobile Menu State with Screen Size ──────────────
+watch(isLargeScreen, (newVal) => {
+  if (newVal) {
+    mobileMenuOpen.value = false
+  }
+})
 
 /**
  * Close mobile menu on route change (user navigates to a new page).

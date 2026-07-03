@@ -121,9 +121,9 @@
 
         <!-- Right Column: Premium Glassmorphic Highlights Card (Split Layout) -->
         <div v-if="layout === 'split'" class="lg:col-span-5">
-          <div class="glass-card-light dark:glass-card-dark rounded-3xl p-8 border border-white/20 dark:border-white/5 shadow-2xl hover-lift">
+          <div class="glass-morphism rounded-3xl p-8 border border-white/20 dark:border-white/10 shadow-2xl hover-lift">
             <div class="flex items-center gap-3 mb-6">
-              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500 dark:bg-primary-400/10 dark:text-primary-400">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500 transition-colors duration-300 group-hover:scale-110 group-hover:bg-primary-500 group-hover:text-white dark:bg-primary-400/10 dark:text-primary-400 dark:group-hover:bg-primary-400 dark:group-hover:text-black">
                 <UIcon name="heroicons:heart" class="h-6 w-6" />
               </div>
               <h3 class="text-xl font-extrabold text-text-primary" :class="locale === 'ar' ? 'font-arabic' : 'font-english'">
@@ -257,11 +257,12 @@ const imageSrc = computed(() => {
   if (props.blok?.backgroundImage?.filename) {
     return props.blok.backgroundImage.filename
   }
-  return null
+  // Fallback: Use a high-quality medical image from Unsplash
+  return 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200'
 })
 
 const imageAlt = computed(() => {
-  return props.blok?.backgroundImage?.alt || ''
+  return props.blok?.backgroundImage?.alt || 'Modern Medical Care'
 })
 
 // ── Layout Classes ───────────────────────────────────────
@@ -357,7 +358,7 @@ if (imageSrc.value) {
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
