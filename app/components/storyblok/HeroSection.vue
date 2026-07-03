@@ -10,17 +10,17 @@
        - LCP optimization: fetchpriority="high" on hero img
        - Storyblok compatible: accepts `blok` prop with v-editable
   -->
-  <section
-    v-editable="blok"
-    :aria-label="blok?.headline || $t('hero.title')"
-    class="relative flex min-h-[90vh] items-center overflow-hidden bg-surface-primary py-16 lg:py-24"
-  >
-    <!-- ── Background Image / Mesh Gradient ─────────── -->
-    <div
-      class="absolute inset-0 -z-20"
-      aria-hidden="true"
-    >
-      <NuxtImg
+   <section
+     v-editable="blok"
+     :aria-label="blok?.headline || $t('hero.title')"
+     class="relative flex min-h-[90vh] items-center overflow-hidden py-16 lg:py-24"
+   >
+     <!-- ── Background Image / Mesh Gradient ─────────── -->
+     <div
+       class="absolute inset-0 z-0"
+       aria-hidden="true"
+     >
+      <img
         v-if="imageSrc"
         :src="imageSrc"
         :alt="imageAlt"
@@ -28,9 +28,6 @@
         loading="eager"
         class="h-full w-full object-cover"
         :class="imageParallaxClass"
-        sizes="100vw"
-        width="1920"
-        height="1080"
         decoding="async"
       />
 
@@ -42,7 +39,7 @@
     </div>
 
     <!-- ── Glowing Abstract Orbs for Premium Glassmorphic Atmosphere ── -->
-    <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-0 z-10 overflow-hidden" aria-hidden="true">
       <!-- Orb 1: Deep Burgundy -->
       <div class="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-primary-900/10 blur-[120px] dark:bg-primary-950/30" />
       <!-- Orb 2: Soft Crimson -->
@@ -50,17 +47,17 @@
       <!-- Orb 3: Subtle Gold/Amber for Luxury Touch -->
       <div class="absolute -bottom-40 left-1/3 h-[400px] w-[400px] rounded-full bg-amber-500/5 blur-[80px] dark:bg-amber-500/10" />
     </div>
-
+ 
     <!-- ── Semi-transparent overlay for image readability ── -->
     <div
       v-if="imageSrc"
-      class="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/50 to-transparent dark:from-black/90 dark:via-black/70 dark:to-black/30"
+      class="absolute inset-0 z-20 bg-gradient-to-r from-primary-950/60 via-primary-900/30 to-transparent"
       aria-hidden="true"
     />
-
+ 
     <!-- ── Content Container ────────────────────────── -->
     <div
-      class="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl animate-fade-in"
+      class="relative z-30 mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-7xl animate-fade-in"
     >
       <div :class="layout === 'split' ? 'grid lg:grid-cols-12 gap-12 lg:gap-16 items-center' : 'max-w-3xl mx-auto'">
         
@@ -97,26 +94,29 @@
             {{ subheadline }}
           </p>
 
-          <!-- Dual CTA Buttons -->
-          <div class="flex flex-wrap gap-4" :class="layout === 'centered' ? 'justify-center' : 'justify-start'">
-            <UButton
-              v-if="ctaText"
-              size="xl"
-              color="primary"
-              :label="ctaText"
-              class="rounded-xl px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:shadow-burgundy-glow hover:scale-[1.02] active:scale-[0.98]"
-              :to="ctaLink?.url || undefined"
-              :target="ctaLinksTarget"
-            />
-            <UButton
-              size="xl"
-              color="neutral"
-              variant="outline"
-              :label="locale === 'ar' ? 'تعرف على خدماتنا' : 'Explore Services'"
-              class="rounded-xl px-8 py-4 text-base font-bold transition-all duration-300 hover:bg-primary-500/5 dark:hover:bg-primary-400/5"
-              to="#services"
-            />
-          </div>
+           <!-- Dual CTA Buttons -->
+           <div class="flex flex-wrap gap-4" :class="layout === 'centered' ? 'justify-center' : 'justify-start'">
+             <UButton
+               size="xl"
+               color="primary"
+               class="rounded-xl px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:shadow-burgundy-glow hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
+               href="https://wa.me/962782124190"
+               target="_blank"
+             >
+               <UIcon name="i-logos-whatsapp" class="h-5 w-5" />
+               {{ locale === 'ar' ? 'احجز موعداً عبر واتساب' : 'Book via WhatsApp' }}
+             </UButton>
+             <UButton
+               size="xl"
+               color="neutral"
+               variant="outline"
+               class="rounded-xl px-8 py-4 text-base font-bold transition-all duration-300 hover:bg-primary-500/5 dark:hover:bg-primary-400/5 flex items-center gap-2"
+               href="tel:+962782124190"
+             >
+               <UIcon name="heroicons:phone" class="h-5 w-5" />
+               {{ locale === 'ar' ? 'اتصل بنا الآن' : 'Call Now' }}
+             </UButton>
+           </div>
         </div>
 
         <!-- Right Column: Premium Glassmorphic Highlights Card (Split Layout) -->
@@ -160,7 +160,7 @@
 
     <!-- ── Bottom Gradient Fade ──────────────────────── -->
     <div
-      class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface-primary to-transparent"
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-32 z-20 bg-gradient-to-t from-surface-primary to-transparent"
       aria-hidden="true"
     />
   </section>
@@ -257,8 +257,8 @@ const imageSrc = computed(() => {
   if (props.blok?.backgroundImage?.filename) {
     return props.blok.backgroundImage.filename
   }
-  // Fallback: Use a high-quality medical image from Unsplash
-  return 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200'
+  // Fallback: Use the premium local hero image
+  return '/images/hero-bg.jpg'
 })
 
 const imageAlt = computed(() => {

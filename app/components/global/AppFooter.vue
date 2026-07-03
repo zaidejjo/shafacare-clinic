@@ -152,22 +152,27 @@
               </div>
             </div>
 
-            <!-- Address -->
-            <div class="group flex items-start gap-3">
-              <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500 transition-colors duration-300 group-hover:bg-primary-500 group-hover:text-white dark:bg-primary-400/10 dark:text-primary-400 dark:group-hover:bg-primary-400 dark:group-hover:text-black">
-                <UIcon
-                  name="heroicons:map-pin"
-                  class="h-4 w-4 shrink-0"
-                  aria-hidden="true"
-                />
-              </div>
-              <div class="flex flex-col">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted">{{ $t('contact.address') }}</span>
-                <span class="text-sm font-bold text-text-secondary">
-                  {{ contactAddress }}
-                </span>
-              </div>
-            </div>
+             <!-- Address -->
+             <div class="group flex items-start gap-3">
+               <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-500/10 text-primary-500 transition-colors duration-300 group-hover:bg-primary-500 group-hover:text-white dark:bg-primary-400/10 dark:text-primary-400 dark:group-hover:bg-primary-400 dark:group-hover:text-black">
+                 <UIcon
+                   name="heroicons:map-pin"
+                   class="h-4 w-4 shrink-0"
+                   aria-hidden="true"
+                 />
+               </div>
+               <div class="flex flex-col">
+                 <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted">{{ $t('contact.address') }}</span>
+                 <a
+                   :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactAddress)}`"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="text-sm font-bold text-text-secondary transition-colors hover:text-primary-500 dark:hover:text-primary-400 underline underline-offset-4 decoration-primary-500/30"
+                 >
+                   {{ contactAddress }}
+                 </a>
+               </div>
+             </div>
           </address>
 
           <!-- Social Links with Premium Glassmorphic Buttons -->

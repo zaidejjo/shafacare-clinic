@@ -77,8 +77,8 @@ export interface MedicalSchemaProps {
 }
 
 const props = withDefaults(defineProps<MedicalSchemaProps>(), {
-  url: 'https://shafacare.com',
-  logo: 'https://shafacare.com/logo.png',
+  url: 'https://shafacare.pages.dev',
+  logo: 'https://shafacare.pages.dev/logo.png',
   telephone: '+966-XX-XXXX-XXXX',
   priceRange: '$$',
   medicalSpecialty: () => ['FamilyMedicine', 'GeneralPractice'],
@@ -116,7 +116,7 @@ const props = withDefaults(defineProps<MedicalSchemaProps>(), {
 const { t, locale } = useI18n()
 const config = useRuntimeConfig()
 const siteUrl: string =
-  (config.public as Record<string, string>).siteUrl || 'https://shafacare.com'
+  (config.public as Record<string, string>).siteUrl || 'https://shafacare.pages.dev'
 
 // ── Locale-aware name / alternateName ─────────────────────
 const businessName: ComputedRef<string> = computed(() => {

@@ -20,30 +20,44 @@
       <div class="mb-14 text-center">
         <h2
           class="mb-4 text-balance text-3xl font-bold text-text-primary sm:text-4xl"
+          :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
         >
           {{ title }}
         </h2>
-        <p
-          v-if="subtitleText"
-          class="mx-auto max-w-2xl text-lg text-text-secondary"
-        >
-          {{ subtitleText }}
-        </p>
-      </div>
+         <p
+           v-if="subtitleText"
+           class="mx-auto max-w-2xl text-lg text-text-secondary"
+           :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
+         >
+           {{ subtitleText }}
+         </p>
+       </div>
+ 
+       <!-- ── Featured Section Image ──────────────────────── -->
+       <div class="mb-14 overflow-hidden rounded-3xl shadow-xl">
+          <NuxtImg
+            src="/images/doctor-placeholder.jpg"
+            alt="Professional Medical Staff"
+            class="w-full aspect-video object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+       </div>
+ 
+       <!-- ── Doctors Grid ────────────────────────────── -->
+       <div
+         v-if="doctorList?.length"
 
-      <!-- ── Doctors Grid ────────────────────────────── -->
-      <div
-        v-if="doctorList?.length"
         :class="gridClass"
       >
         <article
           v-for="doctor in doctorList"
           :key="doctor._uid"
-          class="group rounded-xl border border-border-default bg-surface-secondary p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-dark-surface-secondary"
+          class="group rounded-3xl border border-border-default bg-surface-secondary p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-premium dark:bg-dark-surface-secondary"
         >
-          <!-- ── Photo ──────────────────────────────── -->
+          <!-- ── Photo Container (Fixed Aspect Ratio to prevent flickering) ── -->
           <div
-            class="mx-auto mb-5 overflow-hidden rounded-xl"
+            class="mx-auto mb-6 overflow-hidden rounded-2xl bg-primary-100 dark:bg-primary-900/30 relative"
             :class="photoContainerClass"
           >
             <NuxtImg
@@ -51,26 +65,26 @@
               :src="resolvePhoto(doctor.photo)?.src || ''"
               :alt="resolvePhoto(doctor.photo)?.alt || doctor.name || ''"
               loading="lazy"
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="300"
+              height="300"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               decoding="async"
             />
-            <!-- Fallback avatar placeholder -->
-            <div
-              v-else
-              class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/50 dark:to-primary-800/50"
-            >
-              <UIcon
-                name="heroicons:user"
-                class="h-12 w-12 text-primary-300 dark:text-primary-600"
-                aria-hidden="true"
-              />
-            </div>
+             <!-- Fallback avatar placeholder -->
+             <NuxtImg
+               v-else
+               src="/images/doctor-placeholder.jpg"
+               alt="Doctor Placeholder"
+               class="absolute inset-0 h-full w-full object-cover"
+               loading="lazy"
+             />
           </div>
 
           <!-- ── Name ────────────────────────────────── -->
           <h3
             class="mb-1 text-xl font-bold text-text-primary"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
           >
             {{ doctor.name }}
           </h3>
@@ -79,6 +93,7 @@
           <p
             v-if="doctor.specialty"
             class="mb-3 inline-block rounded-pill bg-primary-50 px-4 py-1 text-sm font-medium text-primary-600 dark:bg-primary-900/40 dark:text-primary-400"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
           >
             {{ doctor.specialty }}
           </p>
@@ -87,6 +102,7 @@
           <p
             v-if="doctor.bio"
             class="mb-5 text-sm leading-relaxed text-text-secondary"
+            :class="locale === 'ar' ? 'font-arabic' : 'font-english'"
           >
             {{ doctor.bio }}
           </p>
@@ -184,7 +200,7 @@
 
 import type { ComputedRef } from 'vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 // ── Types ─────────────────────────────────────────────────
 interface StoryblokAsset {
@@ -265,9 +281,9 @@ const gridClass: ComputedRef<string> = computed(() => {
   }
 })
 
-// ── Photo Container ───────────────────────────────────────
+// ── Photo Container (Fixed Aspect Ratio to prevent flickering) ──
 const photoContainerClass: ComputedRef<string> = computed(() => {
-  return 'h-48 w-48 sm:h-52 sm:w-52 lg:h-56 lg:w-56'
+  return 'aspect-square w-full max-w-[224px] mx-auto'
 })
 
 // ── Photo Resolver ────────────────────────────────────────
@@ -285,9 +301,6 @@ function resolvePhoto(photo: StoryblokAsset | undefined): ResolvedPhoto | null {
 }
 
 // ── Social Icon Resolver ──────────────────────────────────
-/**
- * Maps platform names (from Storyblok) to Iconify icon names.
- */
 const platformIconMap: Record<string, string> = {
   facebook: 'mdi:facebook',
   twitter: 'mdi:twitter',

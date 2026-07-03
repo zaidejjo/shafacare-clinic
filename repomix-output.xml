@@ -230,9 +230,9 @@ Per-page configuration:
   "@type": "MedicalBusiness",
   "name": "Shafa Care Clinic",
   "alternateName": "عيادة شفا الطبية",
-  "url": "https://shafacare.com",
-  "logo": "https://shafacare.com/logo.png",
-  "image": ["https://shafacare.com/clinic-interior.jpg", "https://shafacare.com/team.jpg"],
+  "url": "https://shafacare.pages.dev",
+  "logo": "https://shafacare.pages.dev/logo.png",
+  "image": ["https://shafacare.pages.dev/clinic-interior.jpg", "https://shafacare.pages.dev/team.jpg"],
   "telephone": "+966-XX-XXXX-XXXX",
   "address": {
     "@type": "PostalAddress",
@@ -572,7 +572,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        { rel: "canonical", href: "https://shafacare.com" },
+        { rel: "canonical", href: "https://shafacare.pages.dev" },
       ],
     },
   },
@@ -2003,8 +2003,8 @@ export interface MedicalSchemaProps {
 }
 
 const props = withDefaults(defineProps<MedicalSchemaProps>(), {
-  url: 'https://shafacare.com',
-  logo: 'https://shafacare.com/logo.png',
+  url: 'https://shafacare.pages.dev',
+  logo: 'https://shafacare.pages.dev/logo.png',
   telephone: '+966-XX-XXXX-XXXX',
   priceRange: '$$',
   medicalSpecialty: () => ['FamilyMedicine', 'GeneralPractice'],
@@ -2042,7 +2042,7 @@ const props = withDefaults(defineProps<MedicalSchemaProps>(), {
 const { t, locale } = useI18n()
 const config = useRuntimeConfig()
 const siteUrl: string =
-  (config.public as Record<string, string>).siteUrl || 'https://shafacare.com'
+  (config.public as Record<string, string>).siteUrl || 'https://shafacare.pages.dev'
 
 // ── Locale-aware name / alternateName ─────────────────────
 const businessName: ComputedRef<string> = computed(() => {
@@ -4077,7 +4077,7 @@ onUnmounted(() => {
  *   // With custom OG image
  *   useClinicSeo({
  *     title: 'Contact',
- *     image: 'https://shafacare.com/images/contact-hero.jpg'
+ *     image: 'https://shafacare.pages.dev/images/contact-hero.jpg'
  *   })
  * ========================================================
  */
@@ -4373,7 +4373,7 @@ maxAge: 60 * 60 * 24 // 24 hours
 
     <!-- ── Structured Data (JSON-LD, renderless) ──── -->
     <SeoMedicalSchema
-      url="https://shafacare.com"
+      url="https://shafacare.pages.dev"
       price-range="$$"
       :medical-specialty="['GeneralPractice', 'FamilyMedicine']"
     />
@@ -5004,7 +5004,7 @@ useHead({
 # ───────────────────────────────────────────────
 # Shafa Care Clinic – Robots Exclusion Protocol
 # ───────────────────────────────────────────────
-# Production: https://shafacare.com
+# Production: https://shafacare.pages.dev
 # Allow all respectable crawlers; disallow admin/internal paths.
 
 User-agent: *
@@ -5017,7 +5017,7 @@ Disallow: /api/
 Crawl-delay: 10
 
 # ── Sitemaps ──────────────────────────────────
-Sitemap: https://shafacare.com/sitemap.xml
+Sitemap: https://shafacare.pages.dev/sitemap.xml
 </file>
 
 <file path=".editorconfig">
@@ -5052,7 +5052,7 @@ STORYBLOK_ACCESS_TOKEN=
 # ── Site URL ───────────────────────────────────────────
 # The public URL of your website (no trailing slash).
 # Used for canonical URLs, sitemap, and Open Graph tags.
-NUXT_PUBLIC_SITE_URL=https://shafacare.com
+NUXT_PUBLIC_SITE_URL=https://shafacare.pages.dev
 </file>
 
 <file path=".gitignore">
