@@ -19,6 +19,35 @@ import { useI18n } from "@/lib/i18n";
 import { site } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Shafa Care Clinic — Compassionate Family Healthcare in Amman, Jordan" },
+      {
+        name: "description",
+        content:
+          "Shafa Care Clinic offers expert general medicine, pediatrics, dental, cardiology, and wellness services in Amman. Book your appointment today — compassionate care for your whole family.",
+      },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "Shafa Care Clinic — Compassionate Family Healthcare in Amman" },
+      {
+        property: "og:description",
+        content:
+          "Expert family medicine, pediatrics, dental care, cardiology, and wellness services in Amman, Jordan. Trusted by 30k+ patients. Book today.",
+      },
+      { property: "og:url", content: site.url },
+      { name: "twitter:title", content: "Shafa Care Clinic — Compassionate Family Healthcare in Amman" },
+      {
+        name: "twitter:description",
+        content:
+          "Expert family medicine, pediatrics, dental care, cardiology, and wellness services in Amman, Jordan.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: site.url },
+      { rel: "alternate", hrefLang: "en", href: site.url },
+      { rel: "alternate", hrefLang: "ar", href: site.url },
+    ],
+  }),
   component: Index,
 });
 
@@ -27,8 +56,90 @@ function Index() {
   const serviceIcons = [Stethoscope, Baby, Smile, HeartPulse, Microscope, ShieldCheck] as const;
   const serviceKeys = ["general", "pediatrics", "dental", "cardio", "lab", "wellness"] as const;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "MedicalBusiness"],
+    "@id": site.url,
+    name: site.fullName,
+    alternateName: "Shafa Care",
+    description:
+      "Shafa Care is a modern family clinic offering general medicine, pediatrics, dental care, cardiology, lab diagnostics, wellness services, mental health support, and physiotherapy in Amman, Jordan.",
+    url: site.url,
+    telephone: site.phone,
+    email: site.email,
+    image: site.ogImage,
+    logo: `${site.url}/shafa-logo.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Amman",
+      addressCountry: "JO",
+    },
+    openingHoursSpecification: [
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "20:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "16:00" },
+    ],
+    priceRange: "$$",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      bestRating: "5",
+      ratingCount: "30000",
+    },
+    medicalSpecialty: [
+      "GeneralPractice",
+      "Pediatrics",
+      "Dentistry",
+      "Cardiology",
+      "Diagnostic",
+      "PreventiveMedicine",
+      "MentalHealth",
+      "Physiotherapy",
+    ],
+    founder: {
+      "@type": "Person",
+      name: "Dr. Firas Ajo",
+      jobTitle: "Founder & Medical Director",
+    },
+    employee: [
+      { "@type": "Person", name: "Dr. Firas Ajo", jobTitle: "Founder & Medical Director" },
+      { "@type": "Person", name: "Dr. Layla Mansour", jobTitle: "Pediatrician" },
+      { "@type": "Person", name: "Dr. Omar Haddad", jobTitle: "Cardiologist" },
+      { "@type": "Person", name: "Dr. Rana Al-Salem", jobTitle: "Dentist" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Medical Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "General Medicine", description: "Comprehensive primary care — annual physicals, chronic care, and acute treatment." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pediatrics", description: "Gentle, kid-friendly care from newborn check-ups through adolescence." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dental Care", description: "Cleanings, cosmetic treatments, and orthodontics in a calming space." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cardiology", description: "Heart health screenings, ECGs, and specialist consultations." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lab & Diagnostics", description: "On-site laboratory with fast, accurate results you can trust." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wellness & Vaccines", description: "Immunizations, nutrition guidance, and preventive wellness plans." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mental Health", description: "Confidential counseling and support by licensed clinicians." } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Physiotherapy", description: "Rehabilitation and mobility programs by certified therapists." } },
+      ],
+    },
+    makesOffer: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "General Medicine" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pediatrics" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dental Care" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cardiology" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lab & Diagnostics" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wellness & Vaccines" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mental Health" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Physiotherapy" } },
+    ],
+  };
+
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,oklch(0.42_0.15_25/0.15),transparent_60%)]" />
@@ -77,9 +188,10 @@ function Index() {
           <div className="relative">
             <img
               src={heroImage}
-              alt="Shafa Care clinic"
+              alt="Shafa Care Clinic — modern family medical clinic in Amman, Jordan featuring a welcoming interior"
               width={1600}
               height={1000}
+              loading="eager"
               className="rounded-3xl border border-border/60 shadow-2xl"
             />
             <div className="absolute -bottom-6 -start-6 hidden rounded-2xl bg-card p-4 shadow-lg md:block">
@@ -108,9 +220,11 @@ function Index() {
             {serviceKeys.map((key, i) => {
               const Icon = serviceIcons[i];
               const s = t.services.items[key];
+              const slug = key === "general" ? "general-medicine" : key === "dental" ? "dental-care" : key === "cardio" ? "cardiology" : key === "lab" ? "lab-diagnostics" : key === "wellness" ? "wellness-vaccines" : key;
               return (
-                <div
+                <Link
                   key={key}
+                  to={`/services/${slug}`}
                   className="group rounded-2xl border border-border/60 bg-card p-6 transition hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand transition group-hover:bg-brand group-hover:text-brand-foreground">
@@ -118,7 +232,7 @@ function Index() {
                   </div>
                   <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -143,7 +257,11 @@ function Index() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {t.doctors.list.map((d) => (
               <div key={d.name} className="rounded-2xl border border-border/60 bg-card p-6 text-center">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand to-accent-warm/70 text-2xl font-bold text-brand-foreground">
+                <div
+                  className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand to-accent-warm/70 text-2xl font-bold text-brand-foreground"
+                  role="img"
+                  aria-label={`${d.name} — ${d.role} at Shafa Care Clinic`}
+                >
                   {d.name.slice(-3, -2) || d.name[0]}
                 </div>
                 <h3 className="mt-4 font-semibold">{d.name}</h3>

@@ -82,20 +82,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Shafa Care Clinic — Compassionate Family Healthcare" },
-      {
-        name: "description",
-        content:
-          "Shafa Care is a modern family clinic offering general medicine, pediatrics, dental care, and wellness services with compassion and expertise.",
-      },
+      { name: "robots", content: "index, follow" },
       { name: "author", content: "Shafa Care Clinic" },
-      { property: "og:title", content: "Shafa Care Clinic" },
-      {
-        property: "og:description",
-        content: "Compassionate, modern healthcare for your whole family.",
-      },
+      { name: "theme-color", content: site.themeColor },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: site.name },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:locale:alternate", content: "ar_AR" },
+      { property: "og:image", content: site.ogImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: site.ogImage },
     ],
     links: [
       {
@@ -103,6 +101,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      { rel: "alternate", hrefLang: "x-default", href: site.url },
+      { rel: "alternate", hrefLang: "en", href: site.url },
+      { rel: "alternate", hrefLang: "ar", href: site.url },
     ],
   }),
   shellComponent: RootShell,
@@ -156,7 +163,7 @@ function SiteHeader() {
           <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-brand ring-2 ring-brand/20">
             <img
               src={logoAsset}
-              alt="Shafa Care Clinic"
+              alt="Shafa Care Clinic — Home"
               className="h-full w-full object-cover"
             />
           </span>
@@ -275,7 +282,11 @@ function SiteFooter() {
         <div>
           <div className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-brand">
-              <img src={logoAsset.url} alt="" className="h-full w-full object-cover" />
+              <img
+                src={logoAsset}
+                alt="Shafa Care Clinic Logo"
+                className="h-full w-full object-cover"
+              />
             </span>
             <span className="font-display font-bold">Shafa Care</span>
           </div>

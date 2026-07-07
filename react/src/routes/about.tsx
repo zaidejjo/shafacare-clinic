@@ -1,14 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Award, Users, HeartHandshake, Sparkles } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { site } from "@/lib/site-config";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Shafa Care Clinic" },
-      { name: "description", content: "Learn about Shafa Care Clinic — our mission, values, and the compassionate team led by Dr. Firas Ajo." },
-      { property: "og:title", content: "About Shafa Care Clinic" },
-      { property: "og:description", content: "Our mission, values, and the team behind Shafa Care." },
+      { title: "About Shafa Care Clinic — Our Mission, Values & Team in Amman" },
+      {
+        name: "description",
+        content:
+          "Learn about Shafa Care Clinic in Amman, Jordan — our mission, values of compassion and excellence, and the expert medical team led by Dr. Firas Ajo.",
+      },
+      { name: "robots", content: "index, follow" },
+      {
+        property: "og:title",
+        content: "About Shafa Care Clinic — Our Mission, Values & Team",
+      },
+      {
+        property: "og:description",
+        content:
+          "Shafa Care Clinic in Amman: compassionate care led by Dr. Firas Ajo. Discover our mission and values.",
+      },
+      { property: "og:url", content: `${site.url}/about` },
+      { name: "twitter:title", content: "About Shafa Care Clinic — Our Mission, Values & Team" },
+      {
+        name: "twitter:description",
+        content:
+          "Shafa Care Clinic in Amman: compassionate care led by Dr. Firas Ajo. Discover our mission and values.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: `${site.url}/about` },
+      { rel: "alternate", hrefLang: "en", href: `${site.url}/about` },
+      { rel: "alternate", hrefLang: "ar", href: `${site.url}/about` },
     ],
   }),
   component: AboutPage,

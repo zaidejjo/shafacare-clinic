@@ -14,6 +14,15 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesWellnessVaccinesRouteImport } from './routes/services/wellness-vaccines'
+import { Route as ServicesPhysiotherapyRouteImport } from './routes/services/physiotherapy'
+import { Route as ServicesPediatricsRouteImport } from './routes/services/pediatrics'
+import { Route as ServicesMentalHealthRouteImport } from './routes/services/mental-health'
+import { Route as ServicesLabDiagnosticsRouteImport } from './routes/services/lab-diagnostics'
+import { Route as ServicesGeneralMedicineRouteImport } from './routes/services/general-medicine'
+import { Route as ServicesDentalCareRouteImport } from './routes/services/dental-care'
+import { Route as ServicesCardiologyRouteImport } from './routes/services/cardiology'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -40,42 +49,156 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesWellnessVaccinesRoute =
+  ServicesWellnessVaccinesRouteImport.update({
+    id: '/wellness-vaccines',
+    path: '/wellness-vaccines',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesPhysiotherapyRoute = ServicesPhysiotherapyRouteImport.update({
+  id: '/physiotherapy',
+  path: '/physiotherapy',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesPediatricsRoute = ServicesPediatricsRouteImport.update({
+  id: '/pediatrics',
+  path: '/pediatrics',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesMentalHealthRoute = ServicesMentalHealthRouteImport.update({
+  id: '/mental-health',
+  path: '/mental-health',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesLabDiagnosticsRoute = ServicesLabDiagnosticsRouteImport.update({
+  id: '/lab-diagnostics',
+  path: '/lab-diagnostics',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesGeneralMedicineRoute = ServicesGeneralMedicineRouteImport.update({
+  id: '/general-medicine',
+  path: '/general-medicine',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesDentalCareRoute = ServicesDentalCareRouteImport.update({
+  id: '/dental-care',
+  path: '/dental-care',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCardiologyRoute = ServicesCardiologyRouteImport.update({
+  id: '/cardiology',
+  path: '/cardiology',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/services/cardiology': typeof ServicesCardiologyRoute
+  '/services/dental-care': typeof ServicesDentalCareRoute
+  '/services/general-medicine': typeof ServicesGeneralMedicineRoute
+  '/services/lab-diagnostics': typeof ServicesLabDiagnosticsRoute
+  '/services/mental-health': typeof ServicesMentalHealthRoute
+  '/services/pediatrics': typeof ServicesPediatricsRoute
+  '/services/physiotherapy': typeof ServicesPhysiotherapyRoute
+  '/services/wellness-vaccines': typeof ServicesWellnessVaccinesRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/services/cardiology': typeof ServicesCardiologyRoute
+  '/services/dental-care': typeof ServicesDentalCareRoute
+  '/services/general-medicine': typeof ServicesGeneralMedicineRoute
+  '/services/lab-diagnostics': typeof ServicesLabDiagnosticsRoute
+  '/services/mental-health': typeof ServicesMentalHealthRoute
+  '/services/pediatrics': typeof ServicesPediatricsRoute
+  '/services/physiotherapy': typeof ServicesPhysiotherapyRoute
+  '/services/wellness-vaccines': typeof ServicesWellnessVaccinesRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/services/cardiology': typeof ServicesCardiologyRoute
+  '/services/dental-care': typeof ServicesDentalCareRoute
+  '/services/general-medicine': typeof ServicesGeneralMedicineRoute
+  '/services/lab-diagnostics': typeof ServicesLabDiagnosticsRoute
+  '/services/mental-health': typeof ServicesMentalHealthRoute
+  '/services/pediatrics': typeof ServicesPediatricsRoute
+  '/services/physiotherapy': typeof ServicesPhysiotherapyRoute
+  '/services/wellness-vaccines': typeof ServicesWellnessVaccinesRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/services' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/sitemap.xml'
+    | '/services/cardiology'
+    | '/services/dental-care'
+    | '/services/general-medicine'
+    | '/services/lab-diagnostics'
+    | '/services/mental-health'
+    | '/services/pediatrics'
+    | '/services/physiotherapy'
+    | '/services/wellness-vaccines'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services' | '/sitemap.xml'
-  id: '__root__' | '/' | '/about' | '/contact' | '/services' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/sitemap.xml'
+    | '/services/cardiology'
+    | '/services/dental-care'
+    | '/services/general-medicine'
+    | '/services/lab-diagnostics'
+    | '/services/mental-health'
+    | '/services/pediatrics'
+    | '/services/physiotherapy'
+    | '/services/wellness-vaccines'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/sitemap.xml'
+    | '/services/cardiology'
+    | '/services/dental-care'
+    | '/services/general-medicine'
+    | '/services/lab-diagnostics'
+    | '/services/mental-health'
+    | '/services/pediatrics'
+    | '/services/physiotherapy'
+    | '/services/wellness-vaccines'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -116,14 +239,105 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/wellness-vaccines': {
+      id: '/services/wellness-vaccines'
+      path: '/wellness-vaccines'
+      fullPath: '/services/wellness-vaccines'
+      preLoaderRoute: typeof ServicesWellnessVaccinesRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/physiotherapy': {
+      id: '/services/physiotherapy'
+      path: '/physiotherapy'
+      fullPath: '/services/physiotherapy'
+      preLoaderRoute: typeof ServicesPhysiotherapyRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/pediatrics': {
+      id: '/services/pediatrics'
+      path: '/pediatrics'
+      fullPath: '/services/pediatrics'
+      preLoaderRoute: typeof ServicesPediatricsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/mental-health': {
+      id: '/services/mental-health'
+      path: '/mental-health'
+      fullPath: '/services/mental-health'
+      preLoaderRoute: typeof ServicesMentalHealthRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/lab-diagnostics': {
+      id: '/services/lab-diagnostics'
+      path: '/lab-diagnostics'
+      fullPath: '/services/lab-diagnostics'
+      preLoaderRoute: typeof ServicesLabDiagnosticsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/general-medicine': {
+      id: '/services/general-medicine'
+      path: '/general-medicine'
+      fullPath: '/services/general-medicine'
+      preLoaderRoute: typeof ServicesGeneralMedicineRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/dental-care': {
+      id: '/services/dental-care'
+      path: '/dental-care'
+      fullPath: '/services/dental-care'
+      preLoaderRoute: typeof ServicesDentalCareRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cardiology': {
+      id: '/services/cardiology'
+      path: '/cardiology'
+      fullPath: '/services/cardiology'
+      preLoaderRoute: typeof ServicesCardiologyRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesCardiologyRoute: typeof ServicesCardiologyRoute
+  ServicesDentalCareRoute: typeof ServicesDentalCareRoute
+  ServicesGeneralMedicineRoute: typeof ServicesGeneralMedicineRoute
+  ServicesLabDiagnosticsRoute: typeof ServicesLabDiagnosticsRoute
+  ServicesMentalHealthRoute: typeof ServicesMentalHealthRoute
+  ServicesPediatricsRoute: typeof ServicesPediatricsRoute
+  ServicesPhysiotherapyRoute: typeof ServicesPhysiotherapyRoute
+  ServicesWellnessVaccinesRoute: typeof ServicesWellnessVaccinesRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesCardiologyRoute: ServicesCardiologyRoute,
+  ServicesDentalCareRoute: ServicesDentalCareRoute,
+  ServicesGeneralMedicineRoute: ServicesGeneralMedicineRoute,
+  ServicesLabDiagnosticsRoute: ServicesLabDiagnosticsRoute,
+  ServicesMentalHealthRoute: ServicesMentalHealthRoute,
+  ServicesPediatricsRoute: ServicesPediatricsRoute,
+  ServicesPhysiotherapyRoute: ServicesPhysiotherapyRoute,
+  ServicesWellnessVaccinesRoute: ServicesWellnessVaccinesRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport

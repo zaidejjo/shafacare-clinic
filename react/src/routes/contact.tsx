@@ -7,10 +7,37 @@ import { site } from "@/lib/site-config";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Shafa Care Clinic" },
-      { name: "description", content: "Contact Shafa Care Clinic in Amman, Jordan. Call, WhatsApp, or send us a message to book an appointment." },
-      { property: "og:title", content: "Contact Shafa Care Clinic" },
-      { property: "og:description", content: "Book an appointment via phone, WhatsApp, or message." },
+      { title: "Contact Shafa Care Clinic — Book an Appointment in Amman, Jordan" },
+      {
+        name: "description",
+        content:
+          "Get in touch with Shafa Care Clinic in Amman. Call +962 7 8212 4190, WhatsApp us, or send a message to book your medical appointment today.",
+      },
+      { name: "robots", content: "index, follow" },
+      {
+        property: "og:title",
+        content: "Contact Shafa Care Clinic — Book an Appointment in Amman",
+      },
+      {
+        property: "og:description",
+        content:
+          "Contact Shafa Care Clinic via phone, WhatsApp, email, or our online form to schedule your appointment.",
+      },
+      { property: "og:url", content: `${site.url}/contact` },
+      {
+        name: "twitter:title",
+        content: "Contact Shafa Care Clinic — Book an Appointment in Amman",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Contact Shafa Care Clinic via phone, WhatsApp, email, or our online form.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: `${site.url}/contact` },
+      { rel: "alternate", hrefLang: "en", href: `${site.url}/contact` },
+      { rel: "alternate", hrefLang: "ar", href: `${site.url}/contact` },
     ],
   }),
   component: ContactPage,
