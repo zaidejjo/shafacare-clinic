@@ -1,0 +1,50 @@
+# Shafa Care Clinic
+
+## About
+Shafa Care Clinic is a modern, family-focused medical clinic based in **Amman, Jordan**. Founded and led by **Dr. Firas Ajo**, the clinic delivers compassionate, patient-centered healthcare with a full spectrum of services under one roof.
+
+## Core Pages
+- **Home** — `/` — Landing page with hero, services overview, doctor team, patient testimonials, FAQ, and call-to-action.
+- **Services** — `/services` — Detailed listing of all 8 medical services.
+- **About** — `/about` — Mission, values (Compassion, Excellence, Community, Innovation).
+- **Contact** — `/contact` — Phone, WhatsApp, email, address, contact form, working hours.
+
+## Medical Services
+1. **General Medicine** — Annual physicals, chronic care, acute treatment.
+2. **Pediatrics** — Newborn to adolescent care.
+3. **Dental Care** — Cleanings, cosmetics, orthodontics.
+4. **Cardiology** — Heart screenings, ECGs, consultations.
+5. **Lab & Diagnostics** — On-site lab testing.
+6. **Wellness & Vaccines** — Immunizations, nutrition, prevention.
+7. **Mental Health** — Confidential counseling.
+8. **Physiotherapy** — Rehabilitation and mobility programs.
+
+## Medical Team
+- **Dr. Firas Ajo** — Founder & Medical Director
+- **Dr. Layla Mansour** — Pediatrics
+- **Dr. Omar Haddad** — Cardiology
+- **Dr. Rana Al-Salem** — Dental Care
+
+## Contact Information
+- **Phone:** +962 7 8212 4190
+- **WhatsApp:** https://wa.me/962782124190
+- **Email:** hello@shafacareclinic.com
+- **Instagram:** @shafacareclinic
+- **Address:** Amman, Jordan
+- **Working Hours:**
+  - Mon–Fri: 8:00 – 20:00
+  - Saturday: 9:00 – 16:00
+  - Sunday: Closed
+
+## Languages
+The website is available in English (en) and Arabic (ar), with full RTL support for Arabic.
+
+## Key Differentiators
+- 15+ years of care, 30k+ patients served, 4.9★ patient rating.
+- Same-week appointments and walk-ins welcome.
+- Works with most major insurance providers.
+- Kid-friendly pediatric environment.
+
+## Technology Stack
+- Built with React 19, TanStack Router, TanStack Start, Vite, and Tailwind CSS v4.
+- Hosted on Cloudflare Pages at https://shafacare-clinic.pages.dev
