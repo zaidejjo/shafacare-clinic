@@ -1,7 +1,5 @@
-# Nuxt and react dev/build outputs
+# Nuxt dev/build outputs
 .output
-nuxt/.output
-react/.output
 .data
 .nuxt
 .nitro
@@ -10,8 +8,7 @@ dist
 
 # Node dependencies
 node_modules
-react/node_modules
-nuxt/node_modules
+
 # Logs
 logs
 *.log
@@ -23,8 +20,5 @@ logs
 
 # Local env files
 .env
-nuxt/.env
-react/.env
 .env.*
 !.env.example
-
