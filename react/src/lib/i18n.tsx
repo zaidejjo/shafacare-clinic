@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
+import { useRouterState, useNavigate } from "@tanstack/react-router";
 
 export type Lang = "en" | "ar";
 
@@ -230,16 +231,31 @@ const ar: Dict = {
 
 const dicts: Record<Lang, Dict> = { en, ar };
 
+function getLangFromPath(pathname: string): Lang {
+  if (pathname.startsWith("/ar/") || pathname === "/ar") return "ar";
+  return "en";
+}
+
+function replaceLangInPath(pathname: string, newLang: Lang): string {
+  return pathname.replace(/^\/[a-z]{2}/, `/${newLang}`);
+}
+
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Dict; dir: "ltr" | "rtl" };
 const I18nContext = createContext<Ctx | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
 
+  const [lang, setLangState] = useState<Lang>(() => getLangFromPath(pathname));
+
+  // Sync language when pathname changes (SSR hydration / navigation)
   useEffect(() => {
-    const saved = (typeof window !== "undefined" && (localStorage.getItem("lang") as Lang | null)) || null;
-    if (saved === "en" || saved === "ar") setLangState(saved);
-  }, []);
+    const detected = getLangFromPath(pathname);
+    if (detected !== lang) {
+      setLangState(detected);
+    }
+  }, [pathname]);
 
   const dir = lang === "ar" ? "rtl" : "ltr";
 
@@ -249,10 +265,14 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     document.documentElement.dir = dir;
   }, [lang, dir]);
 
-  const setLang = (l: Lang) => {
-    setLangState(l);
-    if (typeof window !== "undefined") localStorage.setItem("lang", l);
-  };
+  const setLang = useCallback(
+    (newLang: Lang) => {
+      if (newLang === lang) return;
+      const newPath = replaceLangInPath(pathname, newLang);
+      navigate({ to: newPath, replace: true });
+    },
+    [lang, pathname, navigate],
+  );
 
   return (
     <I18nContext.Provider value={{ lang, setLang, t: dicts[lang], dir }}>

@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as LangIndexRouteImport } from './routes/$lang/index'
 import { Route as ServicesWellnessVaccinesRouteImport } from './routes/services/wellness-vaccines'
 import { Route as ServicesPhysiotherapyRouteImport } from './routes/services/physiotherapy'
 import { Route as ServicesPediatricsRouteImport } from './routes/services/pediatrics'
@@ -23,6 +24,18 @@ import { Route as ServicesLabDiagnosticsRouteImport } from './routes/services/la
 import { Route as ServicesGeneralMedicineRouteImport } from './routes/services/general-medicine'
 import { Route as ServicesDentalCareRouteImport } from './routes/services/dental-care'
 import { Route as ServicesCardiologyRouteImport } from './routes/services/cardiology'
+import { Route as LangServicesRouteImport } from './routes/$lang/services'
+import { Route as LangContactRouteImport } from './routes/$lang/contact'
+import { Route as LangAboutRouteImport } from './routes/$lang/about'
+import { Route as LangServicesIndexRouteImport } from './routes/$lang/services/index'
+import { Route as LangServicesWellnessVaccinesRouteImport } from './routes/$lang/services/wellness-vaccines'
+import { Route as LangServicesPhysiotherapyRouteImport } from './routes/$lang/services/physiotherapy'
+import { Route as LangServicesPediatricsRouteImport } from './routes/$lang/services/pediatrics'
+import { Route as LangServicesMentalHealthRouteImport } from './routes/$lang/services/mental-health'
+import { Route as LangServicesLabDiagnosticsRouteImport } from './routes/$lang/services/lab-diagnostics'
+import { Route as LangServicesGeneralMedicineRouteImport } from './routes/$lang/services/general-medicine'
+import { Route as LangServicesDentalCareRouteImport } from './routes/$lang/services/dental-care'
+import { Route as LangServicesCardiologyRouteImport } from './routes/$lang/services/cardiology'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -53,6 +66,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ServicesRoute,
+} as any)
+const LangIndexRoute = LangIndexRouteImport.update({
+  id: '/$lang/',
+  path: '/$lang/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesWellnessVaccinesRoute =
   ServicesWellnessVaccinesRouteImport.update({
@@ -95,6 +113,71 @@ const ServicesCardiologyRoute = ServicesCardiologyRouteImport.update({
   path: '/cardiology',
   getParentRoute: () => ServicesRoute,
 } as any)
+const LangServicesRoute = LangServicesRouteImport.update({
+  id: '/$lang/services',
+  path: '/$lang/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangContactRoute = LangContactRouteImport.update({
+  id: '/$lang/contact',
+  path: '/$lang/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangAboutRoute = LangAboutRouteImport.update({
+  id: '/$lang/about',
+  path: '/$lang/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangServicesIndexRoute = LangServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LangServicesRoute,
+} as any)
+const LangServicesWellnessVaccinesRoute =
+  LangServicesWellnessVaccinesRouteImport.update({
+    id: '/wellness-vaccines',
+    path: '/wellness-vaccines',
+    getParentRoute: () => LangServicesRoute,
+  } as any)
+const LangServicesPhysiotherapyRoute =
+  LangServicesPhysiotherapyRouteImport.update({
+    id: '/physiotherapy',
+    path: '/physiotherapy',
+    getParentRoute: () => LangServicesRoute,
+  } as any)
+const LangServicesPediatricsRoute = LangServicesPediatricsRouteImport.update({
+  id: '/pediatrics',
+  path: '/pediatrics',
+  getParentRoute: () => LangServicesRoute,
+} as any)
+const LangServicesMentalHealthRoute =
+  LangServicesMentalHealthRouteImport.update({
+    id: '/mental-health',
+    path: '/mental-health',
+    getParentRoute: () => LangServicesRoute,
+  } as any)
+const LangServicesLabDiagnosticsRoute =
+  LangServicesLabDiagnosticsRouteImport.update({
+    id: '/lab-diagnostics',
+    path: '/lab-diagnostics',
+    getParentRoute: () => LangServicesRoute,
+  } as any)
+const LangServicesGeneralMedicineRoute =
+  LangServicesGeneralMedicineRouteImport.update({
+    id: '/general-medicine',
+    path: '/general-medicine',
+    getParentRoute: () => LangServicesRoute,
+  } as any)
+const LangServicesDentalCareRoute = LangServicesDentalCareRouteImport.update({
+  id: '/dental-care',
+  path: '/dental-care',
+  getParentRoute: () => LangServicesRoute,
+} as any)
+const LangServicesCardiologyRoute = LangServicesCardiologyRouteImport.update({
+  id: '/cardiology',
+  path: '/cardiology',
+  getParentRoute: () => LangServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -102,6 +185,9 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$lang/about': typeof LangAboutRoute
+  '/$lang/contact': typeof LangContactRoute
+  '/$lang/services': typeof LangServicesRouteWithChildren
   '/services/cardiology': typeof ServicesCardiologyRoute
   '/services/dental-care': typeof ServicesDentalCareRoute
   '/services/general-medicine': typeof ServicesGeneralMedicineRoute
@@ -110,13 +196,25 @@ export interface FileRoutesByFullPath {
   '/services/pediatrics': typeof ServicesPediatricsRoute
   '/services/physiotherapy': typeof ServicesPhysiotherapyRoute
   '/services/wellness-vaccines': typeof ServicesWellnessVaccinesRoute
+  '/$lang/': typeof LangIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/$lang/services/cardiology': typeof LangServicesCardiologyRoute
+  '/$lang/services/dental-care': typeof LangServicesDentalCareRoute
+  '/$lang/services/general-medicine': typeof LangServicesGeneralMedicineRoute
+  '/$lang/services/lab-diagnostics': typeof LangServicesLabDiagnosticsRoute
+  '/$lang/services/mental-health': typeof LangServicesMentalHealthRoute
+  '/$lang/services/pediatrics': typeof LangServicesPediatricsRoute
+  '/$lang/services/physiotherapy': typeof LangServicesPhysiotherapyRoute
+  '/$lang/services/wellness-vaccines': typeof LangServicesWellnessVaccinesRoute
+  '/$lang/services/': typeof LangServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$lang/about': typeof LangAboutRoute
+  '/$lang/contact': typeof LangContactRoute
   '/services/cardiology': typeof ServicesCardiologyRoute
   '/services/dental-care': typeof ServicesDentalCareRoute
   '/services/general-medicine': typeof ServicesGeneralMedicineRoute
@@ -125,7 +223,17 @@ export interface FileRoutesByTo {
   '/services/pediatrics': typeof ServicesPediatricsRoute
   '/services/physiotherapy': typeof ServicesPhysiotherapyRoute
   '/services/wellness-vaccines': typeof ServicesWellnessVaccinesRoute
+  '/$lang': typeof LangIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/$lang/services/cardiology': typeof LangServicesCardiologyRoute
+  '/$lang/services/dental-care': typeof LangServicesDentalCareRoute
+  '/$lang/services/general-medicine': typeof LangServicesGeneralMedicineRoute
+  '/$lang/services/lab-diagnostics': typeof LangServicesLabDiagnosticsRoute
+  '/$lang/services/mental-health': typeof LangServicesMentalHealthRoute
+  '/$lang/services/pediatrics': typeof LangServicesPediatricsRoute
+  '/$lang/services/physiotherapy': typeof LangServicesPhysiotherapyRoute
+  '/$lang/services/wellness-vaccines': typeof LangServicesWellnessVaccinesRoute
+  '/$lang/services': typeof LangServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +242,9 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$lang/about': typeof LangAboutRoute
+  '/$lang/contact': typeof LangContactRoute
+  '/$lang/services': typeof LangServicesRouteWithChildren
   '/services/cardiology': typeof ServicesCardiologyRoute
   '/services/dental-care': typeof ServicesDentalCareRoute
   '/services/general-medicine': typeof ServicesGeneralMedicineRoute
@@ -142,7 +253,17 @@ export interface FileRoutesById {
   '/services/pediatrics': typeof ServicesPediatricsRoute
   '/services/physiotherapy': typeof ServicesPhysiotherapyRoute
   '/services/wellness-vaccines': typeof ServicesWellnessVaccinesRoute
+  '/$lang/': typeof LangIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/$lang/services/cardiology': typeof LangServicesCardiologyRoute
+  '/$lang/services/dental-care': typeof LangServicesDentalCareRoute
+  '/$lang/services/general-medicine': typeof LangServicesGeneralMedicineRoute
+  '/$lang/services/lab-diagnostics': typeof LangServicesLabDiagnosticsRoute
+  '/$lang/services/mental-health': typeof LangServicesMentalHealthRoute
+  '/$lang/services/pediatrics': typeof LangServicesPediatricsRoute
+  '/$lang/services/physiotherapy': typeof LangServicesPhysiotherapyRoute
+  '/$lang/services/wellness-vaccines': typeof LangServicesWellnessVaccinesRoute
+  '/$lang/services/': typeof LangServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -152,6 +273,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/sitemap.xml'
+    | '/$lang/about'
+    | '/$lang/contact'
+    | '/$lang/services'
     | '/services/cardiology'
     | '/services/dental-care'
     | '/services/general-medicine'
@@ -160,13 +284,25 @@ export interface FileRouteTypes {
     | '/services/pediatrics'
     | '/services/physiotherapy'
     | '/services/wellness-vaccines'
+    | '/$lang/'
     | '/services/'
+    | '/$lang/services/cardiology'
+    | '/$lang/services/dental-care'
+    | '/$lang/services/general-medicine'
+    | '/$lang/services/lab-diagnostics'
+    | '/$lang/services/mental-health'
+    | '/$lang/services/pediatrics'
+    | '/$lang/services/physiotherapy'
+    | '/$lang/services/wellness-vaccines'
+    | '/$lang/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
     | '/sitemap.xml'
+    | '/$lang/about'
+    | '/$lang/contact'
     | '/services/cardiology'
     | '/services/dental-care'
     | '/services/general-medicine'
@@ -175,7 +311,17 @@ export interface FileRouteTypes {
     | '/services/pediatrics'
     | '/services/physiotherapy'
     | '/services/wellness-vaccines'
+    | '/$lang'
     | '/services'
+    | '/$lang/services/cardiology'
+    | '/$lang/services/dental-care'
+    | '/$lang/services/general-medicine'
+    | '/$lang/services/lab-diagnostics'
+    | '/$lang/services/mental-health'
+    | '/$lang/services/pediatrics'
+    | '/$lang/services/physiotherapy'
+    | '/$lang/services/wellness-vaccines'
+    | '/$lang/services'
   id:
     | '__root__'
     | '/'
@@ -183,6 +329,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/sitemap.xml'
+    | '/$lang/about'
+    | '/$lang/contact'
+    | '/$lang/services'
     | '/services/cardiology'
     | '/services/dental-care'
     | '/services/general-medicine'
@@ -191,7 +340,17 @@ export interface FileRouteTypes {
     | '/services/pediatrics'
     | '/services/physiotherapy'
     | '/services/wellness-vaccines'
+    | '/$lang/'
     | '/services/'
+    | '/$lang/services/cardiology'
+    | '/$lang/services/dental-care'
+    | '/$lang/services/general-medicine'
+    | '/$lang/services/lab-diagnostics'
+    | '/$lang/services/mental-health'
+    | '/$lang/services/pediatrics'
+    | '/$lang/services/physiotherapy'
+    | '/$lang/services/wellness-vaccines'
+    | '/$lang/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -200,6 +359,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  LangAboutRoute: typeof LangAboutRoute
+  LangContactRoute: typeof LangContactRoute
+  LangServicesRoute: typeof LangServicesRouteWithChildren
+  LangIndexRoute: typeof LangIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -245,6 +408,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/services/'
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
+    }
+    '/$lang/': {
+      id: '/$lang/'
+      path: '/$lang'
+      fullPath: '/$lang/'
+      preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/services/wellness-vaccines': {
       id: '/services/wellness-vaccines'
@@ -302,6 +472,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCardiologyRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/$lang/services': {
+      id: '/$lang/services'
+      path: '/$lang/services'
+      fullPath: '/$lang/services'
+      preLoaderRoute: typeof LangServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/contact': {
+      id: '/$lang/contact'
+      path: '/$lang/contact'
+      fullPath: '/$lang/contact'
+      preLoaderRoute: typeof LangContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/about': {
+      id: '/$lang/about'
+      path: '/$lang/about'
+      fullPath: '/$lang/about'
+      preLoaderRoute: typeof LangAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/services/': {
+      id: '/$lang/services/'
+      path: '/'
+      fullPath: '/$lang/services/'
+      preLoaderRoute: typeof LangServicesIndexRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/wellness-vaccines': {
+      id: '/$lang/services/wellness-vaccines'
+      path: '/wellness-vaccines'
+      fullPath: '/$lang/services/wellness-vaccines'
+      preLoaderRoute: typeof LangServicesWellnessVaccinesRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/physiotherapy': {
+      id: '/$lang/services/physiotherapy'
+      path: '/physiotherapy'
+      fullPath: '/$lang/services/physiotherapy'
+      preLoaderRoute: typeof LangServicesPhysiotherapyRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/pediatrics': {
+      id: '/$lang/services/pediatrics'
+      path: '/pediatrics'
+      fullPath: '/$lang/services/pediatrics'
+      preLoaderRoute: typeof LangServicesPediatricsRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/mental-health': {
+      id: '/$lang/services/mental-health'
+      path: '/mental-health'
+      fullPath: '/$lang/services/mental-health'
+      preLoaderRoute: typeof LangServicesMentalHealthRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/lab-diagnostics': {
+      id: '/$lang/services/lab-diagnostics'
+      path: '/lab-diagnostics'
+      fullPath: '/$lang/services/lab-diagnostics'
+      preLoaderRoute: typeof LangServicesLabDiagnosticsRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/general-medicine': {
+      id: '/$lang/services/general-medicine'
+      path: '/general-medicine'
+      fullPath: '/$lang/services/general-medicine'
+      preLoaderRoute: typeof LangServicesGeneralMedicineRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/dental-care': {
+      id: '/$lang/services/dental-care'
+      path: '/dental-care'
+      fullPath: '/$lang/services/dental-care'
+      preLoaderRoute: typeof LangServicesDentalCareRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
+    '/$lang/services/cardiology': {
+      id: '/$lang/services/cardiology'
+      path: '/cardiology'
+      fullPath: '/$lang/services/cardiology'
+      preLoaderRoute: typeof LangServicesCardiologyRouteImport
+      parentRoute: typeof LangServicesRoute
+    }
   }
 }
 
@@ -333,12 +587,44 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
   ServicesRouteChildren,
 )
 
+interface LangServicesRouteChildren {
+  LangServicesCardiologyRoute: typeof LangServicesCardiologyRoute
+  LangServicesDentalCareRoute: typeof LangServicesDentalCareRoute
+  LangServicesGeneralMedicineRoute: typeof LangServicesGeneralMedicineRoute
+  LangServicesLabDiagnosticsRoute: typeof LangServicesLabDiagnosticsRoute
+  LangServicesMentalHealthRoute: typeof LangServicesMentalHealthRoute
+  LangServicesPediatricsRoute: typeof LangServicesPediatricsRoute
+  LangServicesPhysiotherapyRoute: typeof LangServicesPhysiotherapyRoute
+  LangServicesWellnessVaccinesRoute: typeof LangServicesWellnessVaccinesRoute
+  LangServicesIndexRoute: typeof LangServicesIndexRoute
+}
+
+const LangServicesRouteChildren: LangServicesRouteChildren = {
+  LangServicesCardiologyRoute: LangServicesCardiologyRoute,
+  LangServicesDentalCareRoute: LangServicesDentalCareRoute,
+  LangServicesGeneralMedicineRoute: LangServicesGeneralMedicineRoute,
+  LangServicesLabDiagnosticsRoute: LangServicesLabDiagnosticsRoute,
+  LangServicesMentalHealthRoute: LangServicesMentalHealthRoute,
+  LangServicesPediatricsRoute: LangServicesPediatricsRoute,
+  LangServicesPhysiotherapyRoute: LangServicesPhysiotherapyRoute,
+  LangServicesWellnessVaccinesRoute: LangServicesWellnessVaccinesRoute,
+  LangServicesIndexRoute: LangServicesIndexRoute,
+}
+
+const LangServicesRouteWithChildren = LangServicesRoute._addFileChildren(
+  LangServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  LangAboutRoute: LangAboutRoute,
+  LangContactRoute: LangContactRoute,
+  LangServicesRoute: LangServicesRouteWithChildren,
+  LangIndexRoute: LangIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

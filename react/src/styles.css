@@ -7,6 +7,19 @@
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 
+/* Vazirmatn — Arabic text only */
+html[lang="ar"] {
+  font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5 {
+  font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*

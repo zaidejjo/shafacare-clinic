@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -12,10 +13,29 @@ import { Menu, Phone, MessageCircle, Sun, Moon, Languages } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { I18nProvider, useI18n } from "../lib/i18n";
+import { I18nProvider, useI18n, type Lang } from "../lib/i18n";
 import { ThemeProvider, useTheme } from "../lib/theme";
 import { site } from "../lib/site-config";
 import logoAsset from "../assets/shafa-logo.jpg";
+
+/** Prepend the current language prefix to internal paths. */
+function langLink(to: string, lang: Lang): string {
+  if (to.startsWith("/")) return `/${lang}${to}`;
+  return to;
+}
+
+function LangLink({
+  to,
+  children,
+  ...props
+}: Omit<Parameters<typeof Link>[0], "to"> & { to: string }) {
+  const { lang } = useI18n();
+  return (
+    <Link to={langLink(to, lang)} {...props}>
+      {children}
+    </Link>
+  );
+}
 
 function NotFoundComponent() {
   return (
@@ -28,7 +48,7 @@ function NotFoundComponent() {
         </p>
         <div className="mt-6">
           <Link
-            to="/"
+            to="/en"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
@@ -66,7 +86,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/"
+            href="/en"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
@@ -107,9 +127,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.gstatic.com",
         crossOrigin: "anonymous",
       },
-      { rel: "alternate", hrefLang: "x-default", href: site.url },
-      { rel: "alternate", hrefLang: "en", href: site.url },
-      { rel: "alternate", hrefLang: "ar", href: site.url },
+      { rel: "alternate", hrefLang: "x-default", href: `${site.url}/en` },
+      { rel: "alternate", hrefLang: "en", href: `${site.url}/en` },
+      { rel: "alternate", hrefLang: "ar", href: `${site.url}/ar` },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -155,11 +179,11 @@ function RootComponent() {
 }
 
 function SiteHeader() {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to={`/${lang}`} className="flex items-center gap-3">
           <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-brand ring-2 ring-brand/20">
             <img
               src={logoAsset}
@@ -173,7 +197,7 @@ function SiteHeader() {
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
           <Link
-            to="/"
+            to={`/${lang}`}
             activeOptions={{ exact: true }}
             activeProps={{ className: "text-brand" }}
             className="text-muted-foreground transition hover:text-foreground"
@@ -181,21 +205,21 @@ function SiteHeader() {
             {t.nav.home}
           </Link>
           <Link
-            to="/services"
+            to={`/${lang}/services`}
             activeProps={{ className: "text-brand" }}
             className="text-muted-foreground transition hover:text-foreground"
           >
             {t.nav.services}
           </Link>
           <Link
-            to="/about"
+            to={`/${lang}/about`}
             activeProps={{ className: "text-brand" }}
             className="text-muted-foreground transition hover:text-foreground"
           >
             {t.nav.about}
           </Link>
           <Link
-            to="/contact"
+            to={`/${lang}/contact`}
             activeProps={{ className: "text-brand" }}
             className="text-muted-foreground transition hover:text-foreground"
           >
@@ -206,7 +230,7 @@ function SiteHeader() {
           <LanguageToggle />
           <ThemeToggle />
           <Link
-            to="/contact"
+            to={`/${lang}/contact`}
             className="hidden rounded-full bg-brand px-5 py-2 text-sm font-semibold text-brand-foreground shadow-sm transition hover:opacity-90 md:inline-flex"
           >
             {t.actions.book}
@@ -275,7 +299,7 @@ function FloatingActions() {
 }
 
 function SiteFooter() {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
   return (
     <footer className="border-t border-border/60 bg-brand-soft/40">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-4">
@@ -307,17 +331,17 @@ function SiteFooter() {
           <h4 className="text-sm font-semibold">{t.footer.quickLinks}</h4>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/about" className="hover:text-foreground">
+              <Link to={`/${lang}/about`} className="hover:text-foreground">
                 {t.nav.about}
               </Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-foreground">
+              <Link to={`/${lang}/services`} className="hover:text-foreground">
                 {t.nav.services}
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-foreground">
+              <Link to={`/${lang}/contact`} className="hover:text-foreground">
                 {t.nav.contact}
               </Link>
             </li>
